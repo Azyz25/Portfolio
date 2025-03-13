@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+        
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Portfolio website complete</title>
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+<div class="nav__LOGO" data-sr-id="5" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s;" a="" div="">
+                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0" mask-type="alpha">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
+                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"></image>
+                        </g>
+                    </svg>
+                </div>                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        
+                        <li class="nav__item"><a href="#contact" class="nav__link">التواصل</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">أعمالي</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">مهاراتي</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
+                        <li class="nav__item"><a href="#home" class="nav__link active-link">الصفحة الرئيسية</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <h1 class="home__title" id="home__title">هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br> </h1><div class="title-div"><h4>( مطور مواقع )</h4></div>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon"><img alt="Bahr" data-sentry-element="Image" data-sentry-source-file="logo.tsx" loading="lazy" width="37" height="28" decoding="async" data-nimg="1" class="" src="https://bahr.sa/logo/bahr-logo.svg" style="color: transparent;"></a>
+                    <a href="https://baaeed.com/u/azyz11223" type="_blank" class="home__social-icon"><img class="hsoub-logo-img hsoub--visible-h" src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png?id=30a5bc79bfe161d488070fd0c6d69507"></a>
+                </div>
+
+                <div class="home__img">
+                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0" mask-type="alpha">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class='particle'>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                    <span class='particle-item'></span>
+                </div>
+
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section " id="about">
+                <div class="hide"></div>
+                <div class="cont-h2">
+                <h2 class="section-title">عنّي</h2></div>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="assets/img/perfil.png" alt="">
+                    </div>
+                    
+                    <div>
+                        <h2 class="about__subtitle">أنا عبدالعزيز</h2>
+                        <p class="about__text">مبرمج مواقع بـ HTML و CSS، ومطور تطبيقات أندرويد، ومصمم مواقع وواجهات مستخدم للمواقع والتطبيقات. برضه أصمم جرافيك بشكل عام، وأشتغل على التصميم الداخلي ثلاثي الأبعاد (3D)، وأصمم عروض بوربوينت احترافية.
+
+                            عندي خبرة ٣ سنين في خدمة العملاء، وعندي مهارات قوية في التواصل وحل المشكلات. غير كذا، عندي ٧ سنين خبرة في استخدام برامج الأوفيس، خصوصًا Excel، وأتميز بإدارة البيانات وتحليلها وتنظيمها بدقة. أعرف أشتغل بذكاء، أوزن وقتي صح، وأسعى دايمًا لتقديم حلول تقنية وعملية تحقق الأهداف بأفضل طريقة، سواءً كنت أشتغل لحالي أو مع فريق.</p>           
+                    </div>                                   
+                </div>
+            </section>
+
+            <!--===== SKILLS =====-->
+            <section class="skills section" id="skills">
+                <div class="cont-h2">
+                <h2 class="section-title">مهاراتي</h2></div>
+
+                <div class="flex items-center justify-between gap-6 rounded-xl bg-beige-0 p-6"><div class="flex flex-wrap gap-4"><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>جافا سكربت</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصاميم ثلاثية الابعاد</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم بنرات اعلانية</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>نصميم خارجي</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>خدمة عملاء</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>كتابة محتوى</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>دعم عملاء</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تطوير تطبيقات اندرويد</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>ادوبي فوتوشوب</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>كانفا</span></div></span></div><div class="flex flex-wrap gap-4"><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>ادخال البيانات</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>برمجة الويب</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>عروض الباوربوينت</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>خدمة العملاء</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم الهويات و الشعارات</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم جرافيك</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم البوسترات</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>مايكروسوفت اوفيس</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>ادارة المتاجر الالكترونية</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>منصة سلة</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم UI / UX</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>تصميم ملفات PDF</span></div></span><span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500"><div class="flex items-center gap-1"><span>إدارة حسابات تواصل اجتماعي</span></div></span></div></div><a class="rtl:row-reverse inline-flex gap-2.5 rounded-full px-6 transition-colors disabled:pointer-events-none ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 items-center bg-primary-500 text-beige-0 hover:bg-primary-300 disabled:bg-neutral-200 disabled:text-neutral-300 py-3 [&amp;_*]:text-buttonBig min-h-5.25 w-fit min-w-40.5 justify-center" data-sentry-element="BaseLink" data-sentry-component="Link" data-sentry-source-file="link.tsx" href="01910dd0-bf98-73df-94cc-08c1fb461d76/settings"></a></div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== WORK =====-->
+<section class="work section" id="work">
+    <div class="cont-h2">
+        <h2 class="section-title">أعمالي</h2>
+    </div>
+
+    <!-- التبويبات -->
+    <div class="tabs">
+        <button class="tab" data-tab="data-entry">
+            إدخال البيانات
+            <img src="assets/img/icon/database-management.svg" class="tab-icon">
+        </button>
+        <button class="tab" data-tab="external-design">
+         (3D) التصميم الخارجي 
+            <img src="/assets/img/icon/vector-alt.svg" class="tab-icon">
+        </button>
+        <button class="tab" data-tab="web-development">
+             برمجة الويب
+             <img src="/assets/img/icon/code-window.svg"  class="tab-icon">
+        </button>
+        <button class="tab" data-tab="branding">
+         تصميم الهويات والشعارات
+         <img src="/assets/img/icon/id-card.svg" class="tab-icon"> 
+        </button>
+        <button class="tab" data-tab="graphic-design">
+            تصميم جرافيك
+            <img src="/assets/img/icon/customize-computer.svg" class="tab-icon">
+        </button>
+        <button class="tab" data-tab="customer-service">
+           خدمة العملاء
+           <img src="/assets/img/icon/headset.svg" class="tab-icon"> 
+        </button>
+        <button class="tab active" data-tab="powerpoint">
+             عروض الباوربوينت
+             <img src="/assets/img/icon/presentation.svg" class="tab-icon">
+        </button>
+    </div>
+
+    <!-- المحتوى المتغير -->
+    <div id="data-entry" class="work__container bd-grid tab-content active">
+        
+          
+              </div>
+
+    <div id="external-design" class="work__container bd-grid tab-content">
+        <div class="work__container">
+        <div class="image-container">
+          <img src="assets/img/external-design.webp" alt="تصميم خارجي 1">
+          <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>    </div>
+
+    <div id="web-development" class="work__container bd-grid tab-content">
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/web-development.png" alt="موقع 1">
+        <div class="overlay">
+            <a href="index.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/web-development1.png" alt="موقع 2">
+        <div class="overlay">
+            <a href="https://www.highschooltaiba.online/p/blog-page_41.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/web-development2.png" alt="موقع 3">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">عذراً الموقع خاص ، لصور اكثر تواصل معي من قسم التواصل</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="branding" class="work__container bd-grid tab-content">
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/final2.jpg" alt="شعار 1">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/FINAL1.jpg" alt="شعار 2">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/final3.jpg" alt="شعار 3">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/FINAL 2.jpg" alt="شعار 4">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/final4.jpg" alt="شعار 5">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/FINAL.jpg" alt="شعار 6">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="work__container">
+        <div class="image-container">
+    <img src="assets/img/final 6.jpg" alt="شعار 7">
+    <div class="overlay">
+        <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="graphic-design" class="work__container bd-grid tab-content">
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/1.jpeg" alt="تصميم جرافيك 1">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+         <img src="assets/img/2.jpeg" alt="تصميم جرافيك 2">
+        <div class="overlay">
+            <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+      <div class="work__container">
+        <div class="image-container">
+    <img src="assets/img/3.png" alt="تصميم جرافيك 3">
+    <div class="overlay">
+        <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+      </div>
+    </div>
+  </div>
+  <div class="work__container">
+    <div class="image-container">
+<img src="assets/img/4.jpeg" alt="تصميم جرافيك 4">
+<div class="overlay">
+    <a href="رابط_المعاينة.html">اضغط للمعاينة</a>
+  </div>
+</div>
+</div>
+
+
+    </div>
+
+    <div id="customer-service" class="work__container bd-grid tab-content">
+        
+    </div>
+
+    <div id="powerpoint" class="work__container bd-grid tab-content">
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover.png" alt="عرض باوربوينت 1">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/6.pptx?alt=media&token=cc941654-8ecd-4c7e-a8a4-d03fb180b8a9">اضغط للمعاينة</a>
+            <button class="zoom-btn" data-img="assets/img/powerpoint_cover.png">🔍 تكبير</button>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover1.png" alt="عرض باوربوينت 2">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/4.pptx?alt=media&token=8710a31c-4036-46da-ba80-08b373c663a8">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover2.png" alt="عرض باوربوينت 3">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/5.pptx?alt=media&token=406e383a-1cf9-436b-b71b-50abbf35c98c">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover3.png" alt="عرض باوربوينت 4">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/3.pptx?alt=media&token=b8a62366-687d-4830-8481-2c21502567af">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover4.png" alt="عرض باوربوينت 5">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/2.pptx?alt=media&token=53312a62-eff9-4025-ba3c-6c6e4251844a">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+        <div class="work__container">
+            <div class="image-container">
+        <img src="assets/img/powerpoint_cover5.png" alt="عرض باوربوينت 6">
+        <div class="overlay">
+            <a href="https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media&amp;token=40d3efba-f0d8-47fe-add9-792bdfa9632f">اضغط للمعاينة</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+            
+
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+                <div class="cont-h2"> <h2 class="section-title">التواصل</h2></div>
+
+                <div class="contact__container bd-grid">
+                    <form action="" class="contact__form">
+                        <input id="text-name" type="text" placeholder="إسمك الكريم" class="contact__input">
+                        <textarea name="" id="text-message" cols="0" rows="10" class="contact__input"></textarea>
+                        <div class="but-cnt">
+                        <input id="button-inp" type="button" value="إرسال" class="contact__button button">
+                    </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <div class="FOOTER-LOGO">
+                <div class="nav__LOGO" data-sr-id="5" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s;" a="" div="">
+                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0" mask-type="alpha">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
+                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"></image>
+                        </g>
+                    </svg>
+                </div> 
+            </div>             <div class="footer__social">
+                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            </div>
+            <p class="footer__copy">&#169; عبدالعزيز تكنولوجي , جميع الحقوق محفوظة  </p>
+        </footer>
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/lang.js"></script>
+        <script src="assets/js/whatsapp.js"></script>
+         <!-- END TEMPLATE -->
+    <script src='https://cdn.jsdelivr.net/gh/imintweb/Js@42b7bd5b4680e7aa5c2c86420db4312eff5f5a84/mint.min.js'></script>
+    <button id="scrollToTop" class="scrollToTop">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </button>
+  
+    <script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'></script>
+    <script>
+    
+  document.addEventListener("DOMContentLoaded", function () {
+    let tabs = document.querySelectorAll(".tab");
+    let contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+            let tabName = this.getAttribute("data-tab");
+
+            // 🔴 إخفاء جميع القوائم
+            contents.forEach(content => {
+                content.classList.remove("active"); // إخفاء المحتوى
+                let message = content.querySelector(".empty-message");
+                if (message) {
+                    content.removeChild(message); // إزالة النص إذا كان موجودًا
+                }
+            });
+
+            // 🟢 إظهار القائمة المطلوبة
+            let activeTab = document.getElementById(tabName);
+            if (activeTab) {
+                activeTab.classList.add("active"); // إظهار المحتوى
+                // إضافة النص إذا كانت القائمة فارغة
+                if (activeTab.children.length === 0) {
+                    let message = document.createElement("p");
+                    message.className = "empty-message";
+                    message.textContent = "العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة";
+                    activeTab.appendChild(message);
+                }
+            }
+
+            // 🔄 تحديث حالة الأزرار
+            tabs.forEach(t => t.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+
+    // ✅ تفعيل أول تبويب تلقائيًا عند تحميل الصفحة
+    if (tabs.length > 0) {
+        tabs[6].click(); // أول تبويب
+    }
+  });
+
+
+    </script>
+    <!-- نافذة تكبير الصورة -->
+<div id="imagePopup" class="popup">
+    <span class="close">&times;</span>
+    <img class="popup-content" src="" id="iimg">
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let popup = document.createElement("div");
+    popup.id = "imagePopup";
+    popup.classList.add("popup");
+    popup.style.display = "none"; 
+    popup.innerHTML = `
+        <span class="close">&times;</span>
+        <img class="popup-content" id="iimg" src="" alt="صورة">
+    `;
+    document.body.appendChild(popup);
+
+    let popupImg = document.getElementById("iimg");
+    let closeBtn = popup.querySelector(".close");
+
+    document.querySelectorAll(".zoom-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let imgSrc = this.getAttribute("data-img");
+            popupImg.innerHTML.src = imgSrc; 
+            if (imgSrc) {
+                console.log(imgSrc); // طباعة المسار في الـ console للتأكد
+                popupImg.src = imgSrc;  // تأكد من إضافة src هنا مباشرة
+                popup.style.display = "flex";
+            } else {
+                alert("⚠️ خطأ: الصورة غير موجودة! تأكد من data-img للزر.");
+            }
+        });
+    });
+
+    closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+    });
+
+    popup.addEventListener("click", function (event) {
+        if (event.target === popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+
+    </script>
+    
+</body>
+</html>
