@@ -1335,6 +1335,7 @@ img.tab-icon {
   font-weight: bold;
   border-radius: 5px;
   transition: background 0.3s;
+  display: none;
 }
 
 .zoom-btn:hover {
