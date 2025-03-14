@@ -339,6 +339,7 @@ img {
   margin-bottom: var(--mb-4);
   font-family: 'Scheherazade New';
     font-size: 15px;
+    display: none;
 }
 .contact__button {
   display: block;
@@ -348,7 +349,7 @@ img {
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  display: flex
+  display: none
 ;
   font-family: 'Scheherazade New';
   background: #ffffff;
