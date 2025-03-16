@@ -1377,6 +1377,8 @@ img.tab-icon {
     border-radius: 30px;
     height: 600px;
     border: 5px solid #e1d5c4;
+    transform: translateY(-20px);
+            transition: transform 0.4s ease-in-out;
 }
 
 
