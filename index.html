@@ -358,7 +358,7 @@
             <div class="image-container">
                 <img src="/assets/img/powerpoint_cover.png" alt="عرض باوربوينت 1">
                 <div class="overlay">
-                    <button class="preview-btn" onclick="openModal('عرض باوربوينت عن حركة المقذوف', '/assets/img/powerpoint_cover.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media&token=40d3efba-f0d8-47fe-add9-792bdfa9632f')">مـــعــايــنة</button>
+                    <button class="preview-btn" onclick="openModal('عرض باوربوينت عن حركة المقذوف', 'سويت عرض باوربوينت مميز عن “حركة المقذوف” في مادة الفيزياء، وركزت فيه على شرح الحركة بشكل سهل وواضح. تطرقت للمواضيع الأساسية زي السرعة الابتدائية وزاوية الإطلاق، وكيف المقذوف يتحرك تحت تأثير الجاذبية. العرض كان مليان بالرسوم التوضيحية والنماذج الرياضية اللي تساعد الطلاب يفهمون كل جزئية بشكل عملي. الهدف كان تبسيط المعلومات وتعليم الطلاب كيف يحللون حركة المقذوفات بطريقة علمية، مع تقديم أفكار جديدة تخليهم يتفاعلون مع الدرس بشكل أفضل', '/assets/img/powerpoint_cover.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media&token=40d3efba-f0d8-47fe-add9-792bdfa9632f')">مـــعــايــنة</button>
                 </div>
             </div>
         </div>
@@ -636,10 +636,11 @@ if (switchBtn) {
    </script>
 
 <script>
-    function openModal(title, imgSrc, link) {
+    function openModal(title, imgSrc, des, link) {
     const modal = document.getElementById("modal");
 
     document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-des").innerText = des;
     document.getElementById("modal-image").src = imgSrc;
     document.getElementById("modal-link").href = link;
 
