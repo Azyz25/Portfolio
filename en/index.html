@@ -552,16 +552,7 @@ I have three years of experience in customer service with strong communication a
             <path d="M0 0h24v24H0z" fill="none" />
         </svg>
     </button>
-  <!-- نافذة المودال -->
-<div id="modal" class="modal">
-    <img id="modal-image" src="" alt="">
-    <h2 id="modal-title"></h2>
-    <button class="close" onclick="closeModal()">&times;</button>
-    <h2 id="modal-des"></h2>
-    <br>
-    <a id="modal-link" href="" target="_blank">Preview Work</a>
-    <br>
-</div> 
+ 
     <script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'></script>
     <script>
     
@@ -719,9 +710,18 @@ if (switchBtn) {
 }
 
    </script>
-
+  <!-- نافذة المودال -->
+  <div id="modal" class="modal">
+    <img id="modal-image" src="" alt="">
+    <h2 id="modal-title"></h2>
+    <button class="close" onclick="closeModal()">&times;</button>
+    <h2 id="modal-des"></h2>
+    <br>
+    <a id="modal-link" href="" target="_blank">Preview Work</a>
+    <br>
+</div>
 <script>
-    function openModal(title, imgSrc, Des, link) {
+    function openModal(title, imgSrc, des, link) {
     const modal = document.getElementById("modal");
 
     document.getElementById("modal-title").innerText = title;
