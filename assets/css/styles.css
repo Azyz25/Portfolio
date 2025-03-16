@@ -1341,3 +1341,18 @@ img.tab-icon {
 .zoom-btn:hover {
   background: #ddd;
 }
+
+
+.header-text {
+  font-family: 'Tajawal', sans-serif;
+  color: #3e6ff4;  /* اللون المطلوب */
+  font-size: 1.25rem;  /* حجم الخط */
+  font-weight: 600;  /* سمك الخط */
+  margin-left: -540px;  /* المسافة بين النص والـ SVG */
+  display: flex;
+  flex-direction: column; /* ترتيب النص عمودي */
+}
+
+.header-text span {
+  margin: 0;  /* إزالة المسافة بين الحروف */
+}
