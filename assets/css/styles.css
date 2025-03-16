@@ -1443,6 +1443,7 @@ img.tab-icon {
   padding-left: 5px;
   border-radius: 10px;
   text-align: center;
+  width: auto;
 }
 
  
