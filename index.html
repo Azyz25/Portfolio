@@ -167,7 +167,7 @@
             <img src="/assets/img/icon/customize-computer.svg" class="tab-icon">
         </button>
         <button class="tab" data-tab="UI&UX-design">
-            تصميم Ui & UX
+            Ui & UX تصميم 
             <img src="https://azyz-service.site/assets/img/icon/ui-ux.svg" class="tab-icon"> 
         </button>
         <button class="tab" data-tab="customer-service">
@@ -359,7 +359,7 @@
         <img src="/assets/img/powerpoint_cover.png" alt="عرض باوربوينت 1">
         <div class="overlay">
             <a href="/assets/img/6.pptx">اضغط للمعاينة</a>
-            <button class="zoom-btn" data-img="/assets/img/powerpoint_cover.png">🔍 تكبير</button>
+            <button class="preview-btn" onclick="openModal('شعار 1', '/assets/img/final2.jpg', '/assets/img/final2.jpg')">معاينة</button>
           </div>
         </div>
       </div>
@@ -445,6 +445,15 @@
             <p class="footer__copy">&#169; عبدالعزيز تكنولوجي , جميع الحقوق محفوظة  </p>
         </footer>
 
+<!-- نافذة المودال -->
+<div id="modal" class="modal">
+    <h2 id="modal-title"></h2>
+    <img id="modal-image" src="" alt="">
+    <br>
+    <a id="modal-link" href="" target="_blank">اضغط هنا للمعاينة</a>
+    <br>
+    <button class="close" onclick="closeModal()">إغلاق</button>
+</div> 
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
@@ -619,5 +628,19 @@ if (switchBtn) {
 }
 
    </script>
+
+<script>
+    function openModal(title, imgSrc, link) {
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-image").src = imgSrc;
+        document.getElementById("modal-link").href = link;
+        document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+</script>
+
 </body>
 </html>
