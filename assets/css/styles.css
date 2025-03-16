@@ -1435,7 +1435,7 @@ img.tab-icon {
 
 #modal-title {
   position: absolute;
-  top: 50%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #e1d5c4d1;
