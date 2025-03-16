@@ -1360,7 +1360,6 @@ img.tab-icon {
   transition: background 0.3sease, transform 0.2sease;
   border: 4px solid #e1d5c4; 
   margin-top: 10px; 
-  padding: 5px 15px; 
   font-family: 'Scheherazade New'; 
     cursor: pointer; 
    }
