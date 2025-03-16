@@ -32,7 +32,7 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         
-                        <li class="nav__item"><a href="#work" class="nav__link">أعمالي</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">أعمالي/</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">مهاراتي</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
                         <li class="nav__item"><a href="#home" class="nav__link active-link">الصفحة الرئيسية</a></li>
@@ -521,6 +521,64 @@
 });
 
     </script>
+   
+   
+   <script>
+
+// تحديد اللغة من رابط الصفحة
+let path = window.location.pathname.split("/")[1]; 
+
+// اللغات المدعومة
+const supportedLangs = ["ar", "en"];
+
+// التحقق من اللغة في الرابط أو استخدام المخزن المحلي
+let lang = localStorage.getItem("lang") || (supportedLangs.includes(path) ? path : "ar");
+
+// تحديث عنوان اللغة في `<html>` و إعادة التوجيه إذا لم تكن هناك لغة في الرابط
+document.documentElement.lang = lang;
+if (!supportedLangs.includes(path)) {
+    window.location.href = `/${lang}`;
+}
+
+// محتوى اللغات
+let content = {
+    ar: {
+        home__title: `هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br>`,
+        subtitle: "( مطور مواقع )",
+        font: "'Scheherazade New', serif",
+        switchText: "English" // نص زر التبديل
+    },
+    en: {
+        home__title: "Welcome to my website",
+        subtitle: "( Web Developer )",
+        font: "'Poppins', sans-serif",
+        switchText: "العربية" // نص زر التبديل
+    }
+};
+
+// تحديث النصوص والخطوط عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".home__title").innerHTML = content[lang].home__title; 
+    document.querySelector(".title-div h4").innerText = content[lang].subtitle;
     
+    // ضبط الاتجاه والتنسيق
+    document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
+    document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    document.documentElement.style.setProperty("--body-font", content[lang].font);
+
+    // تحديث زر التبديل
+    document.querySelector("#lang-switch").innerText = content[lang].switchText;
+});
+
+// **إضافة زر تبديل اللغة بدون تحديث الصفحة**
+document.querySelector("#lang-switch").addEventListener("click", function () {
+    lang = lang === "ar" ? "en" : "ar"; // تبديل بين اللغتين
+    localStorage.setItem("lang", lang); // تخزين تفضيل المستخدم
+    window.location.href = `/${lang}`; // إعادة تحميل الصفحة باللغة الجديدة
+});
+
+  
+
+   </script>
 </body>
 </html>
