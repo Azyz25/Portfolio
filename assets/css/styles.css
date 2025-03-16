@@ -1350,7 +1350,8 @@ img.tab-icon {
 }
 
 
-.preview-btn { background: #faf7f4;
+.preview-btn { 
+  background: #faf7f4;
   color: #000;
   padding: 10px 15px;
   text-decoration: none;
@@ -1361,7 +1362,8 @@ img.tab-icon {
   margin-top: 10px; 
   padding: 5px 15px; 
   font-family: 'Scheherazade New'; 
-   color: white; border: none; cursor: pointer; border-radius: 5px; }
+    cursor: pointer; 
+   }
    
    
    .modal {
