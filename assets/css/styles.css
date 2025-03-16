@@ -1422,6 +1422,17 @@ img.tab-icon {
       object-fit: cover;
       filter: brightness(0.7);
   }
+
+  a#modal-link {
+    background: #e1d5c496;
+    padding: 5px;
+    border-radius: 15px;
+    color: black;
+    bottom: 0;
+    position: absolute;
+    right: 42%;
+    margin-bottom: 20px;
+}
     
 
  
