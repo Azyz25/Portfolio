@@ -631,15 +631,28 @@ if (switchBtn) {
 
 <script>
     function openModal(title, imgSrc, link) {
-        document.getElementById("modal-title").innerText = title;
-        document.getElementById("modal-image").src = imgSrc;
-        document.getElementById("modal-link").href = link;
-        document.getElementById("modal").style.display = "block";
-    }
+    const modal = document.getElementById("modal");
+    
+    document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-image").src = imgSrc;
+    document.getElementById("modal-link").href = link;
+    
+    // إضافة كلاس 'show' لعرض النافذة مع تأثير
+    modal.classList.add("show");
+}
 
-    function closeModal() {
-        document.getElementById("modal").style.display = "none";
-    }
+function closeModal() {
+    const modal = document.getElementById("modal");
+    
+    // إزالة كلاس 'show' مع تأخير بسيط لإظهار تأثير الإغلاق
+    modal.classList.remove("show");
+
+    // انتظار انتهاء الأنيميشن قبل إخفاء العنصر نهائيًا
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300); // المدة حسب مدة الـ transition في الـ CSS
+}
+
 </script>
 
 </body>
