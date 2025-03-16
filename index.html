@@ -526,7 +526,7 @@
    <script>
 
 // تحديد اللغة من رابط الصفحة
-let path = window.location.pathname.split("/")[1]; 
+let path = window.location.pathname.split("/")[1];
 
 // اللغات المدعومة
 const supportedLangs = ["ar", "en"];
@@ -534,10 +534,15 @@ const supportedLangs = ["ar", "en"];
 // التحقق من اللغة في الرابط أو استخدام المخزن المحلي
 let lang = localStorage.getItem("lang") || (supportedLangs.includes(path) ? path : "ar");
 
-// تحديث عنوان اللغة في `<html>` و إعادة التوجيه إذا لم تكن هناك لغة في الرابط
+// تحديث عنوان اللغة في `<html>` وإعادة التوجيه إذا لم تكن هناك لغة في الرابط
 document.documentElement.lang = lang;
-if (!supportedLangs.includes(path)) {
+if (!supportedLangs.includes(path) && path !== "") {
     window.location.href = `/${lang}`;
+}
+
+// التأكد من تخزين اللغة في localStorage إذا لم يكن موجودًا
+if (!localStorage.getItem("lang")) {
+    localStorage.setItem("lang", lang);
 }
 
 // محتوى اللغات
@@ -558,26 +563,26 @@ let content = {
 
 // تحديث النصوص والخطوط عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".home__title").innerHTML = content[lang].home__title; 
-    document.querySelector(".title-div h4").innerText = content[lang].subtitle;
-    
+    document.querySelector(".home__title")?.innerHTML = content[lang].home__title;
+    document.querySelector(".title-div h4")?.innerText = content[lang].subtitle;
+
     // ضبط الاتجاه والتنسيق
-    document.body.style.direction = lang === "ar" ? "rtl" : "ltr";
-    document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.documentElement.style.setProperty("--body-font", content[lang].font);
 
     // تحديث زر التبديل
-    document.querySelector("#lang-switch").innerText = content[lang].switchText;
+    document.querySelector("#lang-switch")?.innerText = content[lang].switchText;
 });
 
 // **إضافة زر تبديل اللغة بدون تحديث الصفحة**
-document.querySelector("#lang-switch").addEventListener("click", function () {
-    lang = lang === "ar" ? "en" : "ar"; // تبديل بين اللغتين
-    localStorage.setItem("lang", lang); // تخزين تفضيل المستخدم
-    window.location.href = `/${lang}`; // إعادة تحميل الصفحة باللغة الجديدة
-});
-
-  
+let switchBtn = document.querySelector("#lang-switch");
+if (switchBtn) {
+    switchBtn.addEventListener("click", function () {
+        lang = lang === "ar" ? "en" : "ar"; // تبديل بين اللغتين
+        localStorage.setItem("lang", lang); // تخزين تفضيل المستخدم
+        window.location.href = `/${lang}`; // إعادة تحميل الصفحة باللغة الجديدة
+    });
+}
 
    </script>
 </body>
