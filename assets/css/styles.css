@@ -1444,6 +1444,7 @@ img.tab-icon {
   border-radius: 10px;
   text-align: center;
   width: auto;
+  transform: translateX(-50%);
 }
 
  
