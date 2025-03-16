@@ -1315,16 +1315,7 @@ img.tab-icon {
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-/* زر الإغلاق */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 
 /* زر التكبير */
 .zoom-btn {
