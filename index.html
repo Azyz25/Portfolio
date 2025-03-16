@@ -632,25 +632,17 @@ if (switchBtn) {
 <script>
     function openModal(title, imgSrc, link) {
     const modal = document.getElementById("modal");
-    
+
     document.getElementById("modal-title").innerText = title;
     document.getElementById("modal-image").src = imgSrc;
     document.getElementById("modal-link").href = link;
-    
-    // إضافة كلاس 'show' لعرض النافذة مع تأثير
-    modal.classList.add("show");
+
+    modal.classList.add("active");
 }
 
 function closeModal() {
     const modal = document.getElementById("modal");
-    
-    // إزالة كلاس 'show' مع تأخير بسيط لإظهار تأثير الإغلاق
-    modal.classList.remove("show");
-
-    // انتظار انتهاء الأنيميشن قبل إخفاء العنصر نهائيًا
-    setTimeout(() => {
-        modal.style.display = "none";
-    }, 300); // المدة حسب مدة الـ transition في الـ CSS
+    modal.classList.remove("active");
 }
 
 </script>
