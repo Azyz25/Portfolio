@@ -34,60 +34,86 @@ video {
     border: 5px solid #fff;
 }    
 
-img {
-    width: 98%;
-    height: 600px;
-    margin-top: 20px;
-    border-radius: 25px;
-    border: 5px solid #fff;
-}    
 
 
+.swiper { width: 100%; height: 400px; margin-top: 10px; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+
+    </style>
 
 </style>
 
 <div id="content-container">
     <!-- مكان لعرض المحتوى -->
 </div>
-<script>
-    var urlParams = new URLSearchParams(window.location.search);
-    var fileUrls = urlParams.get('file'); // جلب الملفات من الرابط
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var fileUrls = urlParams.get('file');
 
-    if (fileUrls) {
-        var filesArray = fileUrls.split(','); // تقسيم الروابط باستخدام "|"
-        filesArray.forEach(displayContent);  // عرض كل ملف
-    }
+        if (fileUrls) {
+            var filesArray = fileUrls.split('|');
+            var images = []; // تخزين الصور للسلايدر
+            var contentContainer = document.getElementById('content-container');
 
-    function displayContent(fileUrl) {
-        var contentContainer = document.getElementById('content-container');
-        fileUrl = fileUrl.trim(); // تنظيف الرابط من المسافات الزائدة
+            filesArray.forEach(function(fileUrl) {
+                fileUrl = fileUrl.trim();
 
-        if (fileUrl.endsWith('.pptx')) {
-            var iframe = document.createElement('iframe');
-            iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`;
-            iframe.width = "100%";
-            iframe.height = "600px";
-            iframe.frameBorder = "0";
-            contentContainer.appendChild(iframe);
+                if (fileUrl.endsWith('.pptx')) {
+                    var iframe = document.createElement('iframe');
+                    iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`;
+                    iframe.width = "100%";
+                    iframe.height = "600px";
+                    iframe.frameBorder = "0";
+                    contentContainer.appendChild(iframe);
 
-        } else if (fileUrl.match(/\.(mp4|webm|ogg)$/)) { // التحقق إذا كان فيديو
-            var video = document.createElement('video');
-            video.src = fileUrl;
-            video.controls = true;
-            contentContainer.appendChild(video);
+                } else if (fileUrl.match(/\.(mp4|webm|ogg)$/)) {
+                    var video = document.createElement('video');
+                    video.src = fileUrl;
+                    video.controls = true;
+                    contentContainer.appendChild(video);
 
-        } else if (fileUrl.match(/\.(jpg|jpeg|png|gif|svg|webp)$/)) { // التحقق إذا كان صورة
-            var img = document.createElement('img');
-            img.src = fileUrl;
-            contentContainer.appendChild(img);
+                } else if (fileUrl.match(/\.(jpg|jpeg|png|gif|svg|webp)$/)) {
+                    images.push(fileUrl);
+                }
+            });
 
-        } else {
-            var errorMsg = document.createElement('p');
-            errorMsg.textContent = "🚫 ملف غير مدعوم أو الرابط غير صالح: " + fileUrl;
-            contentContainer.appendChild(errorMsg);
+            if (images.length > 0) {
+                var swiperWrapper = document.createElement('div');
+                swiperWrapper.classList.add('swiper-wrapper');
+
+                images.forEach(function(imgSrc) {
+                    var slide = document.createElement('div');
+                    slide.classList.add('swiper-slide');
+                    var img = document.createElement('img');
+                    img.src = imgSrc;
+                    slide.appendChild(img);
+                    swiperWrapper.appendChild(slide);
+                });
+
+                var swiperContainer = document.createElement('div');
+                swiperContainer.classList.add('swiper');
+                var swiperPagination = document.createElement('div');
+                swiperPagination.classList.add('swiper-pagination');
+                var swiperButtonNext = document.createElement('div');
+                swiperButtonNext.classList.add('swiper-button-next');
+                var swiperButtonPrev = document.createElement('div');
+                swiperButtonPrev.classList.add('swiper-button-prev');
+
+                swiperContainer.appendChild(swiperWrapper);
+                swiperContainer.appendChild(swiperPagination);
+                swiperContainer.appendChild(swiperButtonNext);
+                swiperContainer.appendChild(swiperButtonPrev);
+                contentContainer.appendChild(swiperContainer);
+
+                new Swiper('.swiper', {
+                    loop: true,
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                });
+            }
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
