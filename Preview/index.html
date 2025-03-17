@@ -37,25 +37,59 @@ video {
 
 
 
-.swiper-container {
-        width: auto; /* خلي العرض على حسب الصور */
-        height: auto; /* خلي الارتفاع على حسب الصور */
+    /* ضبط عرض السلايدر ليكون بالحجم المناسب */
+    .swiper-container {
+        width: 90vw; /* خلي السلايدر يغطي 90% من عرض الشاشة */
+        max-width: 800px; /* أقصى عرض 800px عشان ما يصير كبير جدًا */
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: auto; /* توسيط السلايدر */
+        position: relative;
     }
 
+    /* ضبط محتوى السلايدر */
     .swiper-wrapper {
         display: flex;
         align-items: center;
     }
 
+    /* ضبط الصور بحيث تكون بحجمها الطبيعي بدون ما تصغر أو تنقص */
     .swiper-slide img {
-        width: auto; /* العرض على حسب الصورة */
-        height: auto; /* الارتفاع على حسب الصورة */
-        max-width: 100%; /* يمنع الصورة من تجاوز العرض */
-        max-height: 90vh; /* يمنع الصورة من تجاوز ارتفاع الشاشة */
-        object-fit:  contain;
+        width: 100%; /* جعل الصورة تمتد بعرض السلايدر */
+        height: auto;
+        max-height: 80vh; /* ما تتعدى 80% من ارتفاع الشاشة */
+        object-fit: contain; /* تظهر الصورة كاملة بدون اقتصاص */
+        display: block;
+        margin: auto; /* توسيط الصورة */
+    }
+
+    /* ضبط أزرار السلايدر */
+    .swiper-button-next, .swiper-button-prev {
+        color: #fff; /* لون الأسهم */
+        background: rgba(0, 0, 0, 0.5); /* خلفية شفافة للأزرار */
+        padding: 10px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ضبط موقع الأزرار بالقرب من الصور */
+    .swiper-button-next {
+        right: 10px;
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+    }
+
+    /* ضبط نقاط التمرير */
+    .swiper-pagination {
+        bottom: 10px;
     }
 
 
