@@ -37,8 +37,26 @@ video {
 
 
 
-.swiper { width: 100%; height: 400px; margin-top: 10px; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.swiper-container {
+        width: auto; /* خلي العرض على حسب الصور */
+        height: auto; /* خلي الارتفاع على حسب الصور */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        width: auto; /* العرض على حسب الصورة */
+        height: auto; /* الارتفاع على حسب الصورة */
+        max-width: 100%; /* يمنع الصورة من تجاوز العرض */
+        max-height: 90vh; /* يمنع الصورة من تجاوز ارتفاع الشاشة */
+        object-fit:  contain;
+    }
 
 
     </style>
