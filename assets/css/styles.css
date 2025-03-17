@@ -1386,6 +1386,7 @@ img.tab-icon {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, -50%) scale(1);
+    z-index: 150;
 }
 
         .modal img { 
