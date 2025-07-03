@@ -263,9 +263,9 @@
     <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+  import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-  // إعدادات Firebase (من Console)
+  // 2) إعداداتك من Firebase Console
   const firebaseConfig = {
     apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
     authDomain: "newapp-azyz25.firebaseapp.com",
@@ -277,25 +277,27 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/fireba
     measurementId: "G-2Y8RBXXDNX"
   };
 
-  // تهيئة التطبيق و Firestore
+  // 3) تهيئة التطبيق والـDatabase
   const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
+  const db  = getDatabase(app);
 
-  // دالة تحميل البيانات وعرضها
+  // 4) جلب البيانات من الريالتايم DB
   async function loadWorks() {
-    const snap = await getDoc(doc(db, "portfolioData", "works"));
-    if (!snap.exists()) {
-      console.error("لا توجد بيانات works");
+    const snapshot = await get(ref(db, 'works'));
+    console.log('RAW DATA:', snapshot.val());
+    if (!snapshot.exists()) {
+      console.error("لا توجد بيانات في الـ RTDB تحت المسار 'works'");
       return;
     }
-    const works = snap.data().works;
+    const works = snapshot.val(); // كائن يضم الفئات كلها
 
+    // 5) عرض كل فئة داخل الـdiv المخصص لها
     Object.entries(works).forEach(([category, items]) => {
       const container = document.getElementById(category);
       if (!container) return;
 
       container.innerHTML = "";
-      if (items.length === 0) {
+      if (!Array.isArray(items) || items.length === 0) {
         container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
         return;
       }
@@ -320,13 +322,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/fireba
     });
   }
 
-  // منبه عند تحميل الوثيقة
+  // 6) أول ما تحمل الصفحة نشغل loadWorks ونفعّل تبديل التبويبات
   document.addEventListener("DOMContentLoaded", () => {
     loadWorks();
 
-    // كود تبديل التبويبات
-    const tabs = document.querySelectorAll(".tab");
+    const tabs     = document.querySelectorAll(".tab");
     const contents = document.querySelectorAll(".tab-content");
+
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
         const target = tab.getAttribute("data-tab");
