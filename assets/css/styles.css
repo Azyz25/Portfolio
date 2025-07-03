@@ -109,22 +109,15 @@ img {
 }
 
 .l-header {
-  width: 98% !important;
-  position: sticky !important;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
   background: #ffffff;
   z-index: var(--z-fixed);
   border: 1px solid #eee5dac7;
-  border-radius: 25px !important;
-  margin: 8px 8px 8px 8px !important;
+  border-radius: 13px;
 }
-
-  .scroll-header {
-    background: rgba(244, 14, 14, 0.9) !important;
-    box-shadow: 0 4px 12px rgba(167, 21, 21, 0.1) !important;
-    border-radius: 0 !important;
-  }
 
 /*===== NAV =====*/
 .nav {
