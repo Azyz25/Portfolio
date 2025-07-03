@@ -108,7 +108,17 @@ img {
   margin-right: var(--mb-2);
 }
 
-
+.l-header {
+  width: 98%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  z-index: var(--z-fixed);
+  border: 1px solid #eee5dac7;
+  border-radius: 25px;
+  margin: 8px 8px 8px 8px;
+}
 
   .scroll-header {
     background: rgba(244, 14, 14, 0.9);
