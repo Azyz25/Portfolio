@@ -9,118 +9,133 @@
       --bg-color: #faf7f4;
       --primary: #007bff;
       --text-dark: #333;
-      --sidebar-width: 250px;
+      --sidebar-width: 280px;
+      --transition: 0.4s ease;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+    * { margin: 0; padding: 0; box-sizing: border-box; transition: all var(--transition); }
     body { font-family: 'Segoe UI', sans-serif; background: var(--bg-color); color: var(--text-dark); }
     .container { display: flex; min-height: 100vh; }
-    .sidebar { width: var(--sidebar-width); background: var(--primary); color: #fff; padding: 1rem; position: fixed; right: 0; top: 0; bottom: 0; overflow-y: auto; }
-    .sidebar h2 { margin-bottom: 1rem; font-size: 1.4rem; }
-    .sidebar ul { list-style: none; }
-    .sidebar li { margin: .5rem 0; }
-    .sidebar a { color: #fff; text-decoration: none; display: block; padding: .4rem; border-radius: 4px; }
-    .sidebar a:hover { background: rgba(255,255,255,0.2); }
-    main { flex: 1; margin-right: var(--sidebar-width); padding: 2rem; }
-    section { margin-bottom: 2rem; }
-    .section-title { font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary); display: inline-block; }
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-    .stat-card { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
-    .stat-card h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+    aside.sidebar { width: var(--sidebar-width); background: var(--primary); color: #fff; padding: 2rem 1rem; position: fixed; right: 0; top: 0; bottom: 0; overflow-y: auto; }
+    aside.sidebar h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+    aside.sidebar ul { list-style: none; }
+    aside.sidebar li { margin: 1rem 0; }
+    aside.sidebar li a { color: #fff; text-decoration: none; font-size: 1.1rem; padding: .4rem; border-radius: 4px; display: block; }
+    aside.sidebar li a:hover { background: rgba(255,255,255,0.2); }
+    main { flex: 1; margin-right: var(--sidebar-width); padding: 2rem; overflow-x: hidden; }
+    section { margin-bottom: 3rem; }
+    .section-title { font-size: 1.8rem; margin-bottom: 1rem; padding-bottom: .3rem; border-bottom: 3px solid var(--primary); display: inline-block; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
+    .stat-card { background: #fff; padding: 1.2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; transition: transform var(--transition); }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-card h3 { font-size: 1.2rem; margin-bottom: .5rem; color: var(--text-dark); }
     .stat-card p { font-size: 2rem; color: var(--primary); }
-    /* Responsive */
-    @media(max-width: 768px) { .sidebar { width: 200px; } main { padding: 1rem; } }
+    /* Responsive Tables & Forms in 'manage-works' */
+    #manage-works .controls { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    #manage-works .controls button { flex: 1; padding: .8rem; background: var(--primary); color: #fff; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background var(--transition); }
+    #manage-works .controls button:hover { background: darken(var(--primary), 10%); }
+    @media (max-width: 768px) {
+      aside.sidebar { width: 200px; padding: 1rem; }
+      main { padding: 1rem; }
+      .stats { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <main>
+      <!-- الصفحة الرئيسية -->
       <section id="dashboard">
         <h2 class="section-title">الصفحة الرئيسية</h2>
         <div class="stats" id="stats">
           <!-- بطاقات الإحصائيات -->
         </div>
       </section>
+
+      <!-- أحصائيات الأعمال -->
       <section id="works-overview">
-        <h2 class="section-title">الأعمال</h2>
+        <h2 class="section-title">أحصائيات الأعمال</h2>
         <div class="stats" id="worksStats">
           <!-- بطاقات إحصائيات الأعمال -->
         </div>
       </section>
+
+      <!-- إدارة الأعمال -->
       <section id="manage-works">
         <h2 class="section-title">إدارة الأعمال</h2>
-        <!-- هنا نموذج CRUD جديد/مرفوع/أقسام -->
+        <div class="controls">
+          <button onclick="showSection('all-works')">الأعمال المرفوعة</button>
+          <button onclick="showSection('add-work')">رفع عمل جديد</button>
+          <button onclick="showSection('add-category')">إضافة قسم جديد</button>
+        </div>
+        <div id="all-works" class="manage-section">
+          <!-- جدول عرض جميع الأعمال -->
+        </div>
+        <div id="add-work" class="manage-section" style="display:none;">
+          <!-- نموذج إضافة عمل -->
+        </div>
+        <div id="add-category" class="manage-section" style="display:none;">
+          <!-- نموذج إضافة قسم -->
+        </div>
       </section>
     </main>
+
     <aside class="sidebar">
-      <h2>القائمة</h2>
+      <h2>لوحة التحكم</h2>
       <ul>
         <li><a href="#dashboard">الرئيسية</a></li>
         <li><a href="#works-overview">أحصائيات الأعمال</a></li>
         <li><a href="#manage-works">إدارة الأعمال</a></li>
-        <!-- إضافة أقسام فرعية ديناميكياً -->
+        <!-- يتم توليد الأقسام الفرعية هنا ديناميكياً -->
       </ul>
     </aside>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getDatabase, ref, onValue, increment, update } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+    import { getDatabase, ref, onValue, update, push } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
-      authDomain: "newapp-azyz25.firebaseapp.com",
-      databaseURL: "https://newapp-azyz25-default-rtdb.firebaseio.com",
-      projectId: "newapp-azyz25",
-      storageBucket: "newapp-azyz25.appspot.com",
-      messagingSenderId: "820384444059",
-      appId: "1:820384444059:web:09d81a79b30b8a14c6603e",
-      measurementId: "G-2Y8RBXXDNX"
-    };
+    const firebaseConfig = { /* ... */ };
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // تحميل الإحصائيات العامة
+    // إظهار الأقسام الفرعية
+    function loadCategories() {
+      const catRef = ref(db, 'works');
+      onValue(catRef, snap => {
+        const cats = Object.keys(snap.val()||{});
+        const ul = document.querySelector('.sidebar ul');
+        cats.forEach(cat => {
+          if (!document.querySelector(`.sidebar a[href="#${cat}"]`)) {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#manage-works" onclick="showSection('all-works'); filterByCategory('${cat}')">${cat}</a>`;
+            ul.appendChild(li);
+          }
+        });
+      });
+    }
+
+    // تبديل الأقسام داخل إدارة الأعمال
+    function showSection(id) {
+      document.querySelectorAll('.manage-section').forEach(s => s.style.display='none');
+      document.getElementById(id).style.display='block';
+    }
+
+    // تتبع الإحصائيات
     function loadStats() {
       const statsRef = ref(db, 'admin/stats');
       onValue(statsRef, snap => {
-        const stats = snap.val() || {};
-        const container = document.getElementById('stats');
-        container.innerHTML = '';
-        const cards = [
-          { title: 'عدد الزيارات', key: 'visits' },
-          { title: 'آخر تحديث', key: 'lastUpdate' },
-          { title: 'نقرات المعاينة', key: 'previews' }
-        ];
-        cards.forEach(({title, key}) => {
-          const val = stats[key] || 0;
-          const card = document.createElement('div');
-          card.className = 'stat-card';
-          card.innerHTML = `<h3>${title}</h3><p>${val}</p>`;
-          container.appendChild(card);
-        });
+        const stats = snap.val()||{};
+        document.getElementById('stats').innerHTML = `
+          <div class="stat-card"><h3>زيارات</h3><p>${stats.visits||0}</p></div>
+          <div class="stat-card"><h3>آخر تحديث</h3><p>${stats.lastUpdate||'-'}</p></div>
+          <div class="stat-card"><h3>نقرات معاينة</h3><p>${stats.previews||0}</p></div>
+        `;
       });
-    }
-
-    // تتبع وتحديث الإحصائيات عند تفاعل المستخدم
-    function trackPreview() {
-      document.querySelectorAll('.preview-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const statRef = ref(db, 'admin/stats/previews');
-          update(statRef, { '.sv': 'increment(1)' });
-        });
-      });
-    }
-
-    // زيارات الصفحة
-    function trackVisit() {
-      const statRef = ref(db, 'admin/stats/visits');
-      update(statRef, { '.sv': 'increment(1)' });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       loadStats();
-      trackPreview();
-      trackVisit();
+      loadCategories();
     });
   </script>
 </body>
