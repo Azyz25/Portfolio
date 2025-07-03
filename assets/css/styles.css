@@ -121,12 +121,12 @@ img {
 }
 
 header.l-header.scroll-header {
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(25px);
     background: #ffffff00;
 }
 
 nav.nav.bd-grid.nav-scroll{
-   backdrop-filter: blur(8px);
+   backdrop-filter: blur(25px);
     background: #ffffff00;
 }
 
