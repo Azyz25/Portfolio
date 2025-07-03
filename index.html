@@ -262,10 +262,10 @@
     <script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'></script>
     <script type="module">
 
- import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
   import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-  // 1) إعدادات Firebase من Console
+  // 2) إعداداتك من Firebase Console
   const firebaseConfig = {
     apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
     authDomain: "newapp-azyz25.firebaseapp.com",
@@ -277,53 +277,68 @@
     measurementId: "G-2Y8RBXXDNX"
   };
 
-  // 2) تهيئة التطبيق والـRTDB
+  // 3) تهيئة التطبيق والـDatabase
   const app = initializeApp(firebaseConfig);
   const db  = getDatabase(app);
 
-  // 3) تجيب البيانات وتعبّي الأقسام بس
+  // 4) جلب البيانات من الريالتايم DB
   async function loadWorks() {
-    try {
-      const snapshot = await get(ref(db, 'works'));
-      if (!snapshot.exists()) return console.error("ما فيه data under 'works'");
-      const works = snapshot.val();
-
-      Object.entries(works).forEach(([category, items]) => {
-        const container = document.getElementById(category);
-        if (!container) return;
-        container.innerHTML = "";
-
-        if (!Array.isArray(items) || items.length === 0) {
-          container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
-          return;
-        }
-
-        items.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "work__container";  // زي HTML الأصلي
-          card.innerHTML = `
-            <div class="image-container">
-              <img src="${item.imageSrc}" alt="${item.alt}">
-              <div class="overlay">
-                <button class="preview-btn" onclick="openModal(
-                  \`${item.title}\`,
-                  \`${item.description}\`,
-                  \`${item.imageSrc}\`,
-                  \`${item.previewLink}\`
-                )">مـــعــايــنة</button>
-              </div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      });
-    } catch (err) {
-      console.error(err);
+    const snapshot = await get(ref(db, 'works'));
+    console.log('RAW DATA:', snapshot.val());
+    if (!snapshot.exists()) {
+      console.error("لا توجد بيانات في الـ RTDB تحت المسار 'works'");
+      return;
     }
+    const works = snapshot.val(); // كائن يضم الفئات كلها
+
+    // 5) عرض كل فئة داخل الـdiv المخصص لها
+    Object.entries(works).forEach(([category, items]) => {
+      const container = document.getElementById(category);
+      if (!container) return;
+
+      container.innerHTML = "";
+      if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "work__container bd-grid";
+        card.innerHTML = `
+          <div class="image-container">
+            <img src="${item.imageSrc}" alt="${item.alt}">
+            <div class="overlay">
+              <button class="preview-btn" onclick="openModal(
+                \`${item.title}\`,
+                \`${item.description}\`,
+                \`${item.imageSrc}\`,
+                \`${item.previewLink}\`
+              )">مـــعــايــنة</button>
+            </div>
+          </div>`;
+        container.appendChild(card);
+      });
+    });
   }
 
-  // 4) خلها تنفذ بعد ما يجهز الـDOM
-  document.addEventListener("DOMContentLoaded", loadWorks);
+  // 6) أول ما تحمل الصفحة نشغل loadWorks ونفعّل تبديل التبويبات
+  document.addEventListener("DOMContentLoaded", () => {
+    loadWorks();
+
+    const tabs     = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const target = tab.getAttribute("data-tab");
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+  });
 
   document.addEventListener("DOMContentLoaded", function () {
     let tabs = document.querySelectorAll(".tab");
