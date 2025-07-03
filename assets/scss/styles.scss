@@ -102,14 +102,16 @@ img{
     margin-left: var(--mb-2);
     margin-right: var(--mb-2);
 }
-.l-header{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(146,161,176,.15);
+.l-header {
+  width: 98%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  z-index: var(--z-fixed);
+  border: 1px solid #eee5dac7;
+  border-radius: 25px;
+  margin: 8px 8px 8px 8px;
 }
 
 /*===== NAV =====*/
