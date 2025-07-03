@@ -390,6 +390,7 @@ display: flex;
   text-align: center;
   font-weight: var(--font-semi);
   padding: 2rem 0;
+  border-radius: 25px 25px 0px 0px;
 }
 .footer__title {
   font-size: 2rem;
