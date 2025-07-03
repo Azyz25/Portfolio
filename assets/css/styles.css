@@ -109,14 +109,25 @@ img {
 }
 
 .l-header {
-  width: 100%;
+  width: 98%;
   position: fixed;
   top: 0;
   left: 0;
   background: #ffffff;
   z-index: var(--z-fixed);
   border: 1px solid #eee5dac7;
-  border-radius: 13px;
+  border-radius: 25px;
+  margin: 8px;
+}
+
+header.l-header.scroll-header {
+    backdrop-filter: blur(8px);
+    background: #ffffff00;
+}
+
+nav.nav.bd-grid.nav-scroll{
+   backdrop-filter: blur(8px);
+    background: #ffffff00;
 }
 
 /*===== NAV =====*/
