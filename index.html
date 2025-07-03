@@ -261,45 +261,65 @@
   
     <script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'></script>
  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://newapp-azyz25-default-rtdb.firebaseio.com/works.json")
-      .then(res => res.json())
-      .then(works => {
-        Object.entries(works).forEach(([category, items]) => {
-          const container = document.getElementById(category);
-          if (!container) return;
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) جلب وعرض البيانات
+  fetch("https://newapp-azyz25-default-rtdb.firebaseio.com/works.json")
+    .then(res => res.json())
+    .then(works => {
+      Object.entries(works).forEach(([category, items]) => {
+        const container = document.getElementById(category);
+        if (!container) return;
+        container.innerHTML = "";
 
-          container.innerHTML = "";
+        if (!Array.isArray(items) || items.length === 0) {
+          container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
+          return;
+        }
 
-          // لو ما فيه items
-          if (!Array.isArray(items) || items.length === 0) {
-            container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
-            return;
-          }
-
-          // عبّي البيانات
-          items.forEach(item => {
-            const card = document.createElement("div");
-            card.className = "work__container"; // فقط this class
-            card.innerHTML = `
-              <div class="image-container">
-                <img src="${item.imageSrc}" alt="${item.alt}">
-                <div class="overlay">
-                  <button class="preview-btn" onclick="openModal(
-                    \`${item.title}\`,
-                    \`${item.description}\`,
-                    \`${item.imageSrc}\`,
-                    \`${item.previewLink}\`
-                  )">مـــعــايــنة</button>
-                </div>
+        items.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "work__container";  // حافظ على الكلاس الأصلي
+          card.innerHTML = `
+            <div class="image-container">
+              <img src="${item.imageSrc}" alt="${item.alt}">
+              <div class="overlay">
+                <button class="preview-btn" onclick="openModal(
+                  \`${item.title}\`,
+                  \`${item.description}\`,
+                  \`${item.imageSrc}\`,
+                  \`${item.previewLink}\`
+                )">مـــعــايــنة</button>
               </div>
-            `;
-            container.appendChild(card);
-          });
+            </div>
+          `;
+          container.appendChild(card);
         });
-      })
-      .catch(err => console.error("Error loading works:", err));
+      });
+    })
+    .catch(err => console.error("Error loading works:", err));
+
+  // 2) إعادة تفعيل التبويبات (tabs)
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // شيل الكل
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // فعل الزر والفئة المرتبطة فيه
+      tab.classList.add("active");
+      const target = tab.getAttribute("data-tab");
+      document.getElementById(target)?.classList.add("active");
+    });
   });
+
+  // 3) إذا ما في تفعيل مسبق، فعل أول تبويب تلقائياً
+  if (!document.querySelector(".tab.active") && tabs.length) {
+    tabs[0].click();
+  }
+});
 </script>
 
     <!-- نافذة تكبير الصورة -->
