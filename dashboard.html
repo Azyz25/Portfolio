@@ -2,93 +2,70 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>لوحة تحكم الأعمال</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم البورتفوليو</title>
   <style>
-    /* إضافات بسيطة للوحة التحكم */
-    body { font-family: sans-serif; padding: 0; margin: 0; background: #f5f5f5; }
-    .dashboard { display: flex; height: 100vh; }
-    .sidebar { width: 200px; background: #333; color: #fff; padding: 1rem; }
-    .sidebar h2 { margin-top: 0; font-size: 1.2rem; }
-    .sidebar ul { list-style: none; padding: 0; }
-    .sidebar li { margin: .5rem 0; }
-    .sidebar a { color: #fff; text-decoration: none; }
-    main { flex: 1; padding: 1rem; overflow-y: auto; }
-    h1, h2 { margin-top: 0; }
-    #manage-form { background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
-    #manage-form label { display: block; margin: .5rem 0 .2rem; }
-    #manage-form input, #manage-form textarea, #manage-form select {
-      width: 100%; padding: .5rem; box-sizing: border-box;
+    :root {
+      --bg-color: #faf7f4;
+      --primary: #007bff;
+      --text-dark: #333;
+      --sidebar-width: 250px;
     }
-    #manage-form button { margin-top: .5rem; padding: .5rem 1rem; }
-    table { width: 100%; border-collapse: collapse; background: #fff; }
-    th, td { border: 1px solid #ddd; padding: .5rem; text-align: center; }
-    img.thumb { width: 60px; height: auto; border-radius: 4px; }
-    .btn { padding: .3rem .6rem; cursor: pointer; border:none; border-radius:4px; }
-    .btn-edit { background: #ffc107; color:#000; }
-    .btn-delete { background: #dc3545; color:#fff; }
+    * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-color); color: var(--text-dark); }
+    .container { display: flex; min-height: 100vh; }
+    .sidebar { width: var(--sidebar-width); background: var(--primary); color: #fff; padding: 1rem; position: fixed; right: 0; top: 0; bottom: 0; overflow-y: auto; }
+    .sidebar h2 { margin-bottom: 1rem; font-size: 1.4rem; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin: .5rem 0; }
+    .sidebar a { color: #fff; text-decoration: none; display: block; padding: .4rem; border-radius: 4px; }
+    .sidebar a:hover { background: rgba(255,255,255,0.2); }
+    main { flex: 1; margin-right: var(--sidebar-width); padding: 2rem; }
+    section { margin-bottom: 2rem; }
+    .section-title { font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary); display: inline-block; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .stat-card { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .stat-card h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+    .stat-card p { font-size: 2rem; color: var(--primary); }
+    /* Responsive */
+    @media(max-width: 768px) { .sidebar { width: 200px; } main { padding: 1rem; } }
   </style>
 </head>
 <body>
-  <div class="dashboard">
-    <nav class="sidebar">
-      <h2>لوحة التحكم</h2>
-      <ul>
-        <li><a href="#manage">إدارة الأعمال</a></li>
-      </ul>
-    </nav>
+  <div class="container">
     <main>
-      <section id="manage">
-        <h1>إدارة الأعمال</h1>
-
-        <div id="manage-form">
-          <h2 id="form-title">إضافة عمل جديد</h2>
-
-          <label for="category">الفئة</label>
-          <select id="category"></select>
-
-          <label for="title">العنوان</label>
-          <input type="text" id="title">
-
-          <label for="description">الوصف</label>
-          <textarea id="description" rows="3"></textarea>
-
-          <label for="imageSrc">رابط الصورة</label>
-          <input type="text" id="imageSrc">
-
-          <label for="previewLink">رابط المعاينة</label>
-          <input type="text" id="previewLink">
-
-          <button id="addBtn" class="btn">إضافة</button>
-          <button id="updateBtn" class="btn" disabled>تحديث</button>
-          <button id="cancelBtn" class="btn" style="display:none;">إلغاء</button>
+      <section id="dashboard">
+        <h2 class="section-title">الصفحة الرئيسية</h2>
+        <div class="stats" id="stats">
+          <!-- بطاقات الإحصائيات -->
         </div>
-
-        <table>
-          <thead>
-            <tr>
-              <th>الفئة</th>
-              <th>العنوان</th>
-              <th>الصورة</th>
-              <th>أفعال</th>
-            </tr>
-          </thead>
-          <tbody id="worksTable"></tbody>
-        </table>
+      </section>
+      <section id="works-overview">
+        <h2 class="section-title">الأعمال</h2>
+        <div class="stats" id="worksStats">
+          <!-- بطاقات إحصائيات الأعمال -->
+        </div>
+      </section>
+      <section id="manage-works">
+        <h2 class="section-title">إدارة الأعمال</h2>
+        <!-- هنا نموذج CRUD جديد/مرفوع/أقسام -->
       </section>
     </main>
+    <aside class="sidebar">
+      <h2>القائمة</h2>
+      <ul>
+        <li><a href="#dashboard">الرئيسية</a></li>
+        <li><a href="#works-overview">أحصائيات الأعمال</a></li>
+        <li><a href="#manage-works">إدارة الأعمال</a></li>
+        <!-- إضافة أقسام فرعية ديناميكياً -->
+      </ul>
+    </aside>
   </div>
 
-  <!-- Firebase + CRUD Script -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import {
-      getDatabase, ref, push, onValue,
-      update, remove
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+    import { getDatabase, ref, onValue, increment, update } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-    // إعدادات Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
       authDomain: "newapp-azyz25.firebaseapp.com",
@@ -101,120 +78,50 @@
     };
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const worksRef = ref(db, 'works');
 
-    // عناصر الـDOM
-    const categoryEl   = document.getElementById('category');
-    const titleEl      = document.getElementById('title');
-    const descEl       = document.getElementById('description');
-    const imgEl        = document.getElementById('imageSrc');
-    const previewEl    = document.getElementById('previewLink');
-    const addBtn       = document.getElementById('addBtn');
-    const updateBtn    = document.getElementById('updateBtn');
-    const cancelBtn    = document.getElementById('cancelBtn');
-    const worksTable   = document.getElementById('worksTable');
-    const formTitle    = document.getElementById('form-title');
-
-    let editKey = null; // مفتاح العنصر الجاري تحريره
-
-    // جلب الفئات ديناميكياً من الـRTDB
-    onValue(worksRef, snapshot => {
-      const val = snapshot.val() || {};
-      // إعداد قائمة الفئات
-      categoryEl.innerHTML = Object.keys(val)
-        .map(cat => `<option value="${cat}">${cat}</option>`)
-        .join('');
-      // عرض الجدول
-      renderTable(val);
-    });
-
-    // عرض الجدول
-    function renderTable(data) {
-      worksTable.innerHTML = '';
-      Object.entries(data).forEach(([cat, items]) => {
-        if (!items) return;
-        Object.entries(items).forEach(([key, item]) => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${cat}</td>
-            <td>${item.title}</td>
-            <td><img class="thumb" src="${item.imageSrc}" alt=""></td>
-            <td>
-              <button class="btn btn-edit" data-key="${key}" data-cat="${cat}">تعديل</button>
-              <button class="btn btn-delete" data-key="${key}" data-cat="${cat}">حذف</button>
-            </td>`;
-          worksTable.appendChild(tr);
+    // تحميل الإحصائيات العامة
+    function loadStats() {
+      const statsRef = ref(db, 'admin/stats');
+      onValue(statsRef, snap => {
+        const stats = snap.val() || {};
+        const container = document.getElementById('stats');
+        container.innerHTML = '';
+        const cards = [
+          { title: 'عدد الزيارات', key: 'visits' },
+          { title: 'آخر تحديث', key: 'lastUpdate' },
+          { title: 'نقرات المعاينة', key: 'previews' }
+        ];
+        cards.forEach(({title, key}) => {
+          const val = stats[key] || 0;
+          const card = document.createElement('div');
+          card.className = 'stat-card';
+          card.innerHTML = `<h3>${title}</h3><p>${val}</p>`;
+          container.appendChild(card);
         });
       });
-      // أفعال الجدول
-      document.querySelectorAll('.btn-edit').forEach(btn => {
-        btn.onclick = () => startEdit(btn.dataset.cat, btn.dataset.key);
-      });
-      document.querySelectorAll('.btn-delete').forEach(btn => {
-        btn.onclick = () => {
-          if (confirm('تأكيد الحذف؟')) {
-            remove(ref(db, `works/${btn.dataset.cat}/${btn.dataset.key}`));
-          }
-        };
+    }
+
+    // تتبع وتحديث الإحصائيات عند تفاعل المستخدم
+    function trackPreview() {
+      document.querySelectorAll('.preview-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const statRef = ref(db, 'admin/stats/previews');
+          update(statRef, { '.sv': 'increment(1)' });
+        });
       });
     }
 
-    // إضافة عمل جديد
-    addBtn.onclick = () => {
-      const cat = categoryEl.value;
-      const newRef = push(ref(db, `works/${cat}`));
-      newRef.set({
-        title: titleEl.value,
-        description: descEl.value,
-        imageSrc: imgEl.value,
-        previewLink: previewEl.value
-      });
-      clearForm();
-    };
-
-    // بدء التحرير
-    function startEdit(cat, key) {
-      editKey = key;
-      formTitle.innerText = 'تعديل العمل';
-      updateBtn.disabled = false;
-      addBtn.disabled = true;
-      cancelBtn.style.display = 'inline-block';
-
-      // جلب بيانات العنصر
-      onValue(ref(db, `works/${cat}/${key}`), snap => {
-        const d = snap.val();
-        categoryEl.value   = cat;
-        titleEl.value      = d.title;
-        descEl.value       = d.description;
-        imgEl.value        = d.imageSrc;
-        previewEl.value    = d.previewLink;
-      }, { onlyOnce: true });
+    // زيارات الصفحة
+    function trackVisit() {
+      const statRef = ref(db, 'admin/stats/visits');
+      update(statRef, { '.sv': 'increment(1)' });
     }
 
-    // حفظ التعديلات
-    updateBtn.onclick = () => {
-      const cat = categoryEl.value;
-      update(ref(db, `works/${cat}/${editKey}`), {
-        title: titleEl.value,
-        description: descEl.value,
-        imageSrc: imgEl.value,
-        previewLink: previewEl.value
-      });
-      clearForm();
-    };
-
-    // إلغاء التحرير
-    cancelBtn.onclick = clearForm;
-
-    // إعادة تهيئة الفورم
-    function clearForm() {
-      editKey = null;
-      formTitle.innerText = 'إضافة عمل جديد';
-      updateBtn.disabled = true;
-      addBtn.disabled = false;
-      cancelBtn.style.display = 'none';
-      titleEl.value = descEl.value = imgEl.value = previewEl.value = '';
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      loadStats();
+      trackPreview();
+      trackVisit();
+    });
   </script>
 </body>
 </html>
