@@ -110,7 +110,7 @@ img {
 
 .l-header {
   width: 98% !important;
-  position: fixed !important;
+  position: sticky !important;
   top: 0;
   left: 0;
   background: #ffffff;
