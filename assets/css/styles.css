@@ -109,15 +109,22 @@ img {
 }
 
 .l-header {
-  width: 100%;
+  width: 98%;
   position: fixed;
   top: 0;
   left: 0;
   background: #ffffff;
   z-index: var(--z-fixed);
   border: 1px solid #eee5dac7;
-  border-radius: 13px;
+  border-radius: 25px;
+  margin: 8px 8px 8px 8px;
 }
+
+  .scroll-header {
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 0;
+  }
 
 /*===== NAV =====*/
 .nav {
