@@ -266,16 +266,22 @@
       .then(res => res.json())
       .then(works => {
         Object.entries(works).forEach(([category, items]) => {
-          const container = document.getElementById(category)
-          if (!container) return
+          const container = document.getElementById(category);
+          if (!container) return;
 
+          container.innerHTML = "";
+
+          // لو ما فيه items
           if (!Array.isArray(items) || items.length === 0) {
-            container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`
-            return
+            container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
+            return;
           }
 
-          container.innerHTML = items.map(item => `
-            <div class="work__container">
+          // عبّي البيانات
+          items.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "work__container"; // فقط this class
+            card.innerHTML = `
               <div class="image-container">
                 <img src="${item.imageSrc}" alt="${item.alt}">
                 <div class="overlay">
@@ -287,12 +293,13 @@
                   )">مـــعــايــنة</button>
                 </div>
               </div>
-            </div>
-          `).join("")
-        })
+            `;
+            container.appendChild(card);
+          });
+        });
       })
-      .catch(err => console.error("Error loading works:", err))
-  })
+      .catch(err => console.error("Error loading works:", err));
+  });
 </script>
 
     <!-- نافذة تكبير الصورة -->
