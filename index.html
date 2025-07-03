@@ -281,8 +281,46 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/fireba
   const app = initializeApp(firebaseConfig);
   const db  = getDatabase(app);
 
-  // 4) جلب البيانات من الريالتايم DB
-  async function loadWorks() {
+async function loadWorks() {
+  const snapshot = await get(ref(db, 'works'));
+  if (!snapshot.exists()) return;
+
+  const works = snapshot.val();
+  Object.entries(works).forEach(([category, items]) => {
+    const container = document.getElementById(category);
+    if (!container) return;
+
+    // خليك بس تنظّف المحتوى، لا تغيّر على الكلاسات
+    container.innerHTML = "";
+
+    if (!Array.isArray(items) || items.length === 0) {
+      container.innerHTML = `<p class="empty-message">العذر و السموحة منك ، ما فيه اعمال مرفوعة لهذي الفئة</p>`;
+      return;
+    }
+
+    items.forEach(item => {
+      // الفنكشن هذي تنشئ كارد جديد بالكلاسات الصحيحة
+      const card = document.createElement("div");
+      card.className = "work__container"; // بدون bd-grid
+
+      card.innerHTML = `
+        <div class="image-container">
+          <img src="${item.imageSrc}" alt="${item.alt}">
+          <div class="overlay">
+            <button class="preview-btn" onclick="openModal(
+              \`${item.title}\`,
+              \`${item.description}\`,
+              \`${item.imageSrc}\`,
+              \`${item.previewLink}\`
+            )">مـــعــايــنة</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  });
+}
+
     const snapshot = await get(ref(db, 'works'));
     console.log('RAW DATA:', snapshot.val());
     if (!snapshot.exists()) {
