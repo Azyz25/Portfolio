@@ -619,22 +619,7 @@
       });
     });
 
-    // File upload
-    document.getElementById('uploadBtn').onclick = ()=> document.getElementById('fileInput').click();
-    document.getElementById('fileInput').onchange = function(){
-      const file=this.files[0]; if(!file) return;
-      const reader=new FileReader();
-      reader.onload=()=>{
-        fetch(`https://api.github.com/repos/Azyz25/Portfolio/contents/uploaded/${file.name}`,{
-          method:'PUT',
-          headers:{ Authorization:'token YOUR_GITHUB_PAT' },
-          body:JSON.stringify({ message:`رفع ${file.name}`, content:reader.result.split(',')[1] })
-        })
-        .then(r=>r.json())
-        .then(d=> document.getElementById('uploadResult').textContent=d.content?.download_url||'فشل الرفع');
-      };
-      reader.readAsDataURL(file);
-    };
+   
 
     // Close dialogs
     document.getElementById('overlay').onclick = ()=>{
