@@ -2,37 +2,140 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>لوحة تحكم البورتفوليو</title>
   <style>
-    :root { --bg: #faf7f4; --primary: #007bff; --text: #333; --sideW: 280px; --trans: .3s ease; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
-    .container { display: flex; min-height: 100vh; }
-    aside.sidebar { width: var(--sideW); background: var(--primary); color: #fff; padding: 2rem 1rem; position: fixed; right: 0; top: 0; bottom: 0; overflow-y: auto; transition: transform var(--trans); }
-    .mobile-menu { display: none; position: fixed; top: 1rem; right: 1rem; background: var(--primary); border: none; color: #fff; padding: .5rem; border-radius: 4px; font-size: 1.5rem; z-index: 1000; }
-    aside h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-    aside ul { list-style: none; }
-    aside li { margin-bottom: .5rem; position: relative; }
-    aside a { color: #fff; text-decoration: none; font-size: 1.1rem; padding: .5rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    aside a:hover { background: rgba(255,255,255,0.2); }
-    .has-sub > span { transition: transform var(--trans); }
-    .submenu { position: absolute; left: 0; top: 100%; background: var(--primary); width: 100%; max-height: 0; overflow: hidden; transition: max-height var(--trans); z-index: 10; }
-    .submenu a { display: block; padding: .5rem 1rem; font-size: 1rem; }
-    main { flex: 1; margin-right: var(--sideW); padding: 2rem; transition: margin-right var(--trans); }
-    section { margin-bottom: 3rem; display: none; }
-    .section-title { font-size: 1.8rem; margin-bottom: 1rem; border-bottom: 3px solid var(--primary); display: inline-block; }
-    .stats { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 1.5rem; }
-    .form-group { margin-bottom: 1rem; }
-    label { display: block; margin-bottom: .5rem; }
-    input, select, textarea, button { width: 100%; padding: .6rem; border: 1px solid #ccc; border-radius: 4px; margin-top: .2rem; }
-    button { background: var(--primary); color: #fff; border: none; cursor: pointer; transition: background var(--trans); }
-    .link-output input { border: none; background: transparent; color: blue; cursor: text; }
-    @media(max-width:768px) {
-      .mobile-menu { display: block; }
-      aside { transform: translateX(100%); }
-      aside.open { transform: translateX(0); }
-      main { margin-right: 0; }
+    :root {
+      --bg: #faf7f4;
+      --primary: #007bff;
+      --text: #333;
+      --sideW: 280px;
+      --trans: 0.3s ease;
+      --item-bg: #e9f1fb;
+      --item-border: #1f5fb3;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text); }
+    .container { display:flex; min-height:100vh; }
+
+    /* Sidebar */
+    aside.sidebar {
+      width:var(--sideW); background:#fff; padding:2rem 1rem;
+      position:fixed; top:0; right:0; bottom:0; overflow-y:auto;
+      box-shadow:-2px 0 8px rgba(0,0,0,0.1); transition:transform var(--trans);
+    }
+    .mobile-menu {
+      display:none; position:fixed; top:1rem; right:1rem;
+      background:var(--primary); color:#fff; border:none; padding:.5rem;
+      border-radius:4px; font-size:1.5rem; z-index:1000; cursor:pointer;
+      transition:background var(--trans);
+    }
+    .mobile-menu:hover { background:#0056b3; }
+    aside h2 { font-size:1.5rem; margin-bottom:1.5rem; }
+    aside ul { list-style:none; }
+    aside li { margin-bottom:.5rem; }
+    aside a {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:.5rem; border-radius:4px; color:#333; text-decoration:none;
+      transition:background var(--trans); cursor:pointer;
+    }
+    aside a:hover { background:rgba(0,123,255,0.1); }
+    .has-sub + ul.submenu {
+      max-height:0; overflow:hidden; transition:max-height var(--trans); padding-left:1rem;
+    }
+    .has-sub span:last-child { transition:transform var(--trans); }
+    .submenu li a { padding:.4rem 0; display:block; color:#333; }
+
+    /* Main */
+    main { flex:1; margin-right:var(--sideW); padding:2rem; transition:margin-right var(--trans); }
+    section { display:none; margin-bottom:3rem; opacity:0; transform:translateY(20px); transition:opacity var(--trans),transform var(--trans); }
+    section.active { display:block; opacity:1; transform:translateY(0); }
+    .section-title { font-size:1.8rem; margin-bottom:1rem; border-bottom:3px solid var(--primary); display:inline-block; }
+    .form-group { margin-bottom:1rem; }
+    label { display:block; margin-bottom:.5rem; }
+    input, select, textarea, button {
+      width:100%; padding:.6rem; border:1px solid #ccc; border-radius:4px;
+      transition:border-color var(--trans),box-shadow var(--trans);
+    }
+    input:focus,textarea:focus,select:focus { box-shadow:0 0 5px rgba(0,123,255,0.5); border-color:var(--primary); }
+    input[type="color"] { height:2.5rem; }
+    button {
+      background:var(--primary); color:#fff; border:none; cursor:pointer;
+      transition:background var(--trans),transform var(--trans);
+    }
+    button:hover { background:#0056b3; transform:scale(1.02); }
+    .message { opacity:0; color:green; transition:opacity .5s ease; margin-top:.5rem; }
+
+    /* Item lists */
+    .item-list .item {
+      background:var(--item-bg); border:1px solid var(--item-border);
+      border-radius:25px; padding:.5rem 1rem; margin-bottom:.8rem;
+      display:flex; justify-content:space-between; align-items:center;
+      transition:background var(--trans),transform var(--trans);
+    }
+    .item-list .item:hover { transform:translateX(5px); background:#f0f7ff; }
+    .item-list .item button { margin-left:.5rem; }
+
+    /* Works grid */
+    #worksList {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1.5rem;
+    }
+    .work-card {
+      position:relative; border-radius:8px; overflow:hidden;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      transition:transform var(--trans),box-shadow var(--trans);
+    }
+    .work-card img { width:100%; height:160px; object-fit:cover; }
+    .work-card .info { padding:.8rem; background:#fff; }
+    .work-card .info h4 { margin-bottom:.4rem; font-size:1.1rem; }
+    .work-card .info p {
+      font-size:.9rem; color:#666; height:40px; overflow:hidden;
+    }
+    .overlay-actions {
+      position:absolute; inset:0; background:rgba(0,0,0,0.5);
+      display:flex; justify-content:center; align-items:center;
+      opacity:0; transition:opacity var(--trans);
+    }
+    .work-card:hover { transform:translateY(-5px); box-shadow:0 8px 16px rgba(0,0,0,0.2); }
+    .work-card:hover .overlay-actions { opacity:1; }
+    .overlay-actions button {
+      background:#fff; color:#333; border:none; margin:0 .5rem;
+      padding:.5rem 1rem; border-radius:4px; cursor:pointer;
+      transition:background var(--trans);
+    }
+    .overlay-actions button:hover { background:#eee; }
+
+    /* Dialog */
+    .dialog {
+      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0);
+      background:#fff; padding:2rem; border-radius:8px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
+      transition:transform var(--trans); z-index:1001; width:320px;
+    }
+    .dialog.open { transform:translate(-50%,-50%) scale(1); }
+    .overlay-bg {
+      position:fixed; inset:0; background:rgba(0,0,0,0.5);
+      opacity:0; visibility:hidden; transition:opacity var(--trans);
+      z-index:1000;
+    }
+    .overlay-bg.open { opacity:1; visibility:visible; }
+
+    /* Stats */
+    .stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1.5rem; margin-top:1rem; }
+    .stat-card {
+      background:#fff; padding:1rem; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      text-align:center; transition:transform var(--trans);
+    }
+    .stat-card:hover { transform:scale(1.02); }
+    .stat-card h3 { font-size:2rem; margin-bottom:.5rem; }
+    .stat-card small { display:block; color:#666; margin-top:.3rem; }
+
+    @media(max-width:768px){
+      .mobile-menu { display:block; }
+      aside.sidebar { transform:translateX(100%); }
+      aside.sidebar.open { transform:translateX(0); }
+      main { margin-right:0; }
     }
   </style>
 </head>
@@ -40,59 +143,133 @@
   <button class="mobile-menu" id="menuToggle">☰</button>
   <div class="container">
     <main>
-      <section id="dashboard"><h2 class="section-title">الصفحة الرئيسية</h2></section>
-      <section id="about"><h2 class="section-title">عنّي</h2></section>
-      <section id="skills-overview"><h2 class="section-title">مهاراتي</h2></section>
-      <section id="add-skill"><h2 class="section-title">إضافة مهارة جديدة</h2>
-        <div class="form-group"><label>اسم المهارة (AR)</label><input id="skillNameAr" placeholder="مثال: جافا سكربت"></div>
-        <div class="form-group"><label>اسم المهارة (EN)</label><input id="skillNameEn" placeholder="e.g. JavaScript"></div>
-        <div class="form-group"><label>لون المهارة</label><input type="color" id="skillColor" value="#007bff"></div>
-        <button id="saveSkillBtn">حفظ المهارة</button>
+      <!-- Dashboard -->
+      <section id="dashboard" class="active">
+        <h2 class="section-title">الصفحة الرئيسية</h2>
+        <div class="stats">
+          <div class="stat-card">
+            <h3 id="stat-visits">0</h3>
+            <p>عدد الزيارات</p>
+            <small id="last-visits-update">آخر تحديث: -</small>
+            <small id="last-visits-upload">آخر رفع: -</small>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-whatsapp">0</h3>
+            <p>ضغطات واتساب</p>
+            <small id="last-whatsapp-update">آخر تحديث: -</small>
+            <small id="last-whatsapp-upload">آخر رفع: -</small>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-bahr">0</h3>
+            <p>ضغطات بحر</p>
+            <small id="last-bahr-update">آخر تحديث: -</small>
+            <small id="last-bahr-upload">آخر رفع: -</small>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-works">0</h3>
+            <p>ضغطات الأعمال</p>
+            <small id="last-works-update">آخر تحديث: -</small>
+            <small id="last-works-upload">آخر رفع: -</small>
+          </div>
+          <div class="stat-card">
+            <h3 id="stat-cats">0</h3>
+            <p>ضغطات التصنيفات</p>
+            <small id="last-cats-update">آخر تحديث: -</small>
+            <small id="last-cats-upload">آخر رفع: -</small>
+          </div>
+        </div>
       </section>
-      <section id="current-skills"><h2 class="section-title">المهارات الحالية</h2><div id="skillsList"></div></section>
-      <section id="add-work"><h2 class="section-title">إضافة عمل جديد</h2>
-        <!-- form groups for work fields -->
+
+      <!-- About -->
+      <section id="about">
+        <h2 class="section-title">عنّي</h2>
+        <div class="form-group"><label>عنوان القسم</label><input id="aboutTitle"></div>
+        <div class="form-group"><label>وصف القسم</label><textarea id="aboutDesc"></textarea></div>
+        <button id="saveAboutBtn">حفظ عنّي</button>
+        <div id="aboutMessage" class="message">تم الحفظ بنجاح!</div>
+      </section>
+
+      <!-- Add Skill -->
+      <section id="add-skill">
+        <h2 class="section-title">إضافة مهارة جديدة</h2>
+        <div class="form-group"><label>اسم المهارة (AR)</label><input id="skillNameAr"></div>
+        <div class="form-group"><label>اسم المهارة (EN)</label><input id="skillNameEn"></div>
+        <div class="form-group"><label>لون الخلفية</label><input type="color" id="skillColor" value="#007bff"></div>
+        <div class="form-group"><label>لون الحواف</label><input type="color" id="skillBorderColor" value="#1f5fb3"></div>
+        <button id="saveSkillBtn">حفظ المهارة</button>
+        <div id="skillMessage" class="message">تم الحفظ بنجاح!</div>
+      </section>
+
+      <!-- Current Skills -->
+      <section id="current-skills">
+        <h2 class="section-title">المهارات الحالية</h2>
+        <div id="skillsList" class="item-list"></div>
+      </section>
+
+      <!-- Add Work -->
+      <section id="add-work">
+        <h2 class="section-title">إضافة عمل جديد</h2>
         <div class="form-group"><label>العنوان (AR)</label><input id="workTitleAr"></div>
         <div class="form-group"><label>العنوان (EN)</label><input id="workTitleEn"></div>
         <div class="form-group"><label>الوصف (AR)</label><textarea id="workDescAr"></textarea></div>
         <div class="form-group"><label>الوصف (EN)</label><textarea id="workDescEn"></textarea></div>
         <div class="form-group"><label>رابط المعاينة</label><input id="workPreview"></div>
-        <div class="form-group"><label>الصورة (URL)</label><input id="workImage"></div>
+        <div class="form-group"><label>رابط الصورة</label><input id="workImage"></div>
         <div class="form-group"><label>التصنيف</label><select id="workCategory"></select></div>
+        <div class="form-group"><label><input type="checkbox" id="workFeatured"> عمل مميز</label></div>
         <button id="saveWorkBtn">حفظ العمل</button>
+        <div id="workMessage" class="message">تم الحفظ بنجاح!</div>
       </section>
-      <section id="all-works"><h2 class="section-title">الأعمال الحالية</h2><div id="worksList"></div></section>
-      <section id="categories-overview"><h2 class="section-title">تصنيفات الأعمال الحالية</h2><div id="catList"></div></section>
-      <section id="add-category"><h2 class="section-title">إضافة تصنيف عمل جديد</h2>
+
+      <!-- All Works -->
+      <section id="all-works">
+        <h2 class="section-title">الأعمال الحالية</h2>
+        <div id="worksList"></div>
+      </section>
+
+      <!-- Categories Overview -->
+      <section id="categories-overview">
+        <h2 class="section-title">التصنيفات الحالية</h2>
+        <div id="catList" class="item-list"></div>
+      </section>
+
+      <!-- Add Category -->
+      <section id="add-category">
+        <h2 class="section-title">إضافة تصنيف عمل جديد</h2>
         <div class="form-group"><label>اسم التصنيف (AR)</label><input id="catNameAr"></div>
         <div class="form-group"><label>اسم التصنيف (EN)</label><input id="catNameEn"></div>
         <div class="form-group"><label>أيقونة (URL)</label><input id="catIcon"></div>
         <button id="saveCatBtn">حفظ التصنيف</button>
+        <div id="catMessage" class="message">تم الحفظ بنجاح!</div>
       </section>
-      <section id="upload-section"><h2 class="section-title">قسم الرفع</h2>
+
+      <!-- Upload Section -->
+      <section id="upload-section">
+        <h2 class="section-title">قسم الرفع</h2>
         <input type="file" id="fileInput" accept="image/*" style="display:none">
         <button id="uploadBtn">رفع ملف</button>
-        <div id="uploadResult" class="link-output"></div>
+        <div id="uploadResult" class="message"></div>
       </section>
     </main>
+
     <aside class="sidebar" id="sidebar">
       <h2>لوحة التحكم</h2>
       <ul>
         <li><a data-target="dashboard">الصفحة الرئيسية</a></li>
         <li><a data-target="about">عنّي</a></li>
         <li>
-          <a class="has-sub">مهاراتي<span>▶</span></a>
+          <a class="has-sub"><span>مهاراتي</span><span>▶</span></a>
           <ul class="submenu">
             <li><a data-target="add-skill">إضافة مهارة</a></li>
             <li><a data-target="current-skills">المهارات الحالية</a></li>
           </ul>
         </li>
         <li>
-          <a class="has-sub">أعمالي<span>▶</span></a>
+          <a class="has-sub"><span>أعمالي</span><span>▶</span></a>
           <ul class="submenu">
             <li><a data-target="add-work">إضافة عمل</a></li>
             <li><a data-target="all-works">الأعمال الحالية</a></li>
-            <li><a data-target="categories-overview">التصنيفات</a></li>
+            <li><a data-target="categories-overview">التصنيفات الحالية</a></li>
             <li><a data-target="add-category">إضافة تصنيف</a></li>
           </ul>
         </li>
@@ -100,58 +277,370 @@
       </ul>
     </aside>
   </div>
+
+  <div class="overlay-bg" id="overlay"></div>
+
+  <!-- Edit Skill Dialog -->
+  <div class="dialog" id="editSkillDialog">
+    <h3>تعديل المهارة</h3>
+    <div class="form-group"><label>اسم المهارة (AR)</label><input id="editSkillAr"></div>
+    <div class="form-group"><label>اسم المهارة (EN)</label><input id="editSkillEn"></div>
+    <div class="form-group"><label>لون الخلفية</label><input type="color" id="editSkillColor"></div>
+    <div class="form-group"><label>لون الحواف</label><input type="color" id="editSkillBorder"></div>
+    <button id="updateSkillBtn">تحديث</button>
+    <div id="editSkillMessage" class="message">تم التعديل بنجاح!</div>
+  </div>
+
+  <!-- Edit Work Dialog -->
+  <div class="dialog" id="editWorkDialog">
+    <h3>تعديل العمل</h3>
+    <div class="form-group"><label>العنوان (AR)</label><input id="editWorkTitleAr"></div>
+    <div class="form-group"><label>العنوان (EN)</label><input id="editWorkTitleEn"></div>
+    <div class="form-group"><label>الوصف (AR)</label><textarea id="editWorkDescAr"></textarea></div>
+    <div class="form-group"><label>الوصف (EN)</label><textarea id="editWorkDescEn"></textarea></div>
+    <div class="form-group"><label>رابط المعاينة</label><input id="editWorkPreview"></div>
+    <div class="form-group"><label>رابط الصورة</label><input id="editWorkImage"></div>
+    <div class="form-group"><label>التصنيف</label><select id="editWorkCategory"></select></div>
+    <div class="form-group"><label><input type="checkbox" id="editWorkFeatured"> عمل مميز</label></div>
+    <button id="updateWorkBtn">تحديث</button>
+    <div id="editWorkMessage" class="message">تم التعديل بنجاح!</div>
+  </div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
-    const cfg = { apiKey:"AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0", authDomain:"newapp-azyz25.firebaseapp.com", databaseURL:"https://newapp-azyz25-default-rtdb.firebaseio.com", projectId:"newapp-azyz25", storageBucket:"newapp-azyz25.appspot.com", messagingSenderId:"820384444059", appId:"1:820384444059:web:09d81b30b8a14c6603e", measurementId:"G-2Y8RBXXDNX" };
+    import {
+      getDatabase, ref, set, push, onValue, remove, update
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+    const cfg = {
+      apiKey:    "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
+      authDomain:"newapp-azyz25.firebaseapp.com",
+      databaseURL:"https://newapp-azyz25-default-rtdb.firebaseio.com",
+      projectId: "newapp-azyz25",
+      storageBucket:"newapp-azyz25.appspot.com",
+      messagingSenderId:"820384444059",
+      appId:     "1:820384444059:web:09d81b30b8a14c6603e",
+      measurementId:"G-2Y8RBXXDNX"
+    };
     initializeApp(cfg);
     const db = getDatabase();
-    // show section
-    const show = id => { document.querySelectorAll('main section').forEach(s=>s.style.display='none'); document.getElementById(id).style.display='block'; };
-    // sidebar toggle
-    document.getElementById('menuToggle').onclick = ()=> document.getElementById('sidebar').classList.toggle('open');
-    document.querySelectorAll('aside a').forEach(a=>a.onclick = ()=>{
-      if(a.classList.contains('has-sub')){
-        const sub=a.nextElementSibling; sub.style.maxHeight = sub.scrollHeight? null: sub.scrollHeight + 'px'; a.querySelector('span').textContent=sub.scrollHeight? '▶':'▼';
-      }
-      const t=a.dataset.target; if(t) show(t); if(window.innerWidth<=768) document.getElementById('sidebar').classList.remove('open');
+
+    // Helper metadata
+    function getMeta() {
+      const ua = navigator.userAgent;
+      const device = /Tablet|iPad/.test(ua) ? 'تاب' : !/Mobi/.test(ua) ? 'لاب' : 'جوال';
+      const browser = /Chrome/.test(ua) ? 'Chrome' : /Firefox/.test(ua) ? 'Firefox' : 'Other';
+      const d = new Date();
+      const ts = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+      return { device, browser, timestamp: ts };
+    }
+
+    // Record visit
+    push(ref(db,'analytics/visits')).set(getMeta());
+
+    // Update stat cards
+    function updateStat(key, path) {
+      const cnt = document.getElementById(`stat-${key}`);
+      const lastU = document.getElementById(`last-${key}-update`);
+      const lastL = document.getElementById(`last-${key}-upload`);
+      onValue(ref(db,path), snap => {
+        const arr = Object.values(snap.val()||{});
+        cnt.textContent = arr.length;
+        const last = arr.length? arr[arr.length-1].timestamp : '-';
+        lastU.textContent = `آخر تحديث: ${last}`;
+        lastL.textContent = `آخر رفع: ${last}`;
+      });
+    }
+    updateStat('visits','analytics/visits');
+    updateStat('whatsapp','analytics/whatsapp');
+    updateStat('bahr','analytics/bahr');
+    updateStat('works','analytics/worksClicks');
+    updateStat('cats','analytics/categoriesClicks');
+
+    // Navigation
+    const show = id=>{
+      document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    };
+    document.getElementById('menuToggle').onclick = ()=>document.getElementById('sidebar').classList.toggle('open');
+    document.querySelectorAll('aside a').forEach(a=>{
+      a.onclick=e=>{
+        const t=a.dataset.target;
+        if(t) show(t);
+        if(a.classList.contains('has-sub')){
+          const sb=a.nextElementSibling;
+          if(sb.style.maxHeight){ sb.style.maxHeight=null; a.querySelector('span:last-child').textContent='▶'; }
+          else { sb.style.maxHeight=sb.scrollHeight+'px'; a.querySelector('span:last-child').textContent='▼'; }
+          e.stopPropagation();
+        }
+        if(window.innerWidth<=768) document.getElementById('sidebar').classList.remove('open');
+      };
     });
-    // upload file
+    window.onload = ()=> show('dashboard');
+
+    // About: load once and populate inputs
+    const aboutRef = ref(db,'about');
+    onValue(aboutRef, snap=>{
+      const data = snap.val();
+      if(!data) return;
+      document.getElementById('aboutTitle').value = data.title||'';
+      document.getElementById('aboutDesc').value  = data.desc||'';
+    });
+    document.getElementById('saveAboutBtn').onclick = ()=>{
+      const t = document.getElementById('aboutTitle').value.trim();
+      const d = document.getElementById('aboutDesc').value.trim();
+      if(!t||!d) return;
+      const m = document.getElementById('aboutMessage');
+      set(aboutRef,{ title:t, desc:d, ...getMeta() })
+        .then(()=>{
+          m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        }).catch(()=>{
+          m.textContent='فشل الحفظ!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        });
+    };
+
+    // Skills CRUD
+    const skillsRef = ref(db,'skills');
+    document.getElementById('saveSkillBtn').onclick = ()=>{
+      const ar=document.getElementById('skillNameAr').value.trim();
+      const en=document.getElementById('skillNameEn').value.trim();
+      const bg=document.getElementById('skillColor').value;
+      const br=document.getElementById('skillBorderColor').value;
+      if(!ar||!en) return;
+      const m=document.getElementById('skillMessage');
+      push(skillsRef,{ nameAr:ar,nameEn:en,bgColor:bg,borderColor:br,...getMeta() })
+        .then(()=>{
+          ['skillNameAr','skillNameEn'].forEach(id=>document.getElementById(id).value='');
+          document.getElementById('skillColor').value='#007bff';
+          document.getElementById('skillBorderColor').value='#1f5fb3';
+          m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        }).catch(()=>{
+          m.textContent='فشل الحفظ!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        });
+    };
+    onValue(skillsRef,snap=>{
+      const list=document.getElementById('skillsList');
+      list.innerHTML='';
+      Object.entries(snap.val()||{}).forEach(([k,v])=>{
+        const div=document.createElement('div'); div.className='item';
+        div.innerHTML=`
+          <span style="background:${v.bgColor};border-color:${v.borderColor};">${v.nameAr}</span>
+          <div>
+            <button class="edit-skill" data-key="${k}">تعديل</button>
+            <button class="del-skill" data-key="${k}">حذف</button>
+          </div>`;
+        list.appendChild(div);
+      });
+      list.querySelectorAll('.del-skill').forEach(b=>b.onclick=()=>remove(ref(db,`skills/${b.dataset.key}`)));
+      list.querySelectorAll('.edit-skill').forEach(b=>{
+        b.onclick=()=>{
+          const k=b.dataset.key, v=snap.val()[k];
+          document.getElementById('overlay').classList.add('open');
+          const dlg=document.getElementById('editSkillDialog'); dlg.classList.add('open');
+          document.getElementById('editSkillAr').value=v.nameAr;
+          document.getElementById('editSkillEn').value=v.nameEn;
+          document.getElementById('editSkillColor').value=v.bgColor;
+          document.getElementById('editSkillBorder').value=v.borderColor;
+          document.getElementById('updateSkillBtn').onclick=()=>{
+            const ar2=document.getElementById('editSkillAr').value.trim();
+            const en2=document.getElementById('editSkillEn').value.trim();
+            const bg2=document.getElementById('editSkillColor').value;
+            const br2=document.getElementById('editSkillBorder').value;
+            update(ref(db,`skills/${k}`),{ nameAr:ar2,nameEn:en2,bgColor:bg2,borderColor:br2 })
+              .then(()=>{
+                const m=document.getElementById('editSkillMessage');
+                m.style.opacity=1; setTimeout(()=>{
+                  m.style.opacity=0;
+                  document.getElementById('overlay').classList.remove('open');
+                  dlg.classList.remove('open');
+                },3000);
+              });
+          };
+        };
+      });
+    });
+
+    // Categories CRUD
+    const catListRef = ref(db,'works');
+    onValue(catListRef,snap=>{
+      const list=document.getElementById('catList');
+      list.innerHTML='';
+      Object.entries(snap.val()||{}).forEach(([k,v])=>{
+        const div=document.createElement('div'); div.className='item';
+        div.innerHTML=`
+          <span>${v.nameAr||k}</span>
+          <div>
+            <button class="edit-cat" data-key="${k}">تعديل</button>
+            <button class="del-cat" data-key="${k}">حذف</button>
+          </div>`;
+        list.appendChild(div);
+      });
+      list.querySelectorAll('.del-cat').forEach(b=>b.onclick=()=>remove(ref(db,`works/${b.dataset.key}`)));
+      list.querySelectorAll('.edit-cat').forEach(b=>{
+        b.onclick=()=>{
+          const k=b.dataset.key, v=snap.val()[k];
+          document.getElementById('overlay').classList.add('open');
+          const dlg=document.getElementById('editSkillDialog');
+          dlg.querySelector('h3').textContent='تعديل التصنيف';
+          dlg.classList.add('open');
+          document.getElementById('editSkillAr').value=v.nameAr||k;
+          document.getElementById('editSkillEn').value=v.nameEn||k;
+          document.getElementById('editSkillColor').value=v.icon||'#000000';
+          document.getElementById('editSkillBorder').value='#000000';
+          document.getElementById('updateSkillBtn').onclick=()=>{
+            const ar2=document.getElementById('editSkillAr').value.trim();
+            const en2=document.getElementById('editSkillEn').value.trim();
+            const icon2=document.getElementById('editSkillColor').value;
+            update(ref(db,`works/${k}`),{ nameAr:ar2,nameEn:en2,icon:icon2 })
+              .then(()=>{
+                const m=document.getElementById('editSkillMessage');
+                m.textContent='تم التعديل بنجاح!'; m.style.opacity=1;
+                setTimeout(()=>{
+                  m.style.opacity=0;
+                  document.getElementById('overlay').classList.remove('open');
+                  dlg.classList.remove('open');
+                  dlg.querySelector('h3').textContent='تعديل المهارة';
+                },3000);
+              });
+          };
+        };
+      });
+    });
+
+    // Populate category selects
+    function populate(sel){
+      onValue(catListRef,snap=>{
+        sel.innerHTML='<option value="">-- اختر تصنيفاً --</option>';
+        Object.keys(snap.val()||{}).forEach(k=>sel.add(new Option(k,k)));
+      });
+    }
+    populate(document.getElementById('workCategory'));
+    populate(document.getElementById('editWorkCategory'));
+
+    // Add Category
+    document.getElementById('saveCatBtn').onclick=()=>{
+      const ar=document.getElementById('catNameAr').value.trim();
+      const en=document.getElementById('catNameEn').value.trim();
+      const icon=document.getElementById('catIcon').value.trim();
+      if(!ar||!en) return;
+      const m=document.getElementById('catMessage');
+      set(ref(db,`works/${ar}`),{ nameAr:ar,nameEn:en,icon,...getMeta() })
+        .then(()=>{
+          ['catNameAr','catNameEn','catIcon'].forEach(id=>document.getElementById(id).value='');
+          m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        }).catch(()=>{
+          m.textContent='فشل!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+        });
+    };
+
+    // Add Work
+    document.getElementById('saveWorkBtn').onclick=()=>{
+      const ar=document.getElementById('workTitleAr').value.trim();
+      const en=document.getElementById('workTitleEn').value.trim();
+      const da=document.getElementById('workDescAr').value.trim();
+      const de=document.getElementById('workDescEn').value.trim();
+      const img=document.getElementById('workImage').value.trim();
+      const pv=document.getElementById('workPreview').value.trim();
+      const cat=document.getElementById('workCategory').value;
+      const feat=document.getElementById('workFeatured').checked;
+      if(!ar||!en||!da||!de||!img||!pv||!cat) return;
+      const m=document.getElementById('workMessage');
+      push(ref(db,`works/${cat}`),{
+        titleAr:ar,titleEn:en,
+        descAr:da,descEn:de,
+        imageSrc:img,previewLink:pv,
+        featured:feat,...getMeta()
+      }).then(()=>{
+        ['workTitleAr','workTitleEn','workDescAr','workDescEn','workImage','workPreview'].forEach(id=>document.getElementById(id).value='');
+        document.getElementById('workFeatured').checked=false;
+        m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+      }).catch(()=>{
+        m.textContent='فشل!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
+      });
+    };
+
+    // Render Works
+    onValue(catListRef,snap=>{
+      const list=document.getElementById('worksList');
+      list.innerHTML='';
+      const data=snap.val()||{};
+      Object.entries(data).forEach(([cat,items])=>{
+        if(!items) return;
+        Object.entries(items).forEach(([key,w])=>{
+          const card=document.createElement('div'); card.className='work-card';
+          card.innerHTML=`
+            <img src="${w.imageSrc}" alt="${w.titleAr}">
+            <div class="info"><h4>${w.titleAr}</h4><p>${w.descAr}</p></div>
+            <div class="overlay-actions">
+              <button class="edit-work" data-cat="${cat}" data-key="${key}">تعديل</button>
+              <button class="del-work" data-cat="${cat}" data-key="${key}">حذف</button>
+            </div>`;
+          list.appendChild(card);
+        });
+      });
+      list.querySelectorAll('.del-work').forEach(b=>b.onclick=()=>remove(ref(db,`works/${b.dataset.cat}/${b.dataset.key}`)));
+      list.querySelectorAll('.edit-work').forEach(b=>{
+        b.onclick=()=>{
+          const cat=b.dataset.cat, key=b.dataset.key, w=snap.val()[cat][key];
+          document.getElementById('overlay').classList.add('open');
+          const dlg=document.getElementById('editWorkDialog'); dlg.classList.add('open');
+          document.getElementById('editWorkTitleAr').value=w.titleAr;
+          document.getElementById('editWorkTitleEn').value=w.titleEn;
+          document.getElementById('editWorkDescAr').value=w.descAr;
+          document.getElementById('editWorkDescEn').value=w.descEn;
+          document.getElementById('editWorkImage').value=w.imageSrc;
+          document.getElementById('editWorkPreview').value=w.previewLink;
+          document.getElementById('editWorkCategory').value=cat;
+          document.getElementById('editWorkFeatured').checked=!!w.featured;
+          document.getElementById('updateWorkBtn').onclick=()=>{
+            const ar2=document.getElementById('editWorkTitleAr').value.trim();
+            const en2=document.getElementById('editWorkTitleEn').value.trim();
+            const da2=document.getElementById('editWorkDescAr').value.trim();
+            const de2=document.getElementById('editWorkDescEn').value.trim();
+            const img2=document.getElementById('editWorkImage').value.trim();
+            const pv2=document.getElementById('editWorkPreview').value.trim();
+            const cat2=document.getElementById('editWorkCategory').value;
+            const ft2=document.getElementById('editWorkFeatured').checked;
+            update(ref(db,`works/${cat}/${key}`),{
+              titleAr:ar2,titleEn:en2,
+              descAr:da2,descEn:de2,
+              imageSrc:img2,previewLink:pv2,
+              featured:ft2
+            }).then(()=>{
+              const m=document.getElementById('editWorkMessage');
+              m.style.opacity=1; setTimeout(()=>{
+                m.style.opacity=0;
+                document.getElementById('overlay').classList.remove('open');
+                dlg.classList.remove('open');
+              },3000);
+            });
+          };
+        };
+      });
+    });
+
+    // File upload
     document.getElementById('uploadBtn').onclick = ()=> document.getElementById('fileInput').click();
-    document.getElementById('fileInput').onchange = async ()=>{
-      const file = document.getElementById('fileInput').files[0]; if(!file) return;
-      const reader = new FileReader(); reader.onload=()=>{
-        const token = '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';
+    document.getElementById('fileInput').onchange = function(){
+      const file=this.files[0]; if(!file) return;
+      const reader=new FileReader();
+      reader.onload=()=>{
         fetch(`https://api.github.com/repos/Azyz25/Portfolio/contents/uploaded/${file.name}`,{
-          method:'PUT', headers:{ Authorization:`token ${token}`},
-          body: JSON.stringify({ message: `رفع ${file.name}`, content: reader.result.split(',')[1] })
-        }).then(r=>r.json()).then(d=>{
-          const url=d.content?.download_url; document.getElementById('uploadResult').innerHTML=url? `<input value="${url}" readonly onclick="this.select()">`:'خطأ بالرفع';
-        }).catch(e=>console.error(e));
+          method:'PUT',
+          headers:{ Authorization:'token YOUR_GITHUB_PAT' },
+          body:JSON.stringify({ message:`رفع ${file.name}`, content:reader.result.split(',')[1] })
+        })
+        .then(r=>r.json())
+        .then(d=> document.getElementById('uploadResult').textContent=d.content?.download_url||'فشل الرفع');
       };
       reader.readAsDataURL(file);
     };
-    // skills CRUD
-    const skillsRef = ref(db,'skills');
-    document.getElementById('saveSkillBtn').onclick=()=>{
-      const a=document.getElementById('skillNameAr').value.trim(), e=document.getElementById('skillNameEn').value.trim(), c=document.getElementById('skillColor').value;
-      if(!a||!e) return;
-      const data={ nameAr:a, nameEn:e, color:c, timestamp:Date.now(), device:navigator.userAgent };
-      push(skillsRef).then(()=>alert('تم الحفظ')).catch(console.error);
+
+    // Close dialogs
+    document.getElementById('overlay').onclick = ()=>{
+      document.querySelectorAll('.dialog').forEach(d=>d.classList.remove('open'));
+      document.getElementById('overlay').classList.remove('open');
     };
-    const renderSkills = snap=>{
-      const el=document.getElementById('skillsList'); el.innerHTML='';
-      Object.entries(snap.val()||{}).forEach(([k,v])=>{
-        const div=document.createElement('div'); div.style.display='flex'; div.style.justifyContent='space-between'; div.style.marginBottom='8px';
-        div.innerHTML=`<span style="background:${v.color};padding:4px 8px;border-radius:4px;color:#fff;">${v.nameAr}</span>
-        <button data-key="${k}">حذف</button>`;
-        el.appendChild(div);
-        div.querySelector('button').onclick=()=>{ if(confirm('تأكيد الحذف؟')) remove(ref(db,`skills/${k}`)); };
-      });
-    };
-    onValue(skillsRef, renderSkills);
-    // initial show
-    window.onload = ()=> show('dashboard');
   </script>
 </body>
 </html>
