@@ -2,32 +2,26 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="/assets/img/icon/favicon-32x32.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/assets/img/icon/favicon-32x32.png" type="image/png">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <!-- BOX ICONS -->
-  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-  <title>Abdulazyz Portfolio</title>
-  <style>
-    /* لا تغيّر في هذا الـCSS إلا الضروري جداً */
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+  <title>بورتفوليو عبدالعزيز</title>
 </head>
 <body>
-  <!--===== HEADER =====-->
+  <!-- HEADER ثابت -->
   <header class="l-header">
     <nav class="nav bd-grid">
-      <div>
-        <div class="nav__LOGO">
-          <!-- شعارك هنا -->
-        </div>
+      <div class="nav__LOGO">
+        <!-- SVG logo here -->
       </div>
-      <a href="#" id="lang-switch" class="header-text">En</a>
+      <a href="/en/index.html" class="header-text"><span>En</span></a>
       <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#work" class="nav__link">أعمالي</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">مهاراتي</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
+        <ul class="nav__list" id="nav-categories">
           <li class="nav__item"><a href="#home" class="nav__link active-link">الصفحة الرئيسية</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
+          <li class="nav__item"><a href="#skills" class="nav__link">مهاراتي</a></li>
+          <!-- بقية التصنيفات تُضاف ديناميكياً -->
         </ul>
       </div>
       <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
@@ -35,77 +29,63 @@
   </header>
 
   <main class="l-main">
-    <!--===== HOME =====-->
+    <!-- HOME ثابت -->
     <section class="home bd-grid" id="home">
       <div class="home__data">
-        <h1 class="home__title" id="home__title">هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br></h1>
-        <div class="title-div"><h4 id="webr">( مطور مواقع )</h4></div>
+        <h1 class="home__title">هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br></h1>
+        <div class="title-div"><h4 class="home__subtitle">( مطور مواقع )</h4></div>
       </div>
       <div class="home__social">
-        <a id="wa-link" href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
-        <a id="bahr-link" href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon">
-          <img alt="Bahr" src="https://bahr.sa/logo/bahr-logo.svg" width="37" height="28">
+        <a href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
+        <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon">
+          <img src="https://bahr.sa/logo/bahr-logo.svg" alt="Bahr" width="28" height="28">
         </a>
-        <a id="hsoub-link" href="https://baaeed.com/u/azyz11223" class="home__social-icon">
-          <img src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png?id=30a5bc79bfe161d488070fd0c6d69507" width="28" height="28">
+        <a href="https://baaeed.com/u/azyz11223" class="home__social-icon" target="_blank">
+          <img src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png" alt="Hsoub" width="28" height="28">
         </a>
       </div>
       <div class="home__img">
-        <!-- صورتك هنا -->
+        <!-- SVG blob + صورة البروفايل -->
       </div>
     </section>
 
-    <!--===== ABOUT =====-->
+    <!-- ABOUT ديناميكي -->
     <section class="about section" id="about">
       <div class="cont-h2"><h2 class="section-title">عنّي</h2></div>
       <div class="about__container bd-grid">
-        <div class="about__img">
-          <img src="/assets/img/perfil.png" alt="">
-        </div>
+        <div class="about__img"><img src="/assets/img/perfil.png" alt="profile"></div>
         <div>
-          <h2 class="about__subtitle" id="about-title">—</h2>
-          <p class="about__text" id="about-text">—</p>
+          <h2 class="about__subtitle" id="about-title">أنا عبدالعزيز</h2>
+          <p class="about__text" id="about-desc">جاري التحميل…</p>
         </div>
       </div>
     </section>
 
-    <!--===== SKILLS =====-->
+    <!-- SKILLS ثابت -->
     <section class="skills section" id="skills">
       <div class="cont-h2"><h2 class="section-title">مهاراتي</h2></div>
-      <div id="skills-list" class="flex items-center justify-start gap-4 p-6">
-        <!-- سيتم ملؤه ديناميكياً -->
+      <div class="skills__list">
+        <!-- القوائم الثابتة تحافظ كما هي -->
       </div>
     </section>
 
-    <!--===== WORK =====-->
+    <!-- WORK ديناميكي -->
     <section class="work section" id="work">
       <div class="cont-h2"><h2 class="section-title">أعمالي</h2></div>
-      <div class="tabs">
-        <button class="tab" data-tab="data-entry">إدخال البيانات<img src="/assets/img/icon/database-management.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="external-design">(3D) التصميم الخارجي<img src="/assets/img/icon/vector-alt.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="web-development">برمجة الويب<img src="/assets/img/icon/code-window.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="branding">تصميم الهويات والشعارات<img src="/assets/img/icon/id-card.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="graphic-design">تصميم جرافيك<img src="/assets/img/icon/customize-computer.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="Video-Montage">مونتاج فيديو<img src="/assets/img/icon/camera-movie.svg" class="tab-icon"></button>
-        <button class="tab" data-tab="UI&UX-design">Ui & UX تصميم<img src="/assets/img/icon/ui-ux.svg" class="tab-icon"></button>
-        <button class="tab active" data-tab="powerpoint">عروض باوربوينت<img src="/assets/img/icon/presentation.svg" class="tab-icon"></button>
+      <div class="tabs" id="work-tabs">
+        <!-- أزرار الفئات تُنشأ ديناميكياً -->
       </div>
-      <div id="data-entry" class="work__container bd-grid tab-content"></div>
-      <div id="external-design" class="work__container bd-grid tab-content"></div>
-      <div id="web-development" class="work__container bd-grid tab-content"></div>
-      <div id="branding" class="work__container bd-grid tab-content"></div>
-      <div id="graphic-design" class="work__container bd-grid tab-content"></div>
-      <div id="Video-Montage" class="work__container bd-grid tab-content"></div>
-      <div id="UI&UX-design" class="work__container bd-grid tab-content"></div>
-      <div id="powerpoint" class="work__container bd-grid tab-content active"></div>
+      <div id="work-contents">
+        <!-- محتوى كل فئة يُنشأ ديناميكياً -->
+      </div>
     </section>
 
-    <!--===== CONTACT =====-->
+    <!-- CONTACT ثابت -->
     <section class="contact section" id="contact">
       <div class="contact__container bd-grid">
         <form class="contact__form">
           <input id="text-name" type="text" placeholder="إسمك الكريم" class="contact__input">
-          <textarea id="text-message" cols="30" rows="10" placeholder="رسالتك" class="contact__input"></textarea>
+          <textarea id="text-message" rows="4" class="contact__input"></textarea>
           <div class="but-cnt">
             <input id="button-inp" type="button" value="إرسال" class="contact__button button">
           </div>
@@ -114,28 +94,33 @@
     </section>
   </main>
 
-  <!--===== FOOTER =====-->
+  <!-- FOOTER ثابت -->
   <footer class="footer">
-    <div class="footer__social">
-      <a href="#" class="footer__icon"><i class='bx bxl-facebook'></i></a>
-      <a href="#" class="footer__icon"><i class='bx bxl-instagram'></i></a>
-      <a href="#" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+    <div class="FOOTER-LOGO">
+      <!-- نفس الشعار -->
     </div>
-    <p class="footer__copy">&#169; عبدالعزيز تكنولوجي , جميع الحقوق محفوظة</p>
+    <div class="footer__social">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+    </div>
+    <p class="footer__copy">&#169; عبدالعزيز تكنولوجي، جميع الحقوق محفوظة</p>
   </footer>
 
-  <!--==== DYNAMIC DATA SCRIPT ====-->
+  <!-- MODAL Preview -->
+  <div id="modal" class="modal">
+    <img id="modal-image" src="" alt="">
+    <h2 id="modal-title"></h2>
+    <button class="close" onclick="closeModal()">&times;</button>
+    <h2 id="modal-des"></h2>
+    <a id="modal-link" href="" target="_blank">مـــــــعــــايـــــنة</a>
+  </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      onValue,
-      push,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
-    // 1) تهيئة Firebase
     const cfg = {
       apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
       authDomain: "newapp-azyz25.firebaseapp.com",
@@ -146,136 +131,83 @@
       appId: "1:820384444059:web:09d81b30b8a14c6603e",
       measurementId: "G-2Y8RBXXDNX"
     };
-    initializeApp(cfg);
-    const db = getDatabase();
+    const app = initializeApp(cfg);
+    const db  = getDatabase(app);
 
-    // 2) دالة الميتا لتاريخ، جهاز، متصفح
-    function getMeta() {
-      const ua = navigator.userAgent;
-      const device = /Tablet|iPad/.test(ua) ? "تاب" : /Mobi/.test(ua) ? "جوال" : "لاب";
-      const browser = /Chrome/.test(ua) ? "Chrome" : /Firefox/.test(ua) ? "Firefox" : "Other";
-      const d = new Date();
-      const ts = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-      return { device, browser, timestamp: ts };
-    }
-
-    // 3) تسجيل زيارة جديدة
-    push(ref(db, "stats/visits"), getMeta());
-
-    // 4) تابع تحديث الزيارات
-    onValue(ref(db, "stats/visits"), snap => {
-      const cnt = Object.keys(snap.val()||{}).length;
-      console.log("زيارات:", cnt);
-      // هنا لو عندك عنصر لعرض الزيارات ضعه بالداخل
+    // تحميل About
+    get(ref(db,'about')).then(snap=>{
+      const d = snap.val()||{};
+      document.getElementById('about-title').textContent = d.title || 'أنا عبدالعزيز';
+      document.getElementById('about-desc' ).textContent = d.desc  || '';
     });
 
-    // 5) تسجيل نقرات واتساب
-    document.getElementById("wa-link").addEventListener("click", () => {
-      push(ref(db, "stats/whatsappClicks"), getMeta());
-    });
-    onValue(ref(db, "stats/whatsappClicks"), snap => {
-      const cnt = Object.keys(snap.val()||{}).length;
-      document.getElementById("stat-whatsapp")?.textContent = cnt;
-      // هنا تاريخ آخر نقرة لو أردت
-    });
+    // تحميل الأعمال والفئات
+    get(ref(db,'works')).then(snap=>{
+      const data = snap.val()||{};
+      const navC = document.getElementById('nav-categories');
+      const tabsC= document.getElementById('work-tabs');
+      const contC= document.getElementById('work-contents');
 
-    // 6) تسجيل نقرات بحر
-    document.getElementById("bahr-link").addEventListener("click", () => {
-      push(ref(db, "stats/bahrClicks"), getMeta());
-    });
-    onValue(ref(db, "stats/bahrClicks"), snap => {
-      const cnt = Object.keys(snap.val()||{}).length;
-      document.getElementById("stat-bahr")?.textContent = cnt;
-    });
+      Object.entries(data).forEach(([key,cat], i)=>{
+        // أضف nav
+        const li = document.createElement('li');
+        li.className = 'nav__item';
+        li.innerHTML = `<a href="#${key}" class="nav__link">${cat.nameAr||key}</a>`;
+        navC.appendChild(li);
 
-    // 7) جلب بيانات About
-    onValue(ref(db, "about"), snap => {
-      const a = snap.val() || {};
-      document.getElementById("about-title").textContent = a.title || "";
-      document.getElementById("about-text").textContent = a.desc  || "";
-    });
+        // زر تبويب
+        const btn = document.createElement('button');
+        btn.className = 'tab' + (i===0?' active':'');
+        btn.dataset.tab = key;
+        btn.textContent = cat.nameAr||key;
+        tabsC.appendChild(btn);
 
-    // 8) جلب و عرض المهارات
-    onValue(ref(db, "skills"), snap => {
-      const skills = snap.val() || {};
-      const container = document.getElementById("skills-list");
-      container.innerHTML = "";
-      Object.values(skills).forEach(v => {
-        const span = document.createElement("span");
-        span.textContent = v.nameAr;
-        span.style.background = v.bgColor;
-        span.style.border    = `1px solid ${v.borderColor}`;
-        span.classList.add("select-none","px-2","py-1","rounded-full","inline-block");
-        container.appendChild(span);
-      });
-    });
-
-    // 9) جلب و عرض الأعمال
-    onValue(ref(db, "works"), snap => {
-      const data = snap.val() || {};
-      document.querySelectorAll(".tab-content").forEach(c => c.innerHTML = "");
-      Object.entries(data).forEach(([cat, items]) => {
-        if (!items) return;
-        Object.values(items).forEach(item => {
-          const tabEl = document.getElementById(cat);
-          if (!tabEl) return;
-          const card = document.createElement("div");
-          card.className = "work__container";
-          card.innerHTML = `
-            <div class="image-container">
-              <img src="${item.imageSrc}" alt="${item.titleAr}">
-              <div class="overlay">
-                <button class="preview-btn">معاينة</button>
-              </div>
+        // حاوية محتوى
+        const div = document.createElement('div');
+        div.id = key;
+        div.className = 'work__container bd-grid tab-content' + (i===0?' active':'');
+        (cat instanceof Array ? cat : cat.items||[]).forEach(item=>{
+          const c = document.createElement('div');
+          c.className = 'image-container';
+          c.innerHTML = `
+            <img src="${item.imageSrc}" alt="${item.alt||item.title}">
+            <div class="overlay">
+              <button onclick="openModal(
+                \`${item.title}\`,
+                \`${item.description}\`,
+                \`${item.imageSrc}\`,
+                \`${item.previewLink}\`
+              )">مــــــعــــايـــــنة</button>
             </div>`;
-          tabEl.appendChild(card);
+          div.appendChild(c);
+        });
+        if (!div.hasChildNodes()) {
+          div.innerHTML = '<p class="empty-message">لا توجد أعمال مرفوعة لهذه الفئة</p>';
+        }
+        contC.appendChild(div);
+      });
 
-          // ربط المعاينة بفتح المودال
-          card.querySelector(".preview-btn").onclick = () => {
-            openModal(item.titleAr, item.descAr, item.imageSrc, item.previewLink);
-            // تسجيل نقرات الأعمال
-            push(ref(db, "stats/worksClicks"), getMeta());
-          };
+      // تبديل التبويبات
+      tabsC.querySelectorAll('.tab').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          tabsC.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+          contC.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.tab).classList.add('active');
         });
       });
     });
 
-    // 10) تفعيل التبويبات
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.onclick = () => {
-        document.querySelectorAll(".tab, .tab-content").forEach(e => e.classList.remove("active"));
-        tab.classList.add("active");
-        document.getElementById(tab.dataset.tab)?.classList.add("active");
-      };
-    });
-
-    // 11) مودال المعاينة
-    function openModal(t, d, img, link) {
-      const m = document.getElementById("modal");
-      document.getElementById("modal-title").innerText = t;
-      document.getElementById("modal-des").innerText   = d;
-      document.getElementById("modal-image").src       = img;
-      document.getElementById("modal-link").href       = link;
-      m.classList.add("active");
+    function openModal(title, desc, img, link){
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-des'  ).innerText = desc;
+      document.getElementById('modal-image').src       = img;
+      document.getElementById('modal-link' ).href      = link;
+      document.getElementById('modal').classList.add('active');
     }
-    window.closeModal = () => {
-      document.getElementById("modal").classList.remove("active");
-    };
+    function closeModal(){
+      document.getElementById('modal').classList.remove('active');
+    }
   </script>
-
-  <!-- SCROLL REVEAL & MAIN JS -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/lang.js"></script>
-  <script src="/assets/js/whatsapp.js"></script>
-
-  <!-- مودال المعاينة -->
-  <div id="modal" class="modal">
-    <button class="close" onclick="closeModal()">&times;</button>
-    <h2 id="modal-title"></h2>
-    <img id="modal-image" src="" alt="">
-    <p id="modal-des"></p>
-    <a id="modal-link" href="#" target="_blank">معاينة العمل</a>
-  </div>
 </body>
 </html>
