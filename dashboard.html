@@ -328,34 +328,34 @@
     // Helper metadata
     function getMeta() {
       const ua = navigator.userAgent;
-      const device = /Tablet|iPad/.test(ua) ? 'تاب' : !/Mobi/.test(ua) ? 'لاب' : 'جوال';
+      const device = /Tablet|iPad/.test(ua) ? 'تاب' : /Mobi/.test(ua) ? 'جوال' : 'لاب';
       const browser = /Chrome/.test(ua) ? 'Chrome' : /Firefox/.test(ua) ? 'Firefox' : 'Other';
       const d = new Date();
       const ts = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
       return { device, browser, timestamp: ts };
     }
 
-    // Record visit
-    push(ref(db,'analytics/visits')).set(getMeta());
+    // Record a visit
+    push(ref(db,'stats/visits'), getMeta());
 
     // Update stat cards
     function updateStat(key, path) {
-      const cnt = document.getElementById(`stat-${key}`);
-      const lastU = document.getElementById(`last-${key}-update`);
-      const lastL = document.getElementById(`last-${key}-upload`);
+      const cntEl = document.getElementById(`stat-${key}`);
+      const lastU  = document.getElementById(`last-${key}-update`);
+      const lastL  = document.getElementById(`last-${key}-upload`);
       onValue(ref(db,path), snap => {
         const arr = Object.values(snap.val()||{});
-        cnt.textContent = arr.length;
-        const last = arr.length? arr[arr.length-1].timestamp : '-';
+        cntEl.textContent = arr.length;
+        const last = arr.length ? arr[arr.length-1].timestamp : '-';
         lastU.textContent = `آخر تحديث: ${last}`;
         lastL.textContent = `آخر رفع: ${last}`;
       });
     }
-    updateStat('visits','analytics/visits');
-    updateStat('whatsapp','analytics/whatsapp');
-    updateStat('bahr','analytics/bahr');
-    updateStat('works','analytics/worksClicks');
-    updateStat('cats','analytics/categoriesClicks');
+    updateStat('visits', 'stats/visits');
+    updateStat('whatsapp','stats/whatsappClicks');
+    updateStat('bahr',   'stats/bahrClicks');
+    updateStat('works',  'stats/worksClicks');
+    updateStat('cats',   'stats/categoriesClicks');
 
     // Navigation
     const show = id=>{
@@ -370,7 +370,7 @@
         if(a.classList.contains('has-sub')){
           const sb=a.nextElementSibling;
           if(sb.style.maxHeight){ sb.style.maxHeight=null; a.querySelector('span:last-child').textContent='▶'; }
-          else { sb.style.maxHeight=sb.scrollHeight+'px'; a.querySelector('span:last-child').textContent='▼'; }
+          else{ sb.style.maxHeight=sb.scrollHeight+'px'; a.querySelector('span:last-child').textContent='▼'; }
           e.stopPropagation();
         }
         if(window.innerWidth<=768) document.getElementById('sidebar').classList.remove('open');
@@ -378,13 +378,12 @@
     });
     window.onload = ()=> show('dashboard');
 
-    // About: load once and populate inputs
+    // About: load & populate inputs
     const aboutRef = ref(db,'about');
     onValue(aboutRef, snap=>{
-      const data = snap.val();
-      if(!data) return;
+      const data = snap.val()||{};
       document.getElementById('aboutTitle').value = data.title||'';
-      document.getElementById('aboutDesc').value  = data.desc||'';
+      document.getElementById('aboutDesc').value  = data.desc ||'';
     });
     document.getElementById('saveAboutBtn').onclick = ()=>{
       const t = document.getElementById('aboutTitle').value.trim();
@@ -392,11 +391,8 @@
       if(!t||!d) return;
       const m = document.getElementById('aboutMessage');
       set(aboutRef,{ title:t, desc:d, ...getMeta() })
-        .then(()=>{
-          m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
-        }).catch(()=>{
-          m.textContent='فشل الحفظ!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
-        });
+        .then(()=>{ m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000); })
+        .catch(()=>{ m.textContent='فشل الحفظ!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000); });
     };
 
     // Skills CRUD
@@ -418,13 +414,15 @@
           m.textContent='فشل الحفظ!'; m.style.opacity=1; setTimeout(()=>m.style.opacity=0,3000);
         });
     };
-    onValue(skillsRef,snap=>{
+    onValue(skillsRef, snap=>{
       const list=document.getElementById('skillsList');
       list.innerHTML='';
       Object.entries(snap.val()||{}).forEach(([k,v])=>{
         const div=document.createElement('div'); div.className='item';
         div.innerHTML=`
-          <span style="background:${v.bgColor};border-color:${v.borderColor};">${v.nameAr}</span>
+          <span style="background:${v.bgColor};border-color:${v.borderColor};padding:.4rem .8rem;border-radius:20px;">
+            ${v.nameAr}
+          </span>
           <div>
             <button class="edit-skill" data-key="${k}">تعديل</button>
             <button class="del-skill" data-key="${k}">حذف</button>
@@ -462,7 +460,7 @@
 
     // Categories CRUD
     const catListRef = ref(db,'works');
-    onValue(catListRef,snap=>{
+    onValue(catListRef, snap=>{
       const list=document.getElementById('catList');
       list.innerHTML='';
       Object.entries(snap.val()||{}).forEach(([k,v])=>{
@@ -471,7 +469,7 @@
           <span>${v.nameAr||k}</span>
           <div>
             <button class="edit-cat" data-key="${k}">تعديل</button>
-            <button class="del-cat" data-key="${k}">حذف</button>
+            <button class="del-cat"  data-key="${k}">حذف</button>
           </div>`;
         list.appendChild(div);
       });
@@ -573,7 +571,7 @@
             <div class="info"><h4>${w.titleAr}</h4><p>${w.descAr}</p></div>
             <div class="overlay-actions">
               <button class="edit-work" data-cat="${cat}" data-key="${key}">تعديل</button>
-              <button class="del-work" data-cat="${cat}" data-key="${key}">حذف</button>
+              <button class="del-work"  data-cat="${cat}" data-key="${key}">حذف</button>
             </div>`;
           list.appendChild(card);
         });
@@ -620,7 +618,7 @@
     });
 
     // File upload
-    document.getElementById('uploadBtn').onclick = ()=> document.getElementById('fileInput').click();
+    document.getElementById('uploadBtn').onclick = ()=>document.getElementById('fileInput').click();
     document.getElementById('fileInput').onchange = function(){
       const file=this.files[0]; if(!file) return;
       const reader=new FileReader();
@@ -631,7 +629,7 @@
           body:JSON.stringify({ message:`رفع ${file.name}`, content:reader.result.split(',')[1] })
         })
         .then(r=>r.json())
-        .then(d=> document.getElementById('uploadResult').textContent=d.content?.download_url||'فشل الرفع');
+        .then(d=>document.getElementById('uploadResult').textContent=d.content?.download_url||'فشل الرفع');
       };
       reader.readAsDataURL(file);
     };
