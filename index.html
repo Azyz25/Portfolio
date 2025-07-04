@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abdulazyz Portfolio</title>
   <link rel="icon" type="image/png" href="/assets/img/icon/favicon-32x32.png">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+  <!-- BOX ICONS -->
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <title>Abdulazyz Portfolio</title>
+  <style>
+    /* لا تغيّر في هذا الـCSS إلا الضروري جداً */
+  </style>
 </head>
 <body>
   <!--===== HEADER =====-->
   <header class="l-header">
     <nav class="nav bd-grid">
-      <div class="nav__LOGO">
-        <!-- svg blob unchanged -->
+      <div>
+        <div class="nav__LOGO">
+          <!-- شعارك هنا -->
+        </div>
       </div>
+      <a href="#" id="lang-switch" class="header-text">En</a>
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
           <li class="nav__item"><a href="#work" class="nav__link">أعمالي</a></li>
@@ -31,40 +38,48 @@
     <!--===== HOME =====-->
     <section class="home bd-grid" id="home">
       <div class="home__data">
-        <h1 class="home__title" id="home__title"></h1>
-        <div class="title-div"><h4 id="webr"></h4></div>
+        <h1 class="home__title" id="home__title">هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br></h1>
+        <div class="title-div"><h4 id="webr">( مطور مواقع )</h4></div>
       </div>
       <div class="home__social">
-        <a href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon whatsapp"><i class='bx bxl-whatsapp'></i></a>
-        <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon bahr"><img src="https://bahr.sa/logo/bahr-logo.svg" alt="Bahr" width="37" height="28"></a>
-        <a href="https://baaeed.com/u/azyz11223" class="home__social-icon"><img src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png" alt="Baaeed" width="28" height="28"></a>
+        <a id="wa-link" href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
+        <a id="bahr-link" href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon">
+          <img alt="Bahr" src="https://bahr.sa/logo/bahr-logo.svg" width="37" height="28">
+        </a>
+        <a id="hsoub-link" href="https://baaeed.com/u/azyz11223" class="home__social-icon">
+          <img src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png?id=30a5bc79bfe161d488070fd0c6d69507" width="28" height="28">
+        </a>
       </div>
       <div class="home__img">
-        <!-- svg blob unchanged -->
+        <!-- صورتك هنا -->
       </div>
     </section>
 
     <!--===== ABOUT =====-->
     <section class="about section" id="about">
-      <h2 class="section-title">عنّي</h2>
+      <div class="cont-h2"><h2 class="section-title">عنّي</h2></div>
       <div class="about__container bd-grid">
-        <div class="about__img"><img src="/assets/img/perfil.png" alt=""></div>
+        <div class="about__img">
+          <img src="/assets/img/perfil.png" alt="">
+        </div>
         <div>
-          <h2 class="about__subtitle" id="about__subtitle"></h2>
-          <p class="about__text" id="about__text"></p>
+          <h2 class="about__subtitle" id="about-title">—</h2>
+          <p class="about__text" id="about-text">—</p>
         </div>
       </div>
     </section>
 
     <!--===== SKILLS =====-->
     <section class="skills section" id="skills">
-      <h2 class="section-title">مهاراتي</h2>
-      <div id="skillsContainer" class="flex items-center justify-between gap-6 rounded-xl bg-beige-0 p-6"></div>
+      <div class="cont-h2"><h2 class="section-title">مهاراتي</h2></div>
+      <div id="skills-list" class="flex items-center justify-start gap-4 p-6">
+        <!-- سيتم ملؤه ديناميكياً -->
+      </div>
     </section>
 
     <!--===== WORK =====-->
     <section class="work section" id="work">
-      <h2 class="section-title">أعمالي</h2>
+      <div class="cont-h2"><h2 class="section-title">أعمالي</h2></div>
       <div class="tabs">
         <button class="tab" data-tab="data-entry">إدخال البيانات<img src="/assets/img/icon/database-management.svg" class="tab-icon"></button>
         <button class="tab" data-tab="external-design">(3D) التصميم الخارجي<img src="/assets/img/icon/vector-alt.svg" class="tab-icon"></button>
@@ -73,7 +88,7 @@
         <button class="tab" data-tab="graphic-design">تصميم جرافيك<img src="/assets/img/icon/customize-computer.svg" class="tab-icon"></button>
         <button class="tab" data-tab="Video-Montage">مونتاج فيديو<img src="/assets/img/icon/camera-movie.svg" class="tab-icon"></button>
         <button class="tab" data-tab="UI&UX-design">Ui & UX تصميم<img src="/assets/img/icon/ui-ux.svg" class="tab-icon"></button>
-        <button class="tab active" data-tab="powerpoint">عروض الباوربوينت<img src="/assets/img/icon/presentation.svg" class="tab-icon"></button>
+        <button class="tab active" data-tab="powerpoint">عروض باوربوينت<img src="/assets/img/icon/presentation.svg" class="tab-icon"></button>
       </div>
       <div id="data-entry" class="work__container bd-grid tab-content"></div>
       <div id="external-design" class="work__container bd-grid tab-content"></div>
@@ -90,8 +105,10 @@
       <div class="contact__container bd-grid">
         <form class="contact__form">
           <input id="text-name" type="text" placeholder="إسمك الكريم" class="contact__input">
-          <textarea id="text-message" rows="4" placeholder="رسالتك" class="contact__input"></textarea>
-          <input id="button-inp" type="button" value="إرسال" class="contact__button button">
+          <textarea id="text-message" cols="30" rows="10" placeholder="رسالتك" class="contact__input"></textarea>
+          <div class="but-cnt">
+            <input id="button-inp" type="button" value="إرسال" class="contact__button button">
+          </div>
         </form>
       </div>
     </section>
@@ -107,13 +124,18 @@
     <p class="footer__copy">&#169; عبدالعزيز تكنولوجي , جميع الحقوق محفوظة</p>
   </footer>
 
-  <!--===== FIREBASE & DYNAMIC DATA =====-->
+  <!--==== DYNAMIC DATA SCRIPT ====-->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
     import {
-      getDatabase, ref, get, onValue, push
+      getDatabase,
+      ref,
+      onValue,
+      push,
+      serverTimestamp
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 
+    // 1) تهيئة Firebase
     const cfg = {
       apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
       authDomain: "newapp-azyz25.firebaseapp.com",
@@ -124,129 +146,136 @@
       appId: "1:820384444059:web:09d81b30b8a14c6603e",
       measurementId: "G-2Y8RBXXDNX"
     };
-    const app = initializeApp(cfg);
-    const db  = getDatabase(app);
+    initializeApp(cfg);
+    const db = getDatabase();
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // تسجيل زيارة
-      push(ref(db, 'analytics/visits'), { timestamp: Date.now() });
+    // 2) دالة الميتا لتاريخ، جهاز، متصفح
+    function getMeta() {
+      const ua = navigator.userAgent;
+      const device = /Tablet|iPad/.test(ua) ? "تاب" : /Mobi/.test(ua) ? "جوال" : "لاب";
+      const browser = /Chrome/.test(ua) ? "Chrome" : /Firefox/.test(ua) ? "Firefox" : "Other";
+      const d = new Date();
+      const ts = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+      return { device, browser, timestamp: ts };
+    }
 
-      loadHome();
-      loadAbout();
-      loadSkills();
-      loadWorks();
-      activateTabs();
-      initAnalytics();
+    // 3) تسجيل زيارة جديدة
+    push(ref(db, "stats/visits"), getMeta());
+
+    // 4) تابع تحديث الزيارات
+    onValue(ref(db, "stats/visits"), snap => {
+      const cnt = Object.keys(snap.val()||{}).length;
+      console.log("زيارات:", cnt);
+      // هنا لو عندك عنصر لعرض الزيارات ضعه بالداخل
     });
 
-    async function loadHome() {
-      const snap = await get(ref(db, 'home'));
-      if (!snap.exists()) return;
-      const data = snap.val();
-      document.getElementById('home__title').innerHTML = data.titleAr;
-      document.getElementById('webr').innerText = data.subtitleAr;
-    }
+    // 5) تسجيل نقرات واتساب
+    document.getElementById("wa-link").addEventListener("click", () => {
+      push(ref(db, "stats/whatsappClicks"), getMeta());
+    });
+    onValue(ref(db, "stats/whatsappClicks"), snap => {
+      const cnt = Object.keys(snap.val()||{}).length;
+      document.getElementById("stat-whatsapp")?.textContent = cnt;
+      // هنا تاريخ آخر نقرة لو أردت
+    });
 
-    async function loadAbout() {
-      const snap = await get(ref(db, 'about'));
-      if (!snap.exists()) return;
-      const data = snap.val();
-      document.getElementById('about__subtitle').innerText = data.titleAr;
-      document.getElementById('about__text').innerText     = data.descAr;
-    }
+    // 6) تسجيل نقرات بحر
+    document.getElementById("bahr-link").addEventListener("click", () => {
+      push(ref(db, "stats/bahrClicks"), getMeta());
+    });
+    onValue(ref(db, "stats/bahrClicks"), snap => {
+      const cnt = Object.keys(snap.val()||{}).length;
+      document.getElementById("stat-bahr")?.textContent = cnt;
+    });
 
-    async function loadSkills() {
-      const snap = await get(ref(db, 'skills'));
-      const container = document.getElementById('skillsContainer');
-      container.innerHTML = '';
-      if (!snap.exists()) return;
-      Object.values(snap.val()).forEach(s => {
-        const span = document.createElement('span');
-        span.className = "select-none px-2 rounded-full inline-flex justify-center items-center border text-badge py-0.5 gap-2";
-        span.style.background = s.bgColor;
-        span.style.borderColor = s.borderColor;
-        span.innerText = s.nameAr;
+    // 7) جلب بيانات About
+    onValue(ref(db, "about"), snap => {
+      const a = snap.val() || {};
+      document.getElementById("about-title").textContent = a.title || "";
+      document.getElementById("about-text").textContent = a.desc  || "";
+    });
+
+    // 8) جلب و عرض المهارات
+    onValue(ref(db, "skills"), snap => {
+      const skills = snap.val() || {};
+      const container = document.getElementById("skills-list");
+      container.innerHTML = "";
+      Object.values(skills).forEach(v => {
+        const span = document.createElement("span");
+        span.textContent = v.nameAr;
+        span.style.background = v.bgColor;
+        span.style.border    = `1px solid ${v.borderColor}`;
+        span.classList.add("select-none","px-2","py-1","rounded-full","inline-block");
         container.appendChild(span);
       });
-    }
+    });
 
-    async function loadWorks() {
-      const snap = await get(ref(db, 'works'));
-      if (!snap.exists()) return;
-      const data = snap.val();
+    // 9) جلب و عرض الأعمال
+    onValue(ref(db, "works"), snap => {
+      const data = snap.val() || {};
+      document.querySelectorAll(".tab-content").forEach(c => c.innerHTML = "");
       Object.entries(data).forEach(([cat, items]) => {
-        const container = document.getElementById(cat);
-        if (!container) return;
-        container.innerHTML = '';
+        if (!items) return;
         Object.values(items).forEach(item => {
-          const card = document.createElement('div');
-          card.className = "work__container bd-grid";
+          const tabEl = document.getElementById(cat);
+          if (!tabEl) return;
+          const card = document.createElement("div");
+          card.className = "work__container";
           card.innerHTML = `
             <div class="image-container">
               <img src="${item.imageSrc}" alt="${item.titleAr}">
               <div class="overlay">
-                <button class="preview-btn" onclick="openModal(
-                  \`${item.titleAr}\`,
-                  \`${item.descAr}\`,
-                  \`${item.imageSrc}\`,
-                  \`${item.previewLink}\`
-                )">مـــعــايــنة</button>
+                <button class="preview-btn">معاينة</button>
               </div>
             </div>`;
-          container.appendChild(card);
+          tabEl.appendChild(card);
+
+          // ربط المعاينة بفتح المودال
+          card.querySelector(".preview-btn").onclick = () => {
+            openModal(item.titleAr, item.descAr, item.imageSrc, item.previewLink);
+            // تسجيل نقرات الأعمال
+            push(ref(db, "stats/worksClicks"), getMeta());
+          };
         });
       });
-    }
+    });
 
-    function activateTabs() {
-      const tabs = document.querySelectorAll(".tab");
-      const contents = document.querySelectorAll(".tab-content");
-      tabs.forEach(tab => tab.addEventListener("click", () => {
-        tabs.forEach(t => t.classList.remove("active"));
-        contents.forEach(c => c.classList.remove("active"));
+    // 10) تفعيل التبويبات
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll(".tab, .tab-content").forEach(e => e.classList.remove("active"));
         tab.classList.add("active");
         document.getElementById(tab.dataset.tab)?.classList.add("active");
-      }));
-      if (!document.querySelector(".tab.active")) tabs[0]?.click();
-    }
+      };
+    });
 
-    function initAnalytics() {
-      document.querySelector('.whatsapp').addEventListener('click', () =>
-        push(ref(db, 'analytics/whatsapp'), { timestamp: Date.now() })
-      );
-      document.querySelector('.bahr').addEventListener('click', () =>
-        push(ref(db, 'analytics/bahr'), { timestamp: Date.now() })
-      );
-      document.addEventListener('click', e => {
-        if (e.target.classList.contains('preview-btn')) {
-          push(ref(db, 'analytics/worksClicks'), { timestamp: Date.now() });
-        }
-        if (e.target.closest('.tabs button')) {
-          push(ref(db, 'analytics/categoriesClicks'), { timestamp: Date.now() });
-        }
-      });
+    // 11) مودال المعاينة
+    function openModal(t, d, img, link) {
+      const m = document.getElementById("modal");
+      document.getElementById("modal-title").innerText = t;
+      document.getElementById("modal-des").innerText   = d;
+      document.getElementById("modal-image").src       = img;
+      document.getElementById("modal-link").href       = link;
+      m.classList.add("active");
     }
-
-    function openModal(title, des, imgSrc, link) {
-      const m = document.getElementById('modal');
-      document.getElementById('modal-title').innerText = title;
-      document.getElementById('modal-des').innerText   = des;
-      document.getElementById('modal-image').src      = imgSrc;
-      document.getElementById('modal-link').href      = link;
-      m.classList.add('active');
-    }
-    function closeModal() {
-      document.getElementById('modal').classList.remove('active');
-    }
+    window.closeModal = () => {
+      document.getElementById("modal").classList.remove("active");
+    };
   </script>
 
-  <!-- نافذة المودال -->
+  <!-- SCROLL REVEAL & MAIN JS -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/lang.js"></script>
+  <script src="/assets/js/whatsapp.js"></script>
+
+  <!-- مودال المعاينة -->
   <div id="modal" class="modal">
-    <img id="modal-image" src="" alt="">
-    <h2 id="modal-title"></h2>
     <button class="close" onclick="closeModal()">&times;</button>
+    <h2 id="modal-title"></h2>
+    <img id="modal-image" src="" alt="">
     <p id="modal-des"></p>
-    <a id="modal-link" target="_blank">مـــــــعــــايـــــنة</a>
+    <a id="modal-link" href="#" target="_blank">معاينة العمل</a>
   </div>
 </body>
 </html>
