@@ -1,0 +1,1679 @@
+/* ===== page.module.css - كود CSS كامل للكومبونت ===== */
+
+/* ===== خلفية صفحة تسجيل الدخول الفخمة ===== */
+.loginBackground {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+  direction: rtl;
+}
+
+.loginBackground::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+.loginBackground::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+  animation: shimmer 15s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* ===== تحذير الأمان الفخم ===== */
+.securityWarning {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  background: rgba(239, 68, 68, 0.95);
+  backdrop-filter: blur(20px);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.securityWarning::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #dc2626, #ef4444);
+  border-radius: 16px 16px 0 0;
+}
+
+@keyframes slideDown {
+  from { 
+    transform: translateY(-100%) scale(0.9); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0) scale(1); 
+    opacity: 1; 
+  }
+}
+
+/* ===== بطاقة تسجيل الدخول الفخمة ===== */
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.loginCard {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(30px);
+  border-radius: 32px;
+  padding: 3.5rem 3rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 25px -5px rgba(72, 6, 131, 0.2), 0 10px 10px -5px rgba(72, 6, 131, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.loginCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 32px 32px 0 0;
+}
+
+.loginCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(72, 6, 131, 0.02), transparent);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(50px) scale(0.95); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0) scale(1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== رأس بطاقة الدخول الفخم ===== */
+.loginHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.loginIcon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  box-shadow: 0 20px 25px -5px rgba(72, 6, 131, 0.2), 0 10px 10px -5px rgba(72, 6, 131, 0.1);
+  position: relative;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.loginIcon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.7;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.loginTitle {
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+.loginSubtitle {
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ===== مؤشر التقدم الفخم ===== */
+.progressIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.progressStep {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  color: #111827;
+  z-index: 2;
+}
+
+.progressStep.active {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 25px -5px rgba(72, 6, 131, 0.2), 0 10px 10px -5px rgba(72, 6, 131, 0.1);
+  transform: scale(1.1);
+}
+
+.progressStep.active::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0.6;
+}
+
+.progressStep.inactive {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.progressLine {
+  width: 4rem;
+  height: 4px;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressLine.active {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  box-shadow: 0 2px 8px rgba(72, 6, 131, 0.3);
+}
+
+.progressLine.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.progressLine.inactive {
+  background: #e5e7eb;
+}
+
+.progressLabel {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* ===== نماذج الإدخال الفخمة ===== */
+.formGroup {
+  margin-bottom: 2rem;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.formInput {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 1rem;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  color: #111827;
+  position: relative;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #480683;
+  box-shadow: 0 0 0 4px rgba(72, 6, 131, 0.1);
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.formInput::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.formInput:hover {
+  border-color: #d1d5db;
+}
+
+/* ===== حقل كلمة المرور الفخم ===== */
+.passwordField {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.passwordToggle:hover {
+  color: #480683;
+  background: rgba(72, 6, 131, 0.1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ===== OTP Inputs الفخمة ===== */
+.otpContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  direction: ltr;
+}
+
+.otpInput {
+  width: 3.5rem;
+  height: 3.5rem;
+  text-align: center;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #111827;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  position: relative;
+}
+
+.otpInput:focus {
+  outline: none;
+  border-color: #480683;
+  box-shadow: 0 0 0 4px rgba(72, 6, 131, 0.1);
+  background: #ffffff;
+  transform: scale(1.1) translateY(-2px);
+  z-index: 10;
+}
+
+.otpInput:not(:placeholder-shown) {
+  border-color: #480683;
+  background: rgba(72, 6, 131, 0.05);
+  color: #2e0450;
+}
+
+.otpInput:hover {
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.otpInput.filled {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  border-color: #480683;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: otpSuccess 0.3s ease-out;
+}
+
+@keyframes otpSuccess {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1.1); }
+}
+
+/* ===== رسائل الخطأ الفخمة ===== */
+.errorMessage {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  animation: shake 0.6s ease-in-out;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.errorMessage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  border-radius: 16px 16px 0 0;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* ===== الأزرار الفخمة ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(72, 6, 131, 0.2), 0 10px 10px -5px rgba(72, 6, 131, 0.1);
+  filter: brightness(1.1);
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  filter: none;
+}
+
+.btnSecondary {
+  background: #4b5563;
+  color: #ffffff;
+  border: 1px solid #6b7280;
+}
+
+.btnSecondary:hover {
+  background: #374151;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btnFull {
+  width: 100%;
+}
+
+/* ===== Loading Spinner الفخم ===== */
+.loadingSpinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== لوحة التحكم الرئيسية الفخمة ===== */
+.dashboard {
+  min-height: 100vh;
+  background: #f9fafb;
+  color: #111827;
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+  direction: rtl;
+}
+
+/* ===== الشريط الجانبي الفخم ===== */
+.sidebar {
+  background: #ffffff;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid #e5e7eb;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar.open {
+  width: 18rem;
+}
+
+.sidebar.closed {
+  width: 5rem;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 0 2px 2px 0;
+}
+
+.sidebarHeader {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+}
+
+.sidebarToggle {
+  background: none;
+  border: none;
+  color: #374151;
+  padding: 0.75rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebarToggle:hover {
+  background: #f3f4f6;
+  color: #480683;
+  transform: scale(1.1);
+}
+
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== قائمة التنقل الفخمة ===== */
+.navMenu {
+  padding: 1.5rem 0;
+  flex-grow: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  position: relative;
+  margin: 0.25rem 0;
+  font-weight: 500;
+}
+
+.navItem::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navItem:hover {
+  background: linear-gradient(135deg, rgba(72, 6, 131, 0.05), rgba(72, 6, 131, 0.02));
+  color: #480683;
+  transform: translateX(-4px);
+}
+
+.navItem:hover::before {
+  width: 4px;
+}
+
+.navItem.active {
+  background: linear-gradient(135deg, rgba(72, 6, 131, 0.1), rgba(72, 6, 131, 0.05));
+  color: #480683;
+  font-weight: 600;
+}
+
+.navItem.active::before {
+  width: 4px;
+}
+
+.navIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navItem:hover .navIcon,
+.navItem.active .navIcon {
+  transform: scale(1.1);
+}
+
+.navLabel {
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== زر تسجيل الخروج الفخم ===== */
+.logoutSection {
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoutBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.logoutBtn:hover::before {
+  left: 100%;
+}
+
+.logoutBtn:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== المحتوى الرئيسي الفخم ===== */
+.mainContent {
+  flex: 1;
+  overflow: auto;
+  background: #f9fafb;
+}
+
+/* ===== رأس الصفحة الفخم ===== */
+.pageHeader {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 2rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.pageHeader::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pageSubtitle {
+  color: #4b5563;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05));
+  color: #059669;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBadge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: statusShimmer 3s infinite;
+}
+
+@keyframes statusShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.statusDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
+/* ===== التنبيهات الفخمة ===== */
+.notification {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: slideDown 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: notificationShimmer 2s infinite;
+}
+
+@keyframes notificationShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.notificationClose {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notificationClose:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* ===== محتوى الصفحة الفخم ===== */
+.pageContent {
+  padding: 2.5rem;
+}
+
+/* ===== إحصائيات لوحة التحكم الفخمة ===== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+}
+
+.statCard.blue::before { 
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8); 
+}
+
+.statCard.green::before { 
+  background: linear-gradient(90deg, #10b981, #047857); 
+}
+
+.statCard.purple::before { 
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%); 
+}
+
+.statCard.orange::before { 
+  background: linear-gradient(90deg, #f59e0b, #d97706); 
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #d1d5db;
+}
+
+.statCard:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(72, 6, 131, 0.02), transparent);
+  border-radius: 24px;
+}
+
+.statContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.statInfo h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statIcon {
+  width: 4rem;
+  height: 4rem;
+  opacity: 0.1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.statCard:hover .statIcon {
+  opacity: 0.2;
+  transform: scale(1.1);
+}
+
+/* ===== البطاقات العامة الفخمة ===== */
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+.card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}
+
+.cardHeader {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cardContent {
+  padding: 2rem;
+}
+
+/* ===== الأزرار السريعة الفخمة ===== */
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.quickActionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quickActionBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.quickActionBtn:hover::before {
+  left: 100%;
+}
+
+.quickActionBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(72, 6, 131, 0.2), 0 10px 10px -5px rgba(72, 6, 131, 0.1);
+  filter: brightness(1.1);
+}
+
+.quickActionBtn.green {
+  background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.quickActionBtn.green:hover {
+  box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.2), 0 10px 10px -5px rgba(16, 185, 129, 0.1);
+}
+
+/* ===== إدارة النافبار والفوتر الفخمة ===== */
+.managementHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  color: #ffffff;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.addBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.addBtn:hover::before {
+  left: 100%;
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  filter: brightness(1.1);
+}
+
+/* ===== عناصر القائمة الفخمة ===== */
+.listItem {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.listItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  transform: scaleY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.listItem:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateX(-4px);
+}
+
+.listItem:hover::before {
+  transform: scaleY(1);
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.itemDetails h4 {
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+.itemDetails p {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.itemActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionBtn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.actionBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.actionBtn:hover::before {
+  left: 100%;
+}
+
+.actionBtn.edit { 
+  background: linear-gradient(135deg, #f59e0b, #d97706); 
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+}
+
+.actionBtn.delete { 
+  background: linear-gradient(135deg, #ef4444, #dc2626); 
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
+.actionBtn:hover { 
+  transform: scale(1.1) translateY(-2px); 
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== نماذج التحرير الفخمة ===== */
+.editForm {
+  background: linear-gradient(135deg, #f9fafb, #ffffff);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.saveBtn {
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.saveBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.saveBtn:hover::before {
+  left: 100%;
+}
+
+.saveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(16, 185, 129, 0.2);
+  filter: brightness(1.1);
+}
+
+/* ===== شارات الحالة الفخمة ===== */
+.statusBadgeActive {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.1));
+  color: #047857;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBadgeInactive {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1));
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBadgeActive::before,
+.statusBadgeInactive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: badgeShimmer 3s infinite;
+}
+
+@keyframes badgeShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== الجزيئات المتحركة ===== */
+.particlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: floatParticle 20s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 12s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 14s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-10vh) scale(1);
+  }
+  100% {
+    transform: translateY(-20vh) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ===== تأثيرات خاصة ===== */
+.iconGlow {
+  filter: drop-shadow(0 0 8px rgba(72, 6, 131, 0.6));
+  animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(72, 6, 131, 0.6)); }
+  50% { filter: drop-shadow(0 0 16px rgba(72, 6, 131, 0.8)); }
+}
+
+.iconBounce {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.luxuryGradient {
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.glassEffect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.neonGlow {
+  position: relative;
+}
+
+.neonGlow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #480683 0%, #6b2797 50%, #8a4fb8 100%);
+  border-radius: inherit;
+  filter: blur(10px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.neonGlow:hover::before {
+  opacity: 0.7;
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.7; filter: blur(10px); }
+  50% { opacity: 1; filter: blur(15px); }
+}
+
+/* ===== الاستجابة للشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+  .loginCard {
+    margin: 1rem;
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+  }
+  
+  .securityWarning {
+    margin: 1rem;
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .otpContainer {
+    gap: 0.75rem;
+  }
+  
+  .otpInput {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+  
+  .sidebar.open {
+    position: fixed;
+    z-index: 30;
+    height: 100vh;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .pageHeader {
+    padding: 1.5rem;
+  }
+  
+  .pageContent {
+    padding: 1.5rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .managementHeader {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+    padding: 1.5rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .itemContent {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  
+  .itemActions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginTitle {
+    font-size: 1.75rem;
+  }
+  
+  .progressLine {
+    width: 3rem;
+  }
+  
+  .statValue {
+    font-size: 2rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+  
+  .otpInput {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ===== تحسينات الأداء النهائية ===== */
+.optimized {
+  contain: layout style paint;
+  content-visibility: auto;
+}
+
+.willChangeTransform {
+  will-change: transform;
+}
+
+.willChangeOpacity {
+  will-change: opacity;
+}
+/* إضافات للتبويبات الجديدة */
+.planCard {
+  border: 1px solid var(--gray-200);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  background: var(--white);
+  transition: all 0.2s ease;
+}
+
+.planCard:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.statusBadgeActive {
+  background: var(--green-100);
+  color: var(--green-800);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statusBadgeInactive {
+  background: var(--gray-100);
+  color: var(--gray-800);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.quickActionBtn.green {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.quickActionBtn.purple {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.saveBtn {
+  background: var(--green-600);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveBtn:hover {
+  background: var(--green-700);
+}
