@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,7 +6,7 @@
     <title>لوحة التحكم | عبدالعزيز</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #FAFAF8;
@@ -23,20 +22,56 @@
             --accent: #10B981;
             --accent-light: rgba(16,185,129,.1);
             --sans: 'IBM Plex Sans Arabic', sans-serif;
-            --mono: 'JetBrains Mono', monospace;
+            --mono: 'IBM Plex Mono', monospace;
             --sidebar-width: 260px;
             --shadow-sm: 0 1px 2px rgba(26,26,46,.05);
             --shadow-md: 0 4px 16px rgba(26,26,46,.06);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Loading Overlay ──
+           يظهر أثناء انتظار Firebase للرد على حالة المصادقة.
+           بدونه تحصل حلقة redirect لأن الصفحة تفترض "غير مسجل"
+           قبل ما Firebase يتحقق فعلياً من الجلسة. */
+        #auth-loading {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        #auth-loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--line);
+            border-top-color: var(--ink);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* الجسم مخفي حتى يتأكد من الجلسة */
         body {
             font-family: var(--sans);
             background: var(--bg);
             color: var(--ink);
             display: flex;
             min-height: 100vh;
+            visibility: hidden;
         }
+
+        body.ready { visibility: visible; }
 
         /* Sidebar */
         .sidebar {
@@ -84,15 +119,8 @@
             cursor: pointer;
         }
 
-        .nav-item:hover, .nav-item.active {
-            background: var(--bg);
-            color: var(--ink);
-        }
-
-        .nav-item.active {
-            background: var(--line);
-            color: var(--ink);
-        }
+        .nav-item:hover { background: var(--bg); color: var(--ink); }
+        .nav-item.active { background: var(--line); color: var(--ink); }
 
         .sidebar-footer {
             padding: 24px;
@@ -159,7 +187,10 @@
             height: 6px;
             background: var(--accent);
             border-radius: 50%;
+            animation: pulse 2.5s ease-in-out infinite;
         }
+
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
         /* Stats Grid */
         .stats-grid {
@@ -193,14 +224,8 @@
         }
 
         /* Sections */
-        section {
-            display: none;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        section.active {
-            display: block;
-        }
+        section { display: none; animation: fadeIn 0.4s ease-out; }
+        section.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -224,9 +249,7 @@
             border-bottom: 1px solid var(--line);
         }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
+        .form-group { margin-bottom: 24px; }
 
         label {
             display: block;
@@ -265,16 +288,10 @@
             transition: all 0.2s;
         }
 
-        .btn-save:hover {
-            background: #2a2a4e;
-            transform: translateY(-1px);
-        }
+        .btn-save:hover { background: #2a2a4e; transform: translateY(-1px); }
 
         /* Item Lists */
-        .item-list {
-            display: grid;
-            gap: 12px;
-        }
+        .item-list { display: grid; gap: 12px; }
 
         .item-row {
             display: flex;
@@ -287,20 +304,9 @@
             transition: all 0.2s;
         }
 
-        .item-row:hover {
-            border-color: var(--ink20);
-            background: white;
-        }
-
-        .item-info h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .item-actions {
-            display: flex;
-            gap: 8px;
-        }
+        .item-row:hover { border-color: var(--ink20); background: white; }
+        .item-info h4 { font-size: 0.95rem; font-weight: 600; }
+        .item-actions { display: flex; gap: 8px; }
 
         .btn-icon {
             padding: 8px;
@@ -311,9 +317,7 @@
             transition: all 0.2s;
         }
 
-        .btn-icon:hover {
-            background: #F3F4F6;
-        }
+        .btn-icon:hover { background: #F3F4F6; }
 
         /* Responsive */
         @media (max-width: 992px) {
@@ -324,6 +328,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Loading Overlay — يمنع الـredirect قبل ما Firebase يجاوب -->
+    <div id="auth-loading">
+        <div class="loading-spinner"></div>
+    </div>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
@@ -357,18 +366,17 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">الزيارات</div>
-                    <div class="stat-value" id="stat-visits">0</div>
+                    <div class="stat-value" id="stat-visits">—</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">واتساب</div>
-                    <div class="stat-value" id="stat-whatsapp">0</div>
+                    <div class="stat-value" id="stat-whatsapp">—</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">الأعمال</div>
-                    <div class="stat-value" id="stat-works">0</div>
+                    <div class="stat-value" id="stat-works">—</div>
                 </div>
             </div>
-            
             <div class="card">
                 <div class="section-header">آخر النشاطات</div>
                 <p style="color: var(--ink40); font-size: 0.9rem;">لا توجد نشاطات حديثة لعرضها.</p>
@@ -387,7 +395,7 @@
                     <label>وصف القسم</label>
                     <textarea id="aboutDesc" rows="5" placeholder="اكتب نبذة عنك هنا..."></textarea>
                 </div>
-                <button class="btn-save">حفظ التغييرات</button>
+                <button class="btn-save" id="saveAboutBtn">حفظ التغييرات</button>
             </div>
         </section>
 
@@ -405,12 +413,9 @@
                 </div>
                 <button class="btn-save">إضافة المهارة</button>
             </div>
-
             <div class="card">
                 <div class="section-header">المهارات الحالية</div>
-                <div class="item-list" id="skillsList">
-                    <!-- سيتم ملؤها برمجياً -->
-                </div>
+                <div class="item-list" id="skillsList"></div>
             </div>
         </section>
 
@@ -445,54 +450,112 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script>
-        // تكوين Firebase - يجب استبداله بالقيم الخاصة بك
+        /* ══════════════════════════════════════════════════════
+           Firebase Config — نفس قيم login.html
+           السبب اللي كان يسبب الحلقة: dashboard كانت فيها
+           YOUR_API_KEY placeholder فـFirebase ما تقدر تتحقق
+           من الجلسة وتحسب المستخدم "غير مسجل" دائماً.
+        ══════════════════════════════════════════════════════ */
         const firebaseConfig = {
-                apiKey:    "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
-      authDomain:"newapp-azyz25.firebaseapp.com",
-      databaseURL:"https://newapp-azyz25-default-rtdb.firebaseio.com",
-      projectId: "newapp-azyz25",
-      storageBucket:"newapp-azyz25.appspot.com",
-      messagingSenderId:"820384444059",
-      appId:     "1:820384444059:web:09d81b30b8a14c6603e",
-      measurementId:"G-2Y8RBXXDNX"
+            apiKey:            "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
+            authDomain:        "newapp-azyz25.firebaseapp.com",
+            databaseURL:       "https://newapp-azyz25-default-rtdb.firebaseio.com",
+            projectId:         "newapp-azyz25",
+            storageBucket:     "newapp-azyz25.appspot.com",
+            messagingSenderId: "820384444059",
+            appId:             "1:820384444059:web:09d81b30b8a14c6603e",
+            measurementId:     "G-2Y8RBXXDNX"
         };
 
-        // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
-        const db = firebase.database();
+        const db   = firebase.database();
 
-        // التحقق من حالة تسجيل الدخول
+        const loadingOverlay = document.getElementById('auth-loading');
+
+        /* ══════════════════════════════════════════════════════
+           onAuthStateChanged — الحل الصحيح للحلقة اللانهائية:
+           
+           المشكلة: بدون loading state، الصفحة تفترض أن المستخدم
+           غير مسجل فوراً (user = null) وتحوله لـlogin قبل ما
+           Firebase يرد. الـlogin تشوفه مسجل وترجعه للـdash.
+           
+           الحل: نخفي الصفحة بالكامل (visibility:hidden) حتى
+           يرد onAuthStateChanged فعلياً. بعدها نقرر.
+        ══════════════════════════════════════════════════════ */
         auth.onAuthStateChanged((user) => {
             if (!user) {
-                window.location.href = 'login.html';
+                /* مسجل خروج فعلاً → روح لـlogin */
+                window.location.replace('login.html');
+            } else {
+                /* مسجل دخول → أظهر الصفحة وامسح الـloading */
+                document.body.classList.add('ready');
+                loadingOverlay.classList.add('hidden');
+                /* بعد انتهاء الـtransition امسح العنصر نهائياً */
+                setTimeout(() => loadingOverlay.remove(), 350);
+                loadDashboardData();
             }
         });
 
-        // التبديل بين الأقسام
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('section');
+        /* ══════════════════════════════════════════════════════
+           Navigation
+        ══════════════════════════════════════════════════════ */
+        const navItems     = document.querySelectorAll('.nav-item');
+        const sections     = document.querySelectorAll('section');
         const sectionTitle = document.getElementById('currentSectionTitle');
 
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 const target = item.getAttribute('data-section');
-                
+
                 navItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
 
                 sections.forEach(s => s.classList.remove('active'));
                 document.getElementById(target).classList.add('active');
-                
+
                 sectionTitle.innerText = item.innerText;
             });
         });
 
-        // تسجيل الخروج
+        /* ══════════════════════════════════════════════════════
+           Logout
+        ══════════════════════════════════════════════════════ */
         document.getElementById('logoutBtn').addEventListener('click', () => {
-            auth.signOut().then(() => {
-                window.location.href = 'login.html';
+            auth.signOut().then(() => window.location.replace('login.html'));
+        });
+
+        /* ══════════════════════════════════════════════════════
+           Load dashboard data from Firebase
+        ══════════════════════════════════════════════════════ */
+        function loadDashboardData() {
+            /* Visits count */
+            db.ref('stats/visits').once('value').then(snap => {
+                document.getElementById('stat-visits').textContent =
+                    snap.exists() ? Object.keys(snap.val()).length : 0;
             });
+
+            /* About — pre-fill fields */
+            db.ref('about').once('value').then(snap => {
+                if (snap.exists()) {
+                    const data = snap.val();
+                    if (data.title) document.getElementById('aboutTitle').value = data.title;
+                    if (data.desc)  document.getElementById('aboutDesc').value  = data.desc;
+                }
+            });
+        }
+
+        /* ══════════════════════════════════════════════════════
+           Save About
+        ══════════════════════════════════════════════════════ */
+        document.getElementById('saveAboutBtn').addEventListener('click', () => {
+            const title = document.getElementById('aboutTitle').value.trim();
+            const desc  = document.getElementById('aboutDesc').value.trim();
+            if (!desc) return;
+
+            db.ref('about').set({ title, desc })
+                .then(() => alert('تم الحفظ بنجاح ✓'))
+                .catch(err => alert('خطأ: ' + err.message));
         });
     </script>
 </body>
