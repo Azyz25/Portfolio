@@ -7,7 +7,7 @@
 <title>Abdulaziz Portfolio Redesign</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
    Terminal Elegance — Light Theme Portfolio
@@ -42,7 +42,7 @@
   --code-cm: #9CA3AF;
   --code-tag: #DC2626;
   --sans: 'IBM Plex Sans Arabic', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', monospace;
   --shadow-sm: 0 1px 2px rgba(26,26,46,.05);
   --shadow-md: 0 4px 16px rgba(26,26,46,.06);
   --shadow-lg: 0 8px 32px rgba(26,26,46,.08);
@@ -149,7 +149,7 @@ nav.stuck{
   border-bottom:1px solid var(--line);
   overflow:hidden;
   background:var(--bg);
-  direction: rtl;
+  direction: ltr;
 }
 
 .hero-content{
@@ -157,6 +157,7 @@ nav.stuck{
   display:flex;flex-direction:column;justify-content:center;
   position:relative;z-index:2;
   max-width:680px;
+  direction:rtl;
   margin-right:auto;
 }
 
@@ -715,7 +716,7 @@ footer{
   <div class="sw">
     <div class="sec-head rev">
       <div>
-        <span class="sec-label">01 — about</span>
+        <span class="sec-label">01</span>
         <h2 class="sec-title">من أنا</h2>
       </div>
       <a href="#contact" class="sec-link">
@@ -728,15 +729,15 @@ footer{
       <div class="about-tabs">
         <div class="about-tab on" onclick="showTab(0)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <div class="tab-label"><span>المطوّر</span><span class="tab-en">developer</span></div>
+          <div class="tab-label"><span>المطوّر</span></div>
         </div>
         <div class="about-tab" onclick="showTab(1)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <div class="tab-label"><span>المصمّم</span><span class="tab-en">designer</span></div>
+          <div class="tab-label"><span>المصمّم</span></div>
         </div>
         <div class="about-tab" onclick="showTab(2)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <div class="tab-label"><span>المبدع</span><span class="tab-en">creator</span></div>
+          <div class="tab-label"><span>المبدع</span></div>
         </div>
       </div>
 
@@ -746,7 +747,7 @@ footer{
           <div class="profile-card">
             <div class="p-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <div><div class="p-name">عبدالعزيز</div><div class="p-handle">@azyz · Riyadh, SA</div></div>
-            <div class="p-status"><span class="dot"></span>available</div>
+            <div class="p-status"><span class="dot"></span>متاح</div>
           </div>
           <div class="meta-rows">
             <div class="mrow"><span class="mk">location</span><span class="mv">الرياض، SA</span></div>
@@ -792,7 +793,7 @@ footer{
   <div class="sw">
     <div class="sec-head rev">
       <div>
-        <span class="sec-label">02 — projects</span>
+        <span class="sec-label">02</span>
         <h2 class="sec-title">الأعمال</h2>
       </div>
     </div>
@@ -806,7 +807,7 @@ footer{
   <div class="sw">
     <div class="sec-head rev">
       <div>
-        <span class="sec-label">03 — expertise</span>
+        <span class="sec-label">03</span>
         <h2 class="sec-title">Full Stack</h2>
       </div>
     </div>
@@ -867,10 +868,10 @@ footer{
           </div>
         </div>
         <div class="nums-grid rev d1">
-          <div class="num-cell"><span class="n-num" data-to="50">0<sup>+</sup></span><span class="n-lbl">project</span></div>
-          <div class="num-cell"><span class="n-num" data-to="3">0<sup>+</sup></span><span class="n-lbl">years</span></div>
-          <div class="num-cell"><span class="n-num" data-to="30">0<sup>+</sup></span><span class="n-lbl">client</span></div>
-          <div class="num-cell"><span class="n-num" data-to="8">0</span><span class="n-lbl">specialty</span></div>
+          <div class="num-cell"><span class="n-num" data-to="50">0<sup>+</sup></span><span class="n-lbl">مشروع</span></div>
+          <div class="num-cell"><span class="n-num" data-to="3">0<sup>+</sup></span><span class="n-lbl">سنوات</span></div>
+          <div class="num-cell"><span class="n-num" data-to="30">0<sup>+</sup></span><span class="n-lbl">عميل</span></div>
+          <div class="num-cell"><span class="n-num" data-to="8">0</span><span class="n-lbl">تخصص</span></div>
         </div>
       </div>
     </div>
@@ -923,7 +924,7 @@ footer{
 <footer>
   <span class="foot-logo">عبدالعزيز</span>
   <div class="foot-right">
-    <span class="foot-status"><span class="dot"></span>available for work</span>
+    <span class="foot-status"><span class="dot"></span>متاح للعمل</span>
     <span class="foot-copy">© 2025 · ALL RIGHTS RESERVED</span>
   </div>
 </footer>

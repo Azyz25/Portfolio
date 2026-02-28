@@ -152,11 +152,11 @@ nav.stuck{
 }
 
 .hero-content{
-  padding:120px 6% 80px 0;
+  padding:120px 0 80px 6%;
   display:flex;flex-direction:column;justify-content:center;
   position:relative;z-index:2;
   max-width:680px;
-  margin-left:auto;
+  margin-right:auto;
 }
 
 .hero-code-side{
@@ -311,7 +311,7 @@ nav.stuck{
 .about-tab:last-child{border-bottom:none}
 .about-tab svg{opacity:.3;flex-shrink:0;transition:opacity .2s}
 .about-tab:hover{background:var(--bg2);color:var(--ink60)}
-.about-tab.on{background:var(--surface);color:var(--ink);border-left:2.5px solid var(--ink)}
+.about-tab.on{background:var(--surface);color:var(--ink);border-right:2.5px solid var(--ink)}
 .about-tab.on svg{opacity:.7}
 .tab-label{display:flex;flex-direction:column;gap:2px}
 .tab-en{font-family:var(--mono);font-size:.56rem;color:var(--ink20);letter-spacing:2px;text-transform:uppercase}
@@ -599,7 +599,7 @@ footer{
   .about-tabs{display:flex;overflow-x:auto;border-left:none;border-bottom:1px solid var(--line)}
   .about-tab{border-bottom:none;border-left:1px solid var(--line);white-space:nowrap;padding:14px 18px}
   .about-tab:last-child{border-left:none}
-  .about-tab.on{border-left:none;border-bottom:2.5px solid var(--ink)}
+  .about-tab.on{border-right:none;border-bottom:2.5px solid var(--ink)}
   .about-panel{padding:28px 20px}
   .cat-pane.on{grid-template-columns:1fr}
   .hero-h1{font-size:clamp(2.2rem,8vw,3.5rem)}
