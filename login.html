@@ -34,6 +34,7 @@
             justify-content: center;
             min-height: 100vh;
             overflow: hidden;
+            visibility: hidden; /* إخفاء الصفحة حتى التأكد من حالة المستخدم */
         }
 
         .login-card {
@@ -163,7 +164,7 @@
     <script>
         // تكوين Firebase - يجب استبداله بالقيم الخاصة بك
         const firebaseConfig = {
-             apiKey:    "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
+                apiKey:    "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
       authDomain:"newapp-azyz25.firebaseapp.com",
       databaseURL:"https://newapp-azyz25-default-rtdb.firebaseio.com",
       projectId: "newapp-azyz25",
@@ -173,12 +174,20 @@
       measurementId:"G-2Y8RBXXDNX"
         };
 
-
-        
-
         // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
+
+        // التحقق من حالة تسجيل الدخول قبل عرض الصفحة
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // إذا كان مسجلاً بالفعل، حوله للداشبورد مباشرة
+                window.location.replace('dashboard.html');
+            } else {
+                // إذا لم يكن مسجلاً، أظهر صفحة تسجيل الدخول
+                document.body.style.visibility = 'visible';
+            }
+        });
 
         const loginForm = document.getElementById('loginForm');
         const errorMsg = document.getElementById('errorMsg');
@@ -195,8 +204,8 @@
 
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    // نجاح تسجيل الدخول
-                    window.location.href = 'dashboard.html';
+                    // نجاح تسجيل الدخول - استخدم replace لتجنب مشاكل الرجوع في المتصفح
+                    window.location.replace('dashboard.html');
                 })
                 .catch((error) => {
                     // فشل تسجيل الدخول
@@ -205,13 +214,6 @@
                     btn.disabled = false;
                     console.error(error.message);
                 });
-        });
-
-        // التحقق من حالة تسجيل الدخول
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                window.location.href = 'dashboard.html';
-            }
         });
     </script>
 </body>
