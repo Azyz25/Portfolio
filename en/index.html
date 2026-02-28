@@ -1,832 +1,1268 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/assets/img/icon/favicon-32x32.png">
-        <link rel="stylesheet" href="https://azyz-service.site/en/css/ss.css">
-        
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulaziz — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   Terminal Elegance — Light Theme Portfolio
+   Design: IDE-inspired, light cream, code textures
+   Font: IBM Plex Sans Arabic + JetBrains Mono
+   ═══════════════════════════════════════════════════ */
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+:root {
+  --bg: #FAFAF8;
+  --bg1: #F5F3EF;
+  --bg2: #EDEAE4;
+  --bg3: #E5E2DC;
+  --surface: #FFFFFF;
+  --ink: #1A1A2E;
+  --ink80: rgba(26,26,46,.8);
+  --ink60: rgba(26,26,46,.6);
+  --ink40: rgba(26,26,46,.4);
+  --ink20: rgba(26,26,46,.2);
+  --ink10: rgba(26,26,46,.1);
+  --ink06: rgba(26,26,46,.06);
+  --ink04: rgba(26,26,46,.04);
+  --react: #61DAFB;
+  --laravel: #FF2D20;
+  --green: #10B981;
+  --green-bg: rgba(16,185,129,.08);
+  --line: rgba(26,26,46,.08);
+  --line2: rgba(26,26,46,.14);
+  --code-bg: #F8F6F2;
+  --code-kw: #7C3AED;
+  --code-str: #059669;
+  --code-fn: #2563EB;
+  --code-cm: #9CA3AF;
+  --code-tag: #DC2626;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --shadow-sm: 0 1px 2px rgba(26,26,46,.05);
+  --shadow-md: 0 4px 16px rgba(26,26,46,.06);
+  --shadow-lg: 0 8px 32px rgba(26,26,46,.08);
+  --shadow-xl: 0 16px 48px rgba(26,26,46,.1);
+}
 
-        <title>Abdulazyz Portfolio</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div class="logo-t">
-<div class="nav__LOGO" data-sr-id="5" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s; width: 60px; height: 60px;" a="" div="">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
-                            <image class="home__blob-img" x="50" y="60" href="https://azyz-service.site/assets/img/perfil.png"></image>
-                        </g>
-                    </svg>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:var(--ink);color:var(--bg)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ink20);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--ink40)}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
+/* ── PROGRESS BAR ── */
+#prog{position:fixed;top:0;left:0;right:0;height:2px;width:0%;background:linear-gradient(90deg,var(--react),var(--laravel));z-index:1001;transition:width .05s linear}
 
-                    
-                </div>                </div>
+/* ── ANIMATIONS ── */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes codeScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+@keyframes typeCursor{0%,100%{border-color:var(--green)}50%{border-color:transparent}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes skillBar{from{width:0}to{width:var(--w)}}
 
-                <a href="/index.html" class="header-text">
-                    <span>Ar</span>
-                </a>
-                
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:translateY(0)}
+.rev.d1{transition-delay:.1s}
+.rev.d2{transition-delay:.2s}
+.rev.d3{transition-delay:.3s}
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        
-                        <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+nav{
+  position:fixed;inset:0 0 auto;height:60px;
+  display:flex;align-items:center;padding:0 6%;
+  z-index:100;border-bottom:1px solid transparent;
+  transition:background .4s,border-color .4s,box-shadow .4s;
+}
+nav.stuck{
+  background:rgba(250,250,248,.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-color:var(--line);
+  box-shadow:var(--shadow-sm);
+}
+.nav-inner{width:100%;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:700;font-size:1.15rem;color:var(--ink);transition:opacity .25s}
+.nav-logo:hover{opacity:.6}
 
-                    </ul>
-                </div>
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:.7rem;color:var(--ink40);letter-spacing:.5px;transition:color .2s;position:relative}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--ink);transition:width .3s}
+.nav-links a:hover::after{width:100%}
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+.nav-right{display:flex;gap:10px;align-items:center}
+.nav-avail{
+  display:flex;align-items:center;gap:7px;
+  border:1px solid var(--line2);border-radius:100px;
+  padding:6px 14px;background:var(--green-bg);
+  font-family:var(--mono);font-size:.62rem;color:var(--green);letter-spacing:.5px;
+  transition:all .25s;
+}
+.nav-avail .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2.5s ease-in-out infinite}
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:var(--ink);color:var(--bg);
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  padding:8px 18px;border-radius:8px;letter-spacing:.5px;
+  transition:all .25s;
+}
+.nav-cta:hover{background:#2a2a4e;transform:translateY(-1px);box-shadow:var(--shadow-md)}
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title" id="home__title">Hi<br>I`m <span class="home__title-color">Abdulazyz</span><br> </h1><div class="title-div"><h4 id="webr">( Web developer )</h4></div>
-                </div>
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s;border-radius:2px}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-                <div class="home__social">
-                    <a href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
-                    <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon"><img alt="Bahr" data-sentry-element="Image" data-sentry-source-file="logo.tsx" loading="lazy" width="37" height="28" decoding="async" data-nimg="1" class="" src="https://bahr.sa/logo/bahr-logo.svg" style="color: transparent;"></a>
-                    <a href="https://baaeed.com/u/azyz11223" type="_blank" class="home__social-icon"><img class="hsoub-logo-img hsoub--visible-h" src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png?id=30a5bc79bfe161d488070fd0c6d69507"></a>
-                </div>
+.mob-nav{
+  position:fixed;inset:60px 0 0;background:var(--bg);border-top:1px solid var(--line);
+  z-index:99;padding:36px 6%;
+  transform:translateX(-100%);transition:transform .4s cubic-bezier(.7,0,.2,1);
+}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{display:block;padding:20px 0;font-weight:700;font-size:1.5rem;color:var(--ink40);border-bottom:1px solid var(--line);transition:color .2s}
+.mob-nav a:hover{color:var(--ink)}
 
-                <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="https://azyz-service.site/assets/img/perfil.png"/>
-                        </g>
-                    </svg>
-                </div>
-                <div class='particle'>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                    <span class='particle-item'></span>
-                </div>
+/* ══════════════════════════════════════
+   HERO — Code Banner
+   ══════════════════════════════════════ */
+#hero{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  background:var(--bg);
+}
 
-            </section>
+.hero-content{
+  padding:120px 6% 80px 0;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+  max-width:680px;
+  margin-left:auto;
+}
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <div class="hide"></div>
-                <div class="cont-h2">
-                <h2 class="section-title">About</h2></div>
+.hero-code-side{
+  position:relative;
+  overflow:hidden;
+  background:var(--code-bg);
+  border-right:1px solid var(--line);
+}
+.hero-code-side::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--code-bg) 0%,transparent 15%,transparent 85%,var(--code-bg) 100%);
+  z-index:2;pointer-events:none;
+}
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="https://azyz-service.site/assets/img/perfil.png" alt="">
-                    </div>
-                    
-                    <div>
-                        
-<h2 class="about__subtitle">I’m Abdulazyz</h2>
-<p class="about__text">I am a web developer specializing in HTML and CSS, an Android app developer, and a UI/UX designer for websites and applications. Additionally, I have experience in general graphic design, 3D interior design, and creating professional PowerPoint presentations.
+.code-scroll-container{
+  position:absolute;inset:0;overflow:hidden;
+  display:flex;gap:40px;padding:20px;
+  opacity:.55;
+}
+.code-column{
+  flex:1;min-width:280px;
+  font-family:var(--mono);font-size:.7rem;line-height:2;
+  white-space:pre;color:var(--ink40);
+  animation:codeScroll 40s linear infinite;
+}
+.code-column:nth-child(2){animation-duration:35s;animation-delay:-10s}
+.code-column .kw{color:var(--code-kw)}
+.code-column .str{color:var(--code-str)}
+.code-column .fn{color:var(--code-fn)}
+.code-column .cm{color:var(--code-cm)}
+.code-column .tag{color:var(--code-tag)}
+.code-column .react-c{color:var(--react);font-weight:600}
+.code-column .laravel-c{color:var(--laravel);font-weight:600}
 
-I have three years of experience in customer service with strong communication and problem-solving skills. Moreover, I have seven years of expertise in using Microsoft Office applications, particularly Excel, excelling in data management, analysis, and organization. I work smart, manage my time effectively, and always strive to deliver technical and practical solutions that achieve goals in the best way, whether working independently or as part of a team.</p>
+.hero-status{
+  display:inline-flex;align-items:center;gap:8px;width:fit-content;
+  font-family:var(--mono);font-size:.65rem;color:var(--green);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:28px;
+  background:var(--green-bg);border:1px solid rgba(16,185,129,.15);
+  padding:6px 14px;border-radius:100px;
+  opacity:0;animation:fadeUp .6s .2s ease forwards;
+}
+.hero-status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
 
-                    </div>                                   
-                </div>
-            </section>
+.hero-h1{
+  font-weight:700;
+  font-size:clamp(2.8rem,5.5vw,4.5rem);
+  line-height:1.1;letter-spacing:-1.5px;
+  margin-bottom:20px;
+  color:var(--ink);
+  opacity:0;animation:fadeUp .8s .3s ease forwards;
+}
+.hero-h1 .accent-react{color:var(--react)}
+.hero-h1 .accent-laravel{color:var(--laravel)}
+.hero-h1 .outline{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--ink20);
+  font-size:clamp(2.2rem,4.5vw,3.5rem);
+}
 
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <div class="cont-h2">
-                <h2 class="section-title">Skills</h2></div>
+.hero-sub{
+  font-family:var(--mono);font-size:.8rem;color:var(--ink40);
+  letter-spacing:1px;margin-bottom:32px;
+  display:flex;align-items:center;gap:8px;
+  opacity:0;animation:fadeUp .7s .45s ease forwards;
+}
+.hero-sub .sep{width:24px;height:1px;background:var(--ink20)}
 
-                <div class="flex items-center justify-between gap-6 rounded-xl bg-beige-0 p-6">
-                    <!-- القسم الأول -->
-                    <div class="flex flex-wrap gap-4">
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>JavaScript</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>3D Designs</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Banner Designs</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Exterior Design</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Customer Service</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Content Writing</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Customer Support</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Android App Development</span></div>
-                        </span>                    </div>
-                    
-                    <!-- القسم الثاني -->
-                    <div class="flex flex-wrap gap-4">
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Adobe Photoshop</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Canva</span></div>
-                        </span>
-                    </div>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Data Entry</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Web Programming</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>PowerPoint Presentations</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Customer Care</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Identity & Logo Design</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Graphic Design</span></div>
-                        </span>                    </div>
-                  
-                    <!-- القسم الثالث -->
-                    <div class="flex flex-wrap gap-4">
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Poster Design</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Microsoft Office</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>E-commerce Store Management</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Salla Platform</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>UI/UX Design</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>PDF File Design</span></div>
-                        </span>
-                        <span class="select-none px-2 w-fit rounded-full inline-flex justify-center min-h-5 border text-badge py-0.5 gap-2 items-center border-info-500 bg-info-0 text-info-500">
-                            <div class="flex items-center gap-1"><span>Social Media Account Management</span></div>
-                        </span>                    </div>
-                  </div>
-                  
-                        
-                        
-                        
-                    </div>
-                </div>
-                <a class="rtl:row-reverse inline-flex gap-2.5 rounded-full px-6 transition-colors disabled:pointer-events-none ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 items-center bg-primary-500 text-beige-0 hover:bg-primary-300 disabled:bg-neutral-200 disabled:text-neutral-300 py-3 [&_*]:text-buttonBig min-h-5.25 w-fit min-w-40.5 justify-center" data-sentry-element="BaseLink" data-sentry-component="Link" data-sentry-source-file="link.tsx" href="01910dd0-bf98-73df-94cc-08c1fb461d76/settings"></a>
-                
-                  
-                </div>
-            </section>
+.hero-desc{
+  font-size:1rem;color:var(--ink60);
+  line-height:2;max-width:480px;
+  margin-bottom:36px;
+  opacity:0;animation:fadeUp .7s .55s ease forwards;
+}
+.hero-desc strong{color:var(--ink);font-weight:600}
 
-            <!--===== WORK =====-->
-            <section class="work section" id="work">
-                <div class="cont-h2">
-                    <h2 class="section-title">Work</h2>
-                </div>
-            
-                <!-- Tabs -->
-                <div class="tabs">
-                    <button class="tab" data-tab="data-entry">
-                        Data Entry
-                        <img src="https://azyz-service.site/assets/img/icon/database-management.svg" class="tab-icon">
-                    </button>
-                    <button class="tab" data-tab="external-design">
-                        3D Exterior Design
-                        <img src="https://azyz-service.site/assets/img/icon/vector-alt.svg" class="tab-icon">
-                    </button>
-                    <button class="tab" data-tab="web-development">
-                        Web Development
-                        <img src="https://azyz-service.site/assets/img/icon/code-window.svg" class="tab-icon">
-                    </button>
-                    <button class="tab" data-tab="branding">
-                        Branding & Logo Design
-                        <img src="https://azyz-service.site/assets/img/icon/id-card.svg" class="tab-icon"> 
-                    </button>
-                    <button class="tab" data-tab="graphic-design">
-                        Graphic Design
-                        <img src="https://azyz-service.site/assets/img/icon/customize-computer.svg" class="tab-icon">
-                    </button>
+.hero-actions{
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .7s .65s ease forwards;
+}
+.btn-fill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--ink);color:var(--bg);
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
+  padding:13px 24px;border-radius:8px;letter-spacing:.5px;
+  transition:all .25s;border:none;
+}
+.btn-fill:hover{background:#2a2a4e;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.btn-ghost{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line2);color:var(--ink60);
+  font-family:var(--mono);font-size:.75rem;
+  padding:12px 22px;border-radius:8px;letter-spacing:.5px;
+  transition:all .25s;background:transparent;
+}
+.btn-ghost:hover{border-color:var(--ink40);color:var(--ink);background:var(--ink06)}
 
-                    <button class="tab" data-tab="Video-Montage">
-                        Video Montage
-                        <img src="https://azyz-service.site/assets/img/icon/camera-movie.svg" class="tab-icon"> 
-                    </button>
-                    
-                    <button class="tab" data-tab="UI&UX-design">
-                        Ui & UX Design
-                        <img src="https://azyz-service.site/assets/img/icon/ui-ux.svg" class="tab-icon"> 
-                    </button>
-                    
-                    
-                    <button class="tab active" data-tab="powerpoint">
-                        PowerPoint Presentations
-                        <img src="https://azyz-service.site/assets/img/icon/presentation.svg" class="tab-icon">
-                    </button>
-                </div>
-            
-                <!-- المحتوى المتغير -->
-                <div id="data-entry" class="work__container bd-grid tab-content">
+/* Stats row */
+.hero-nums{
+  display:flex;gap:40px;flex-wrap:wrap;
+  padding-top:40px;border-top:1px solid var(--line);
+  margin-top:40px;
+  opacity:0;animation:fadeUp .7s .8s ease forwards;
+}
+.hnum-big{
+  font-weight:700;
+  font-size:2rem;line-height:1;letter-spacing:-1px;color:var(--ink);
+}
+.hnum-big sup{font-size:.9rem;color:var(--ink40)}
+.hnum-lbl{font-family:var(--mono);font-size:.58rem;color:var(--ink20);letter-spacing:3px;text-transform:uppercase;margin-top:5px}
 
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/222.png" alt="Excel File">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="
-                                    openModal(
-                                        'Excel File for Sending Multiple WhatsApp Messages Automatically',
-                                        'I created a smart Excel file to send WhatsApp messages automatically. The file uses VBA/Macro, so you can send messages without needing other programs, just through WhatsApp Web. Features: Simply enter the numbers and messages in Excel, send messages with a click via WhatsApp Web, customize messages for each person, easy to use and doesn’t require expertise, saves time compared to manual sending. Who is it for? Marketing and advertising – send offers and discounts quickly, administrative communication – notify employees or clients easily, education and training – send notes and lessons to students. This file is an example of my work in task automation using Excel and VBA, saving time and effort.',
-                                        '/assets/img/222.png',
-                                        '/assets/img/222.png'
-                                    )">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/4.png" alt="Excel File">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="
-                                    openModal(
-                                        'Excel File Containing Store Numbers from Google Maps in a Specific Area',
-                                        'The client asked me to create an Excel file with store numbers in a specific area, all extracted from Google Maps. The goal of the file was to make it easier to quickly access and organize the numbers. Instead of opening multiple websites or wasting time searching, everything is now ready in one file. After completing it, the client can now contact stores faster and more efficiently, whether for marketing or any other type of communication. It was a great experience creating something practical to ease his daily tasks.',
-                                        '/assets/img/4.png',
-                                        '/assets/img/4.png'
-                                    )">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+/* ══════════════════════════════════════
+   SECTION BASE
+   ══════════════════════════════════════ */
+.section{padding:100px 6%;border-bottom:1px solid var(--line)}
+.sw{max-width:1200px;margin:0 auto}
 
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:64px;gap:16px;flex-wrap:wrap}
+.sec-label{
+  font-family:var(--mono);font-size:.6rem;color:var(--ink20);letter-spacing:4px;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--ink20)}
+.sec-title{font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-1.2px;line-height:1;color:var(--ink)}
+.sec-link{
+  font-family:var(--mono);font-size:.68rem;color:var(--ink40);letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line2);border-radius:8px;padding:8px 16px;
+  transition:all .25s;flex-shrink:0;background:transparent;
+}
+.sec-link svg{transition:transform .25s}
+.sec-link:hover{border-color:var(--ink40);color:var(--ink);background:var(--ink06)}
+.sec-link:hover svg{transform:translateX(4px)}
 
-                <div id="Video-Montage" class="work__container bd-grid tab-content">
+/* ══════════════════════════════════════
+   ABOUT — Tabbed Layout
+   ══════════════════════════════════════ */
+.about-layout{
+  display:grid;grid-template-columns:220px 1fr;gap:0;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:var(--surface);box-shadow:var(--shadow-md);
+}
 
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/montage1.PNG" alt="Video Montage">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="openModal('My YouTube Comeback After a Year!', 'I created a special montage to mark my return to YouTube after a full year of absence. The video showcases the most exciting moments and highlights, giving you a glimpse of a fresh start for my channel. I used creative edits and effects to make the video full of energy and excitement. The goal is to reconnect with my audience and stay close to them. Get ready for more upcoming content!', '/assets/img/montage1.PNG', 'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage1.MP4')">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/montage2.jpg" alt="Video Montage">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="openModal('Hacked Apps Download Montage', 'I created a montage about downloading hacked apps, explaining how to get these apps easily and safely. The video focuses on how to download the apps without any issues and highlights the pros and cons of hacked applications. It contains essential details for anyone interested in getting premium apps for free. The goal is to educate viewers on the correct and safe ways to download hacked apps.', '/assets/img/montage2.jpg', 'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage2.MP4')">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/montage3.jpg" alt="Video Montage">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="openModal('Real Estate Montage', 'I created a real estate montage showcasing the key features and highlights of a property. The video presents details about the location, space, and architectural design while emphasizing nearby landmarks and essential amenities. The goal of this montage is to attract potential buyers by displaying the property in the most appealing way possible. I used professional filming techniques and high-quality lighting to present the property at its best.', '/assets/img/montage3.jpg', 'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage3.MP4')">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                
-                </div>
-                
+.about-tabs{border-right:1px solid var(--line);background:var(--bg1)}
+.about-tab{
+  display:flex;align-items:center;gap:12px;
+  padding:18px 22px;border-bottom:1px solid var(--line);
+  cursor:pointer;transition:all .2s;
+  font-size:.82rem;color:var(--ink20);font-weight:500;
+}
+.about-tab:last-child{border-bottom:none}
+.about-tab svg{opacity:.3;flex-shrink:0;transition:opacity .2s}
+.about-tab:hover{background:var(--bg2);color:var(--ink60)}
+.about-tab.on{background:var(--surface);color:var(--ink);border-left:2.5px solid var(--ink)}
+.about-tab.on svg{opacity:.7}
+.tab-label{display:flex;flex-direction:column;gap:2px}
+.tab-en{font-family:var(--mono);font-size:.56rem;color:var(--ink20);letter-spacing:2px;text-transform:uppercase}
 
-            
-                <div id="external-design" class="work__container bd-grid tab-content">
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/external-design.webp" alt="تصميم خارجي 1">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/external-design.webp">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="web-development" class="work__container bd-grid tab-content">
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/web-development.png" alt="موقع 1">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/web-development1.png" alt="موقع 2">
-                            <div class="overlay">
-                                <a href="https://www.highschooltaiba.online/p/blog-page_41.html">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/web-development2.png" alt="موقع 3">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/web-development2.png">Sorry , the site is private. For more pictures, contact me through the communication section.</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="UI&UX-design" class="work__container bd-grid tab-content">
+.about-panel{padding:48px 52px}
+.apane{display:none}
+.apane.on{display:block;animation:fadeIn .4s ease}
+.apane-title{
+  font-weight:700;
+  font-size:clamp(1.5rem,2.5vw,2.2rem);
+  letter-spacing:-1px;line-height:1.2;
+  margin-bottom:24px;color:var(--ink);
+}
+.apane-text{font-size:.92rem;color:var(--ink60);line-height:2.1;margin-bottom:32px}
+.apane-tags{display:flex;flex-wrap:wrap;gap:8px}
+.atag{
+  border:1px solid var(--line2);border-radius:100px;
+  padding:6px 14px;background:var(--bg);
+  font-family:var(--mono);font-size:.68rem;color:var(--ink40);letter-spacing:.5px;
+  transition:all .25s;cursor:default;
+}
+.atag:hover{border-color:var(--ink40);color:var(--ink);background:var(--ink06)}
 
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="/assets/img/ui1.png" alt="Design 1">
-                            <div class="overlay">
-                                <button class="preview-btn" onclick="openModal('Android File Converter Program', 'I designed a powerful program for converting files between multiple formats on the Android system, featuring a simple and user-friendly UI and a seamless UX. The program supports converting images, documents, audio files, and videos into various formats quickly and efficiently. The idea was to provide a lightweight and easy-to-use tool for users who need file conversion without complications, focusing on high performance and practical design.', '/assets/img/ui1.png', 'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/video1.MP4|https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/video2.MP4')">Preview</button>
-                            </div>
-                        </div>
-                    </div>
-                    
+/* Profile card */
+.profile-card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg1);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;margin-bottom:28px;
+}
+.p-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--bg2);border:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.p-avatar svg{opacity:.5}
+.p-name{font-weight:700;font-size:.9rem;color:var(--ink)}
+.p-handle{font-family:var(--mono);font-size:.62rem;color:var(--ink20);letter-spacing:1px;margin-top:2px}
+.p-status{
+  margin-left:auto;
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:.62rem;color:var(--green);letter-spacing:1px;
+}
+.p-status .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
 
-                </div>
-                <div id="branding" class="work__container bd-grid tab-content">
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/logo-color.jpg" alt="شعار 1">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/logo-colored.MP4|https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/logo-color.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/final2.jpg" alt="شعار 2">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/final2.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/FINAL1.jpg" alt="شعار 3">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/FINAL1.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/final3.jpg" alt="شعار 4">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/final3.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/FINAL 2.jpg" alt="شعار 5">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/FINAL%202.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/final4.jpg" alt="شعار 6">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/final4.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/FINAL.jpg" alt="شعار 7">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/FINAL.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/final%206.jpg" alt="شعار 8">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/final%206.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="graphic-design" class="work__container bd-grid tab-content">
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/1.jpeg" alt="تصميم جرافيك 1">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/1.jpeg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/2.jpeg" alt="تصميم جرافيك 2">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/2.jpeg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/3.png" alt="تصميم جرافيك 3">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/3.png">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/4.jpeg" alt="تصميم جرافيك 4">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/4.jpeg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/2.jpg" alt="تصميم جرافيك 5">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/2.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/1.jpg" alt="تصميم جرافيك 6">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/1.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work__container">
-                        <div class="image-container">
-                            <img src="https://azyz-service.site/assets/img/44.jpg" alt="تصميم جرافيك 7">
-                            <div class="overlay">
-                                <a href="https://azyz-service.site/assets/img/44.jpg">Click To Preview</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div id="customer-service" class="work__container bd-grid tab-content"></div>
-            
-                    <div id="powerpoint" class="work__container bd-grid tab-content active">
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover.png" alt="PowerPoint Presentation 1">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint Presentation on Projectile Motion', 'I created a special PowerPoint presentation on “Projectile Motion” for Physics, focusing on explaining the motion in a simple and clear way. It covers basic topics like initial velocity, launch angle, and how the projectile moves under the influence of gravity. The presentation is full of illustrations and mathematical models that help students understand each part practically. The goal was to simplify the information and teach students how to analyze projectile motion scientifically, with new ideas to make them engage better with the lesson.', '/assets/img/powerpoint_cover.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media&token=40d3efba-f0d8-47fe-add9-792bdfa9632f')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover1.png" alt="PowerPoint Presentation 2">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint File for Eid Activities Game', 'I created a PowerPoint file for Eid activities, which includes an exciting game! The game consists of 20 examples, each represented by emojis that convey a specific word or idea. You have only 20 seconds to guess the answer before the time runs out. The goal of the game is fun and interaction with family and friends during Eid, testing their memory and ability to understand the hidden meanings in the emojis. The game is fun and simple, perfect for adding excitement and enjoyment during any celebration.', '/assets/img/powerpoint_cover1.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/4.pptx?alt=media&token=8710a31c-4036-46da-ba80-08b373c663a8')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover2.png" alt="PowerPoint Presentation 3">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint File for Jumuah Activities Game', 'I created an exciting game for the “Jumuah” event, consisting of challenges, examples, and riddles. Each player challenges themselves by answering examples inspired by emojis, along with fun challenges that create excitement. If you fail to answer correctly or complete a challenge, there are fun penalties that make the atmosphere even more enjoyable. The game aims to create an interactive and fun environment among friends or family, enhancing the enjoyment of Eid gatherings or any social event. It is a perfect game to make time fly by while adding a competitive edge.', '/assets/img/powerpoint_cover2.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/5.pptx?alt=media&token=406e383a-1cf9-436b-b71b-50abbf35c98c')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover3.png" alt="PowerPoint Presentation 4">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint File for Reviewing a University Course Module', 'I created a PowerPoint presentation for reviewing the fifth module of a university course, based on a client’s request. The presentation includes a simple and comprehensive explanation of all the important topics in the module, with emphasis on key points students need to focus on. I used an organized and clear style, with illustrations and practical examples to make the information easier to understand. The goal of the presentation was to help students prepare for a quick and effective review before exams.', '/assets/img/powerpoint_cover3.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/3.pptx?alt=media&token=b8a62366-687d-4830-8481-2c21502567af')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover4.png" alt="PowerPoint Presentation 5">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint Presentation on Programming for University', 'I created a presentation on programming with a distinctive and eye-catching design, featuring a sandy or textured background to create a comfortable and appealing feel. The presentation covers the basics of programming in a simple way, showcasing the most important programming languages and their tools. I used designs that help grab attention and make understanding easier, adding practical examples for students or followers to better engage with the topic. The goal was to teach programming in a fun and clear way, avoiding complexity, suitable for beginners and anyone interested in the subject.', '/assets/img/powerpoint_cover4.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/2.pptx?alt=media&token=53312a62-eff9-4025-ba3c-6c6e4251844a')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="work__container">
-                            <div class="image-container">
-                                <img src="/assets/img/powerpoint_cover5.png" alt="PowerPoint Presentation 6">
-                                <div class="overlay">
-                                    <button class="preview-btn" onclick="openModal('PowerPoint Presentation on Programming for University', 'I created a presentation on programming with a simple and clear design, where the layout is neat and easy on the eyes. The presentation simplifies the basics of programming and introduces important programming languages and their tools. The goal was to present the content in an easy and straightforward manner, making it accessible to everyone, whether beginners or those interested in learning programming. The simple design helps focus on the content without distractions, allowing followers to easily understand the topic.', '/assets/img/powerpoint_cover5.png', 'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media&token=40d3efba-f0d8-47fe-add9-792bdfa9632f')">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
+/* Meta rows */
+.meta-rows{display:flex;flex-direction:column;gap:0;margin-bottom:24px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.mrow{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+.mrow:last-child{border-bottom:none}
+.mk{font-family:var(--mono);font-size:.65rem;color:var(--ink20);letter-spacing:2px;text-transform:uppercase}
+.mv{font-size:.82rem;color:var(--ink);font-weight:500}
 
-            
+/* ══════════════════════════════════════
+   PROJECTS
+   ══════════════════════════════════════ */
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.ctab{
+  font-family:var(--mono);font-size:.72rem;
+  padding:8px 18px;border-radius:100px;
+  border:1px solid var(--line2);background:transparent;
+  color:var(--ink40);cursor:pointer;
+  transition:all .25s;letter-spacing:.5px;
+}
+.ctab:hover{border-color:var(--ink40);color:var(--ink)}
+.ctab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
+.cat-pane{display:none}
+.cat-pane.on{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
 
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input id="text-name" type="text" placeholder="إسمك الكريم" class="contact__input">
-                        <textarea name="" id="text-message" cols="0" rows="10" class="contact__input"></textarea>
-                        <div class="but-cnt">
-                        <input id="button-inp" type="button" value="إرسال" class="contact__button button">
-                    </div>
-                    </form>
-                </div>
-            </section>
-        </main>
+.proj-card{
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:var(--surface);
+  transition:all .35s ease;cursor:pointer;
+  opacity:0;transform:translateY(16px);
+  box-shadow:var(--shadow-sm);
+}
+.proj-card.vis{opacity:1;transform:translateY(0)}
+.proj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--ink10)}
 
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <div class="FOOTER-LOGO">
-                <div class="nav__LOGO" data-sr-id="5" style="visibility: visible; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: all, opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s;" a="" div="">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"></path>
-                            <image class="home__blob-img" x="50" y="60" href="https://azyz-service.site/assets/img/perfil.png"></image>
-                        </g>
-                    </svg>
-                </div> 
-            </div>             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-            </div>
-            <p class="footer__copy">© Abdulaziz Technology , All rights reserved</p>
-        </footer>
+.proj-img{position:relative;overflow:hidden;background:var(--bg1)}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.proj-card:hover .proj-img img{transform:scale(1.04)}
+.proj-img-ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:200px;color:var(--ink10);gap:8px;
+}
+.ph-num{font-family:var(--mono);font-size:3rem;font-weight:700;color:var(--ink06)}
 
+.proj-info{padding:20px}
+.proj-top{margin-bottom:16px}
+.proj-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.proj-num{font-family:var(--mono);font-size:.6rem;color:var(--ink20);letter-spacing:2px}
+.proj-cat{font-family:var(--mono);font-size:.6rem;color:var(--ink20);letter-spacing:1px;padding:2px 8px;border:1px solid var(--line);border-radius:4px}
+.proj-title{font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:6px}
+.proj-desc{font-size:.82rem;color:var(--ink40);line-height:1.7}
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+.proj-foot{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding-top:16px;border-top:1px solid var(--line)}
+.proj-foot .ptag{
+  border:1px solid var(--line);border-radius:100px;padding:3px 10px;
+  font-family:var(--mono);font-size:.58rem;color:var(--ink20);letter-spacing:.5px;
+}
+.proj-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:.62rem;color:var(--ink40);
+  padding:5px 12px;border:1px solid var(--line2);border-radius:6px;
+  transition:all .2s;letter-spacing:.5px;
+}
+.proj-btn:hover{border-color:var(--ink40);color:var(--ink);background:var(--ink06)}
+.proj-btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.proj-btn.primary:hover{background:#2a2a4e}
 
-        <!--===== MAIN JS =====-->
-        <script src="D:/github/Portfolio/assets/js/main.js"></script>
-        <script src="D:/github/Portfolio/assets/js/lang.js"></script>
-        <script src="D:/github/Portfolio/assets/js/whatsapp.js"></script>
-         <!-- END TEMPLATE -->
-    <script src='https://cdn.jsdelivr.net/gh/imintweb/Js@42b7bd5b4680e7aa5c2c86420db4312eff5f5a84/mint.min.js'></script>
-    <button id="scrollToTop" class="scrollToTop">
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-    </button>
- 
-    <script src='https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'></script>
-    <script>
-    
-  document.addEventListener("DOMContentLoaded", function () {
-    let tabs = document.querySelectorAll(".tab");
-    let contents = document.querySelectorAll(".tab-content");
+/* ══════════════════════════════════════
+   STACK — Full Stack Visualization
+   ══════════════════════════════════════ */
+.stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", function () {
-            let tabName = this.getAttribute("data-tab");
+.stack-panel{
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:var(--surface);box-shadow:var(--shadow-sm);
+}
+.stack-panel-header{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 20px;border-bottom:1px solid var(--line);
+  background:var(--bg1);
+}
+.stack-panel-dots{display:flex;gap:6px}
+.stack-panel-dots span{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--line2)}
+.stack-panel-dots span:first-child{background:var(--laravel);border-color:var(--laravel)}
+.stack-panel-dots span:nth-child(2){background:#FBBF24;border-color:#FBBF24}
+.stack-panel-dots span:nth-child(3){background:var(--green);border-color:var(--green)}
+.stack-panel-title{font-family:var(--mono);font-size:.7rem;color:var(--ink40);letter-spacing:1px}
+.stack-panel-body{padding:24px 20px}
 
-            // 🔴 إخفاء جميع القوائم
-            contents.forEach(content => {
-                content.classList.remove("active"); // إخفاء المحتوى
-                let message = content.querySelector(".empty-message");
-                if (message) {
-                    content.removeChild(message); // إزالة النص إذا كان موجودًا
-                }
-            });
+.skill-row{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.skill-row:last-child{margin-bottom:0}
+.skill-name{font-family:var(--mono);font-size:.72rem;color:var(--ink60);width:100px;flex-shrink:0;text-align:right}
+.skill-bar-bg{flex:1;height:6px;background:var(--bg2);border-radius:3px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.skill-pct{font-family:var(--mono);font-size:.62rem;color:var(--ink20);width:32px;text-align:left}
 
-            // 🟢 إظهار القائمة المطلوبة
-            let activeTab = document.getElementById(tabName);
-            if (activeTab) {
-                activeTab.classList.add("active"); // إظهار المحتوى
-                // إضافة النص إذا كانت القائمة فارغة
-                if (activeTab.children.length === 0) {
-                    let message = document.createElement("p");
-                    message.className = "empty-message";
-                    message.textContent = "Apologies and sorry, there are no works uploaded for this category";
-                    activeTab.appendChild(message);
-                }
-            }
+/* Code preview panels */
+.pkg{margin-bottom:16px}
+.pkg-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;
+  background:var(--bg1);border:1px solid var(--line);
+  border-radius:10px 10px 0 0;
+}
+.pkg-dots{display:flex;gap:5px}
+.pkdot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line2)}
+.pkdot:first-child{background:var(--laravel);border-color:var(--laravel)}
+.pkdot:nth-child(2){background:#FBBF24;border-color:#FBBF24}
+.pkdot:nth-child(3){background:var(--green);border-color:var(--green)}
+.pkg-name{font-family:var(--mono);font-size:.65rem;color:var(--ink40);letter-spacing:1px}
+.pkg-code{
+  padding:16px 20px;
+  font-family:var(--mono);font-size:.72rem;line-height:2;
+  background:var(--surface);border:1px solid var(--line);border-top:none;
+  border-radius:0 0 10px 10px;
+  overflow-x:auto;
+}
+.cp{color:var(--ink40)}
+.ck{color:var(--code-kw)}
+.cv{color:var(--code-str)}
+.cs{color:var(--code-fn)}
+.cf{color:var(--code-tag)}
 
-            // 🔄 تحديث حالة الأزرار
-            tabs.forEach(t => t.classList.remove("active"));
-            this.classList.add("active");
-        });
-    });
+/* Stats grid */
+.nums-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num-cell{
+  text-align:center;padding:28px 16px;
+  border:1px solid var(--line);border-radius:12px;
+  background:var(--surface);
+  transition:all .3s;
+}
+.num-cell:hover{border-color:var(--ink10);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.n-num{font-weight:700;font-size:2rem;letter-spacing:-1px;color:var(--ink);display:block}
+.n-num sup{font-size:.8rem;color:var(--ink40)}
+.n-lbl{font-family:var(--mono);font-size:.58rem;color:var(--ink20);letter-spacing:3px;text-transform:uppercase;margin-top:4px;display:block}
 
-    // ✅ تفعيل أول تبويب تلقائيًا عند تحميل الصفحة
-    if (tabs.length > 0) {
-        tabs[8].click(); // أول تبويب
-    }
-  });
+/* ══════════════════════════════════════
+   CONTACT
+   ══════════════════════════════════════ */
+.contact-big{
+  font-weight:700;
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  line-height:1;letter-spacing:-2px;
+  text-align:center;margin-bottom:56px;color:var(--ink);
+}
+.contact-big .outline{
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--ink20);
+}
 
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+.contact-left{}
+.contact-label{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.7rem;color:var(--green);letter-spacing:1px;
+  margin-bottom:16px;
+}
+.contact-label .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+.contact-sub{font-size:1rem;color:var(--ink60);line-height:1.9;max-width:400px}
 
-    </script>
-    <!-- نافذة تكبير الصورة -->
-<div id="imagePopup" class="popup">
-    <span class="close">&times;</span>
-    <img class="popup-content" src="" id="iimg">
+.contact-card{
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:28px;border:1px solid var(--line);border-radius:12px;
+  background:var(--ink);color:var(--bg);
+  transition:all .3s;position:relative;overflow:hidden;
+  min-height:180px;
+}
+.contact-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-xl)}
+.cc-label{font-family:var(--mono);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;opacity:.5}
+.cc-title{font-weight:700;font-size:1.6rem;line-height:1.2;letter-spacing:-.5px}
+.cc-arrow{
+  position:absolute;bottom:20px;right:20px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.contact-card:hover .cc-arrow{background:rgba(255,255,255,.2);transform:translate(3px,-3px)}
+
+.c-links{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.c-link{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 24px;border-bottom:1px solid var(--line);
+  transition:all .2s;
+}
+.c-link:last-child{border-bottom:none}
+.c-link:hover{background:var(--ink06)}
+.c-link-ico{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--bg1);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.c-link-ico svg{color:var(--ink40)}
+.c-link-name{font-weight:600;font-size:.88rem;color:var(--ink)}
+.c-link-sub{font-family:var(--mono);font-size:.62rem;color:var(--ink20);letter-spacing:1px;margin-top:2px}
+.c-link-arr{margin-left:auto;color:var(--ink20);transition:all .2s}
+.c-link:hover .c-link-arr{color:var(--ink);transform:translate(-3px,-3px)}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 6%;border-top:1px solid var(--line);
+  background:var(--bg1);
+}
+.foot-logo{font-weight:700;font-size:.9rem;color:var(--ink)}
+.foot-right{display:flex;align-items:center;gap:20px}
+.foot-status{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:.58rem;color:var(--green);letter-spacing:1px;
+}
+.foot-status .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+.foot-copy{font-family:var(--mono);font-size:.55rem;color:var(--ink20);letter-spacing:2px}
+
+/* ══════════════════════════════════════
+   TECH BADGES — React & Laravel highlight
+   ══════════════════════════════════════ */
+.tech-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:6px;
+  font-family:var(--mono);font-size:.68rem;font-weight:500;
+  letter-spacing:.5px;
+}
+.tech-badge.react{background:rgba(97,218,251,.1);color:#0891B2;border:1px solid rgba(97,218,251,.2)}
+.tech-badge.laravel{background:rgba(255,45,32,.08);color:var(--laravel);border:1px solid rgba(255,45,32,.15)}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .hero-code-side{display:none}
+  .hero-content{padding:120px 6% 60px;max-width:100%}
+  .stack-grid{grid-template-columns:1fr}
+  .contact-row{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right{display:none}
+  .burger{display:flex}
+  .about-layout{grid-template-columns:1fr}
+  .about-tabs{display:flex;overflow-x:auto;border-left:none;border-bottom:1px solid var(--line)}
+  .about-tab{border-bottom:none;border-left:1px solid var(--line);white-space:nowrap;padding:14px 18px}
+  .about-tab:last-child{border-left:none}
+  .about-tab.on{border-left:none;border-bottom:2.5px solid var(--ink)}
+  .about-panel{padding:28px 20px}
+  .cat-pane.on{grid-template-columns:1fr}
+  .hero-h1{font-size:clamp(2.2rem,8vw,3.5rem)}
+  .contact-big{font-size:clamp(2rem,8vw,3.5rem)}
+  .hero-nums{gap:24px}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .section{padding:60px 5%}
+}
+@media(max-width:480px){
+  .hero-content{padding:100px 5% 40px}
+  .hero-actions{flex-direction:column;width:100%}
+  .btn-fill,.btn-ghost{width:100%;justify-content:center}
+  .profile-card{flex-wrap:wrap}
+  .p-status{width:100%;margin-top:8px;margin-right:0}
+}
+</style>
+<body>
+
+<!-- Progress Bar -->
+<div id="prog"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Abdulaziz</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-avail">
+        <span class="dot"></span>
+        Available
+      </div>
+      <a href="https://wa.me/966511038120" class="nav-cta" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Start a Project
+      </a>
+    </div>
+    <button class="burger" id="burg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobN">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#work" onclick="closeMob()">Work</a>
+  <a href="#stack" onclick="closeMob()">Stack</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
 </div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <!-- Code Side -->
+  <div class="hero-code-side">
+    <div class="code-scroll-container">
+      <div class="code-column" id="codeCol1"></div>
+      <div class="code-column" id="codeCol2"></div>
+    </div>
+  </div>
+
+  <!-- Content Side -->
+  <div class="hero-content">
+    <div class="hero-status">
+      <span class="dot"></span>
+      Available for Freelance
+    </div>
+
+    <h1 class="hero-h1">
+      Full Stack
+      <span class="outline">Developer</span>
+    </h1>
+
+    <div class="hero-sub">
+      <span class="tech-badge react">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+        React
+      </span>
+      <span class="sep"></span>
+      <span class="tech-badge laravel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        Laravel
+      </span>
+    </div>
+
+    <p class="hero-desc">
+      <strong>Full Stack Developer</strong> specializing in building digital experiences from scratch —
+      from the database to the final interface.
+      Every line of code intentional, every pixel considered.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#work" class="btn-fill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        View My Work
+      </a>
+      <a href="https://wa.me/966511038120" class="btn-ghost" target="_blank">Contact Me</a>
+    </div>
+
+    <div class="hero-nums">
+      <div class="hnum"><div class="hnum-big" data-to="50">0<sup>+</sup></div><div class="hnum-lbl">Projects</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="3">0<sup>+</sup></div><div class="hnum-lbl">Years</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="30">0<sup>+</sup></div><div class="hnum-lbl">Clients</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="8">0</div><div class="hnum-lbl">Specialties</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div>
+        <span class="sec-label">01 — about</span>
+        <h2 class="sec-title">About Me</h2>
+      </div>
+      <a href="#contact" class="sec-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Contact
+      </a>
+    </div>
+
+    <div class="about-layout rev">
+      <div class="about-tabs">
+        <div class="about-tab on" onclick="showTab(0)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <div class="tab-label"><span>Developer</span></div>
+        </div>
+        <div class="about-tab" onclick="showTab(1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="tab-label"><span>Designer</span></div>
+        </div>
+        <div class="about-tab" onclick="showTab(2)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="tab-label"><span>Creator</span></div>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <!-- Tab 0: Developer -->
+        <div class="apane on" id="tab0">
+          <div class="profile-card">
+            <div class="p-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="p-name">Abdulaziz</div><div class="p-handle">@azyz · Riyadh, SA</div></div>
+            <div class="p-status"><span class="dot"></span>available</div>
+          </div>
+          <div class="meta-rows">
+            <div class="mrow"><span class="mk">location</span><span class="mv">Riyadh, SA</span></div>
+            <div class="mrow"><span class="mk">experience</span><span class="mv">3+ Years</span></div>
+            <div class="mrow"><span class="mk">frontend</span><span class="mv">React · JavaScript · HTML/CSS</span></div>
+            <div class="mrow"><span class="mk">backend</span><span class="mv">Laravel · PHP · MySQL</span></div>
+            <div class="mrow"><span class="mk">stack</span><span class="mv">Full Stack Developer</span></div>
+          </div>
+          <p class="apane-text" id="aboutBody">Full Stack Developer specializing in React and Laravel. I build interactive frontends with React and powerful backend systems with Laravel. Experienced with Firebase, databases, and Android apps. 3+ years in customer service and 7+ years with Microsoft Office applications and data analysis.</p>
+          <div class="apane-tags">
+            <span class="atag">React</span><span class="atag">Laravel</span><span class="atag">JavaScript</span><span class="atag">PHP</span>
+            <span class="atag">Firebase</span><span class="atag">MySQL</span><span class="atag">HTML / CSS</span>
+            <span class="atag">Android Dev</span><span class="atag">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Tab 1: Designer -->
+        <div class="apane" id="tab1">
+          <h3 class="apane-title">Designing with<br>a Developer's Eye</h3>
+          <p class="apane-text">Design is not just aesthetics — it's a deliberate experience from the first user interaction to the finest visual detail. I work with Figma, Photoshop, and Illustrator to build comprehensive brand identities and UI/UX interfaces that impress and deliver.</p>
+          <div class="apane-tags">
+            <span class="atag">Figma</span><span class="atag">Photoshop</span><span class="atag">Illustrator</span>
+            <span class="atag">UI / UX</span><span class="atag">Branding</span><span class="atag">Motion</span>
+          </div>
+        </div>
+
+        <!-- Tab 2: Creator -->
+        <div class="apane" id="tab2">
+          <h3 class="apane-title">Every Project<br>Tells a Story</h3>
+          <p class="apane-text">I believe technology alone is not enough — a true product combines clean code, compelling design, and a polished experience. I work on video editing, PowerPoint presentations, and data analysis by building VBA solutions that save hours of work.</p>
+          <div class="apane-tags">
+            <span class="atag">Video Editing</span><span class="atag">PowerPoint</span><span class="atag">Excel / VBA</span>
+            <span class="atag">Data Analysis</span><span class="atag">Google Sheets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WORK ══ -->
+<section id="work" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div>
+        <span class="sec-label">02 — projects</span>
+        <h2 class="sec-title">My Work</h2>
+      </div>
+    </div>
+    <div class="cat-tabs rev" id="catTabs"></div>
+    <div id="catPanes"></div>
+  </div>
+</section>
+
+<!-- ══ STACK ══ -->
+<section id="stack" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div>
+        <span class="sec-label">03 — expertise</span>
+        <h2 class="sec-title">Full Stack</h2>
+      </div>
+    </div>
+
+    <div class="stack-grid rev">
+      <!-- Frontend Skills -->
+      <div>
+        <div class="stack-panel" style="margin-bottom:20px">
+          <div class="stack-panel-header">
+            <div class="stack-panel-dots"><span></span><span></span><span></span></div>
+            <span class="stack-panel-title">frontend — React</span>
+            <span class="tech-badge react" style="margin-left:auto;font-size:.6rem;padding:2px 8px">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/></svg>
+              Frontend
+            </span>
+          </div>
+          <div class="stack-panel-body" id="frontendSkills"></div>
+        </div>
+
+        <div class="stack-panel">
+          <div class="stack-panel-header">
+            <div class="stack-panel-dots"><span></span><span></span><span></span></div>
+            <span class="stack-panel-title">backend — Laravel</span>
+            <span class="tech-badge laravel" style="margin-left:auto;font-size:.6rem;padding:2px 8px">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l6-6 4 4 8-8"/></svg>
+              Backend
+            </span>
+          </div>
+          <div class="stack-panel-body" id="backendSkills"></div>
+        </div>
+      </div>
+
+      <!-- Code Previews + Stats -->
+      <div>
+        <div class="pkg" style="margin-bottom:16px">
+          <div class="pkg-bar"><div class="pkg-dots"><div class="pkdot"></div><div class="pkdot"></div><div class="pkdot"></div></div><div class="pkg-name">skills.json</div></div>
+          <div class="pkg-code">
+            <span class="cp">{</span><br>
+            &nbsp;&nbsp;<span class="ck">"frontend"</span><span class="cp">: </span><span class="cv">"React · JavaScript · TypeScript"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"backend"</span><span class="cp">: </span><span class="cv">"Laravel · PHP · MySQL"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"styling"</span><span class="cp">: </span><span class="cv">"Tailwind · CSS · SASS"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"database"</span><span class="cp">: </span><span class="cv">"Firebase · MySQL · PostgreSQL"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"design"</span><span class="cp">: </span><span class="cv">"Figma · Photoshop"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"platforms"</span><span class="cp">: </span><span class="cv">"Salla · WordPress"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"mobile"</span><span class="cp">: </span><span class="cv">"Android · Java"</span><br>
+            <span class="cp">}</span>
+          </div>
+        </div>
+        <div class="pkg" style="margin-bottom:24px">
+          <div class="pkg-bar"><div class="pkg-dots"><div class="pkdot"></div><div class="pkdot"></div><div class="pkdot"></div></div><div class="pkg-name">git log --oneline</div></div>
+          <div class="pkg-code">
+            <span class="cp">a1b2c3d</span> <span class="cv">feat: migrate frontend to React</span><br>
+            <span class="cp">b4c5d6e</span> <span class="cs">fix: Laravel API auth middleware</span><br>
+            <span class="cp">c7d8e9f</span> <span class="ck">add: firebase realtime integration</span><br>
+            <span class="cp">d1e2f3a</span> <span class="cs">refactor: React component structure</span><br>
+            <span class="cp">e4f5a6b</span> <span class="cv">feat: REST API with Laravel Sanctum</span><br>
+            <span class="cp">f6a7b8c</span> <span class="cf">deploy: production build optimized</span>
+          </div>
+        </div>
+        <div class="nums-grid rev d1">
+          <div class="num-cell"><span class="n-num" data-to="50">0<sup>+</sup></span><span class="n-lbl">Projects</span></div>
+          <div class="num-cell"><span class="n-num" data-to="3">0<sup>+</sup></span><span class="n-lbl">Years</span></div>
+          <div class="num-cell"><span class="n-num" data-to="30">0<sup>+</sup></span><span class="n-lbl">Clients</span></div>
+          <div class="num-cell"><span class="n-num" data-to="8">0</span><span class="n-lbl">Specialties</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section" style="border-bottom:none">
+  <div class="sw">
+    <div class="contact-big rev">
+      Let's Build
+      <span class="outline">Something</span>
+      Amazing
+    </div>
+    <div class="contact-row">
+      <div class="contact-left rev">
+        <div class="contact-label"><span class="dot"></span>Available for New Projects</div>
+        <p class="contact-sub">Whether it's a website, an app, a brand identity, or any digital challenge — I'm here and ready. Specialized in React for frontends and Laravel for backend systems.</p>
+      </div>
+      <a href="https://wa.me/966511038120" class="contact-card rev d1" target="_blank">
+        <div class="cc-label">Start Now</div>
+        <div class="cc-title">Start a<br>Project</div>
+        <div style="font-size:.8rem;opacity:.5;margin-top:4px">Connect via WhatsApp</div>
+        <div class="cc-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="c-links rev">
+      <a href="https://wa.me/966511038120" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div><div class="c-link-name">WhatsApp</div><div class="c-link-sub">+966 51 103 8120</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+      <a href="https://bfrelnce.com/u/azyz11223" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div><div class="c-link-name">Bahr Platform</div><div class="c-link-sub">Bahr Freelance</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+      <a href="https://baaeed.com/u/azyz11223" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div><div class="c-link-name">Baaeed</div><div class="c-link-sub">azyz11223@baaeed</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-logo">Abdulaziz</span>
+  <div class="foot-right">
+    <span class="foot-status"><span class="dot"></span>available for work</span>
+    <span class="foot-copy">© 2025 · ALL RIGHTS RESERVED</span>
+  </div>
+</footer>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    let popup = document.createElement("div");
-    popup.id = "imagePopup";
-    popup.classList.add("popup");
-    popup.style.display = "none"; 
-    popup.innerHTML = `
-        <span class="close">&times;</span>
-        <img class="popup-content" id="iimg" src="" alt="صورة">
-    `;
-    document.body.appendChild(popup);
+/* ═══════════════════════════════════════════════════
+   JavaScript — Terminal Elegance Portfolio
+   ═══════════════════════════════════════════════════ */
 
-    let popupImg = document.getElementById("iimg");
-    let closeBtn = popup.querySelector(".close");
-
-    document.querySelectorAll(".zoom-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            let imgSrc = this.getAttribute("data-img");
-            popupImg.innerHTML.src = imgSrc; 
-            if (imgSrc) {
-                console.log(imgSrc); // طباعة المسار في الـ console للتأكد
-                popupImg.src = imgSrc;  // تأكد من إضافة src هنا مباشرة
-                popup.style.display = "flex";
-            } else {
-                alert("⚠️ خطأ: الصورة غير موجودة! تأكد من data-img للزر.");
-            }
-        });
-    });
-
-    closeBtn.addEventListener("click", function () {
-        popup.style.display = "none";
-    });
-
-    popup.addEventListener("click", function (event) {
-        if (event.target === popup) {
-            popup.style.display = "none";
-        }
-    });
-});
-
-    </script>
-   
-   
-   <script>
-
-// تحديد اللغة من رابط الصفحة
-let path = window.location.pathname.split("/")[1];
-
-// اللغات المدعومة
-const supportedLangs = ["ar", "en"];
-
-// التحقق من اللغة في الرابط أو استخدام المخزن المحلي
-let lang = localStorage.getItem("lang") || (supportedLangs.includes(path) ? path : "ar");
-
-// تحديث عنوان اللغة في `<html>` وإعادة التوجيه إذا لم تكن هناك لغة في الرابط
-document.documentElement.lang = lang;
-if (!supportedLangs.includes(path) && path !== "") {
-    window.location.href = `/${lang}`;
+/* ── ABOUT TABS ── */
+function showTab(i){
+  document.querySelectorAll('.about-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  document.querySelectorAll('.apane').forEach((p,j)=>p.classList.toggle('on',j===i));
 }
 
-// التأكد من تخزين اللغة في localStorage إذا لم يكن موجودًا
-if (!localStorage.getItem("lang")) {
-    localStorage.setItem("lang", lang);
-}
+/* ── CODE BANNER ── */
+const reactCode = `<span class="kw">import</span> React, { <span class="fn">useState</span>, <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+<span class="kw">import</span> { <span class="fn">motion</span> } <span class="kw">from</span> <span class="str">'framer-motion'</span>;
 
-// محتوى اللغات
-let content = {
-    ar: {
-        home__title: `هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br>`,
-        webr: "( مطور مواقع )",
-        font: "'Scheherazade New', serif",
-        switchText: "English" // نص زر التبديل
-    },
-    en: {
-        home__title: "Welcome to my website",
-        webr: "( Web Developer )",
-        font: "'Poppins', sans-serif",
-        switchText: "العربية" // نص زر التبديل
-    }
+<span class="kw">const</span> <span class="react-c">App</span> = () => {
+  <span class="kw">const</span> [projects, setProjects] = <span class="fn">useState</span>([]);
+  <span class="kw">const</span> [loading, setLoading] = <span class="fn">useState</span>(<span class="kw">true</span>);
+
+  <span class="fn">useEffect</span>(() => {
+    <span class="fn">fetchProjects</span>()
+      .<span class="fn">then</span>(data => {
+        <span class="fn">setProjects</span>(data);
+        <span class="fn">setLoading</span>(<span class="kw">false</span>);
+      });
+  }, []);
+
+  <span class="kw">return</span> (
+    <span class="tag">&lt;Layout&gt;</span>
+      <span class="tag">&lt;Hero</span> <span class="fn">title</span>=<span class="str">"عبدالعزيز"</span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;ProjectGrid</span> <span class="fn">items</span>={projects} <span class="tag">/&gt;</span>
+      <span class="tag">&lt;ContactForm</span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;/Layout&gt;</span>
+  );
 };
 
-// تحديث النصوص والخطوط عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".home__title")?.innerHTML = content[lang].home__title;
-    document.querySelector(".title-div h4")?.innerText = content[lang].subtitle;
+<span class="cm">// Custom Hook for API calls</span>
+<span class="kw">const</span> <span class="fn">useApi</span> = (endpoint) => {
+  <span class="kw">const</span> [data, setData] = <span class="fn">useState</span>(<span class="kw">null</span>);
+  <span class="kw">const</span> [error, setError] = <span class="fn">useState</span>(<span class="kw">null</span>);
 
-    // ضبط الاتجاه والتنسيق
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    document.documentElement.style.setProperty("--body-font", content[lang].font);
+  <span class="fn">useEffect</span>(() => {
+    <span class="fn">fetch</span>(<span class="str">\`/api/\${endpoint}\`</span>)
+      .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
+      .<span class="fn">then</span>(setData)
+      .<span class="fn">catch</span>(setError);
+  }, [endpoint]);
 
-    // تحديث زر التبديل
-    document.querySelector("#lang-switch")?.innerText = content[lang].switchText;
+  <span class="kw">return</span> { data, error };
+};
+
+<span class="kw">const</span> <span class="react-c">ProjectCard</span> = ({ project }) => (
+  <span class="tag">&lt;motion.div</span>
+    <span class="fn">whileHover</span>={{ <span class="fn">y</span>: -<span class="str">4</span> }}
+    <span class="fn">className</span>=<span class="str">"card"</span>
+  <span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="fn">src</span>={project.image} <span class="tag">/&gt;</span>
+    <span class="tag">&lt;h3&gt;</span>{project.title}<span class="tag">&lt;/h3&gt;</span>
+    <span class="tag">&lt;p&gt;</span>{project.description}<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/motion.div&gt;</span>
+);`;
+
+const laravelCode = `<span class="tag">&lt;?php</span>
+
+<span class="kw">namespace</span> App\\Http\\Controllers;
+
+<span class="kw">use</span> App\\Models\\<span class="laravel-c">Project</span>;
+<span class="kw">use</span> Illuminate\\Http\\<span class="fn">Request</span>;
+
+<span class="kw">class</span> <span class="laravel-c">ProjectController</span> <span class="kw">extends</span> Controller
+{
+    <span class="cm">/**
+     * Display a listing of projects.
+     */</span>
+    <span class="kw">public function</span> <span class="fn">index</span>(Request $request)
+    {
+        $projects = <span class="laravel-c">Project</span>::<span class="fn">with</span>(<span class="str">'tags'</span>)
+            -><span class="fn">when</span>($request->category, <span class="kw">fn</span>($q, $cat) =>
+                $q-><span class="fn">where</span>(<span class="str">'category'</span>, $cat)
+            )
+            -><span class="fn">latest</span>()
+            -><span class="fn">paginate</span>(<span class="str">12</span>);
+
+        <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>($projects);
+    }
+
+    <span class="cm">/**
+     * Store a newly created project.
+     */</span>
+    <span class="kw">public function</span> <span class="fn">store</span>(Request $request)
+    {
+        $validated = $request-><span class="fn">validate</span>([
+            <span class="str">'title'</span> => <span class="str">'required|max:255'</span>,
+            <span class="str">'description'</span> => <span class="str">'required'</span>,
+            <span class="str">'category'</span> => <span class="str">'required'</span>,
+        ]);
+
+        $project = <span class="laravel-c">Project</span>::<span class="fn">create</span>($validated);
+
+        <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>($project, <span class="str">201</span>);
+    }
+}
+
+<span class="cm">// routes/api.php</span>
+Route::<span class="fn">middleware</span>(<span class="str">'auth:sanctum'</span>)-><span class="fn">group</span>(<span class="kw">function</span> () {
+    Route::<span class="fn">apiResource</span>(<span class="str">'projects'</span>, <span class="laravel-c">ProjectController</span>::<span class="kw">class</span>);
+    Route::<span class="fn">get</span>(<span class="str">'/stats'</span>, [<span class="laravel-c">StatsController</span>::<span class="kw">class</span>, <span class="str">'index'</span>]);
 });
 
-// **إضافة زر تبديل اللغة بدون تحديث الصفحة**
-let switchBtn = document.querySelector("#lang-switch");
-if (switchBtn) {
-    switchBtn.addEventListener("click", function () {
-        lang = lang === "ar" ? "en" : "ar"; // تبديل بين اللغتين
-        localStorage.setItem("lang", lang); // تخزين تفضيل المستخدم
-        window.location.href = `/${lang}`; // إعادة تحميل الصفحة باللغة الجديدة
-    });
+<span class="cm">// app/Models/Project.php</span>
+<span class="kw">class</span> <span class="laravel-c">Project</span> <span class="kw">extends</span> Model
+{
+    <span class="kw">protected</span> $fillable = [
+        <span class="str">'title'</span>, <span class="str">'description'</span>,
+        <span class="str">'category'</span>, <span class="str">'image'</span>,
+    ];
+
+    <span class="kw">public function</span> <span class="fn">tags</span>()
+    {
+        <span class="kw">return</span> $this-><span class="fn">belongsToMany</span>(Tag::<span class="kw">class</span>);
+    }
+}`;
+
+function populateCode(){
+  const c1 = document.getElementById('codeCol1');
+  const c2 = document.getElementById('codeCol2');
+  if(c1) c1.innerHTML = reactCode + '\n\n' + reactCode;
+  if(c2) c2.innerHTML = laravelCode + '\n\n' + laravelCode;
+}
+populateCode();
+
+/* ── SKILLS BARS ── */
+const frontendSkills = [
+  {name:'React', level:95, color:'#61DAFB'},
+  {name:'JavaScript', level:90, color:'#F7DF1E'},
+  {name:'HTML / CSS', level:95, color:'#E34F26'},
+  {name:'Tailwind', level:85, color:'#06B6D4'},
+  {name:'TypeScript', level:80, color:'#3178C6'},
+];
+const backendSkills = [
+  {name:'Laravel', level:90, color:'#FF2D20'},
+  {name:'PHP', level:88, color:'#777BB4'},
+  {name:'MySQL', level:85, color:'#4479A1'},
+  {name:'Firebase', level:85, color:'#FFCA28'},
+  {name:'REST APIs', level:90, color:'#10B981'},
+];
+
+function renderSkills(containerId, skills){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML = skills.map(s => `
+    <div class="skill-row">
+      <span class="skill-name">${s.name}</span>
+      <div class="skill-bar-bg">
+        <div class="skill-bar-fill" style="width:0%;background:${s.color};--w:${s.level}%"></div>
+      </div>
+      <span class="skill-pct">${s.level}%</span>
+    </div>
+  `).join('');
+}
+renderSkills('frontendSkills', frontendSkills);
+renderSkills('backendSkills', backendSkills);
+
+/* Animate skill bars on scroll */
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.style.getPropertyValue('--w');
+      });
+      skillObserver.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.stack-panel-body').forEach(el => skillObserver.observe(el));
+
+/* ── WORKS DATA ── */
+const CATS = {
+  'Web':{items:[
+    {t:'Personal Portfolio Site',d:'A fully integrated personal site with dynamic responsive design and real-time Firebase data.',l:'https://azyz-service.site/',img:'https://azyz-service.site/assets/img/web-development.png',tags:['HTML','CSS','JS','Firebase']},
+    {t:'School Educational Website',d:'A website for Taiba School featuring educational resources and tools with a modern, responsive design.',l:'https://www.highschooltaiba.online/',img:'https://azyz-service.site/assets/img/web-development1.png',tags:['HTML','CSS','UX']},
+    {t:'Private Web Project',d:'A complete business website with advanced features and a Firebase control panel.',l:'#',img:'https://azyz-service.site/assets/img/web-development2.png',tags:['JS','Firebase','Responsive']},
+  ]},
+  'UI/UX':{items:[
+    {t:'File Converter App',d:'Professional UI/UX design for an Android app to convert files between multiple formats with a smooth user experience.',l:'#',img:'',tags:['Figma','Android','UX']},
+  ]},
+  'Branding':{items:[
+    {t:'Animated Logo',d:'A professional logo with creative brand animation using motion graphics techniques.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/logo-colored.MP4',img:'https://azyz-service.site/assets/img/logo-color.jpg',tags:['After Effects','Motion','Branding']},
+    {t:'Visual Identity 1',d:'A complete visual identity design including logo, colors, and distinctive typography.',l:'#',img:'https://azyz-service.site/assets/img/final2.jpg',tags:['Photoshop','Illustrator']},
+    {t:'Visual Identity 2',d:'A modern logo with a full brand guide for a tech-sector brand.',l:'#',img:'https://azyz-service.site/assets/img/FINAL1.jpg',tags:['Illustrator','Brand Guide']},
+    {t:'Visual Identity 3',d:'A set of logos professionally designed for the commercial sector.',l:'#',img:'https://azyz-service.site/assets/img/final3.jpg',tags:['Logo','Branding']},
+  ]},
+  'Graphics':{items:[
+    {t:'Advertising Poster 1',d:'Creative advertising poster with professional design using Adobe Photoshop.',l:'#',img:'https://azyz-service.site/assets/img/1.jpeg',tags:['Photoshop','Social Media']},
+    {t:'Advertising Poster 2',d:'Marketing banner design for social media platforms with eye-catching colors.',l:'#',img:'https://azyz-service.site/assets/img/2.jpeg',tags:['Photoshop','Marketing']},
+    {t:'Graphic Design 3',d:'A distinctive design piece with a creative style for digital content.',l:'#',img:'https://azyz-service.site/assets/img/3.png',tags:['Digital Art']},
+  ]},
+  'Presentations':{items:[
+    {t:'Physics Presentation',d:'A professional scientific presentation for Physics with an engaging design.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media',img:'',tags:['PowerPoint','Science']},
+    {t:'Icon Guessing Game',d:'An interactive PowerPoint file for playing at family gatherings.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/4.pptx?alt=media',img:'',tags:['PowerPoint','Interactive']},
+    {t:'University Programming Presentation',d:'A presentation for a programming course with modern design and practical examples.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/2.pptx?alt=media',img:'',tags:['PowerPoint','CS']},
+  ]},
+  'Video':{items:[
+    {t:'YouTube Comeback Edit',d:'A creative edit celebrating the return to YouTube with stunning visual effects.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage1.MP4',img:'',tags:['Premiere','Motion']},
+    {t:'Real Estate Edit',d:'A professional video showcasing a property with distinguished filming techniques.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage3.MP4',img:'',tags:['Video','Real Estate']},
+  ]},
+  'Data':{items:[
+    {t:'Excel WhatsApp Automation',d:'A smart Excel file for sending automated WhatsApp messages using VBA Macro.',l:'#',img:'',tags:['Excel','VBA','WhatsApp']},
+    {t:'Shops Database',d:'Collecting and organizing shop numbers from Google Maps into an organized Excel file.',l:'#',img:'',tags:['Excel','Google Maps','Data']},
+  ]},
+};
+
+const tabsEl=document.getElementById('catTabs');
+const panesEl=document.getElementById('catPanes');
+
+function makeProjCard(item, idx, cat){
+  const card=document.createElement('div');
+  card.className='proj-card';
+  card.style.transitionDelay=(idx*.08)+'s';
+
+  const imgHtml = item.img
+    ? `<div class="proj-img" style="min-height:220px"><img src="${item.img}" alt="${item.t}" loading="lazy"></div>`
+    : `<div class="proj-img" style="min-height:200px"><div class="proj-img-ph"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><div class="ph-num">0${idx+1}</div></div></div>`;
+
+  const tagsHtml = (item.tags||[]).map(t=>`<span class="ptag">${t}</span>`).join('');
+
+  const openBtn = item.l && item.l!=='#'
+    ? `<a href="${item.l}" target="_blank" class="proj-btn primary" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Open</a>`
+    : '';
+
+  card.innerHTML = `
+    ${imgHtml}
+    <div class="proj-info">
+      <div class="proj-top">
+        <div class="proj-meta"><span class="proj-num">0${idx+1}</span><span class="proj-cat">${cat}</span></div>
+        <h3 class="proj-title">${item.t}</h3>
+        <p class="proj-desc">${item.d}</p>
+      </div>
+      <div class="proj-foot">
+        ${tagsHtml}
+        <div style="display:flex;gap:8px;margin-left:auto">
+          ${openBtn}
+        </div>
+      </div>
+    </div>`;
+
+  if(item.l && item.l!=='#'){
+    card.addEventListener('click', ()=> window.open(item.l,'_blank'));
+  }
+  return card;
 }
 
-   </script>
-  <!-- نافذة المودال -->
-  <div id="modal" class="modal">
-    <img id="modal-image" src="" alt="">
-    <h2 id="modal-title"></h2>
-    <button class="close" onclick="closeModal()">&times;</button>
-    <h2 id="modal-des"></h2>
-    <br>
-    <a id="modal-link" href="" target="_blank">Preview Work</a>
-    <br>
-</div>
-<script>
-    function openModal(title, des, imgSrc, link) {
-    const modal = document.getElementById("modal");
+Object.entries(CATS).forEach(([cat,data],i)=>{
+  const btn=document.createElement('button');
+  btn.className='ctab'+(i===0?' on':'');
+  btn.textContent=cat;
+  btn.dataset.id='cp'+i;
+  tabsEl.appendChild(btn);
 
-    document.getElementById("modal-title").innerText = title;
-    document.getElementById("modal-des").innerText = des;
-    document.getElementById("modal-image").src = imgSrc;
-    document.getElementById("modal-link").href = link;
+  const pane=document.createElement('div');
+  pane.className='cat-pane'+(i===0?' on':'');
+  pane.id='cp'+i;
 
-    modal.classList.add("active");
+  data.items.forEach((item,j)=>{
+    pane.appendChild(makeProjCard(item,j,cat));
+  });
+  panesEl.appendChild(pane);
+});
+
+tabsEl.addEventListener('click',e=>{
+  const btn=e.target.closest('.ctab');if(!btn)return;
+  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.cat-pane').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const pane=document.getElementById(btn.dataset.id);
+  pane.classList.add('on');
+  pane.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('vis'));
+  setTimeout(()=>pane.querySelectorAll('.proj-card').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*70)),30);
+});
+
+setTimeout(()=>document.querySelectorAll('.cat-pane.on .proj-card').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*80)),400);
+
+/* ── SCROLL ── */
+window.addEventListener('scroll',()=>{
+  const s=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  document.getElementById('prog').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('stuck',s>50);
+},{passive:true});
+
+/* ── REVEAL ── */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+/* ── COUNTERS ── */
+function animNum(el){
+  const to=+el.dataset.to,suf=el.querySelector('sup')?.outerHTML||'',st=performance.now();
+  (function s(now){const p=Math.min((now-st)/1400,1);el.innerHTML=Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(s);else el.innerHTML=to+suf;})(st);
 }
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animNum(e.target);co.unobserve(e.target);}}),{threshold:.5});
+document.querySelectorAll('[data-to]').forEach(el=>co.observe(el));
 
-function closeModal() {
-    const modal = document.getElementById("modal");
-    modal.classList.remove("active");
-}
+/* ── BURGER ── */
+const burg=document.getElementById('burg'),mob=document.getElementById('mobN');
+burg.addEventListener('click',()=>{burg.classList.toggle('open');mob.classList.toggle('open');});
+function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
 
+/* ── FIREBASE (encrypted config) ── */
+(async()=>{
+  try{
+    const cfg={
+      apiKey:atob('QUl6YVN5Q3ZDVXVaUFpZVS1Ldk5hQUxuUEM3NjRpVHhYNXVDS2Qw'),
+      authDomain:atob('bmV3YXBwLWF6eXoyNS5maXJlYmFzZWFwcC5jb20='),
+      databaseURL:atob('aHR0cHM6Ly9uZXdhcHAtYXp5ejI1LWRlZmF1bHQtcnRkYi5maXJlYmFzZWlvLmNvbQ=='),
+      projectId:atob('bmV3YXBwLWF6eXoyNQ==')
+    };
+    const {initializeApp}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js');
+    const {getDatabase,ref,get,push}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js');
+    const app=initializeApp(cfg);
+    const db=getDatabase(app);
+    const snap=await get(ref(db,'about'));
+    if(snap.exists()&&snap.val().desc)document.getElementById('aboutBody').textContent=snap.val().desc;
+    push(ref(db,'stats/visits'),{device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop',ts:new Date().toLocaleDateString('en-US')});
+  }catch(_){}
+})();
 </script>
 
-
-</body>
+		<script>
+			window.plausible =
+				window.plausible ||
+				function () {
+					(window.plausible.q = window.plausible.q || []).push(arguments);
+				};
+			plausible('custom-pageview', {
+			  props: {
+    			domain: window.location.host
+  			}
+			})
+		</script></body>
 </html>
