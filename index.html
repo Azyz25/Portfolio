@@ -1,213 +1,901 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="/assets/img/icon/favicon-32x32.png" type="image/png">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
-  <title>بورتفوليو عبدالعزيز</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عبدالعزيز — Full Stack Developer</title>
+<style>
+@font-face{font-family:'Thmanyah';src:url('https://company.thmanyah.com/wp-content/themes/thmanyah/assets/fonts/ThmanyahDisplay-Black.woff2') format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:'Thmanyah';src:url('https://company.thmanyah.com/wp-content/themes/thmanyah/assets/fonts/ThmanyahDisplay-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #080808;
+  --bg1:   #0f0f0f;
+  --bg2:   #161616;
+  --bg3:   #1e1e1e;
+  --w:     #ffffff;
+  --w80:   rgba(255,255,255,.8);
+  --w50:   rgba(255,255,255,.5);
+  --w20:   rgba(255,255,255,.2);
+  --w10:   rgba(255,255,255,.1);
+  --w06:   rgba(255,255,255,.06);
+  --w04:   rgba(255,255,255,.04);
+  --green: #4ade80;
+  --line:  rgba(255,255,255,.08);
+  --line2: rgba(255,255,255,.14);
+  --serif: 'Thmanyah','Noto Serif Arabic',serif;
+  --sans:  'Noto Naskh Arabic',serif;
+  --mono:  'JetBrains Mono',monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--w);color:var(--bg)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3)}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;right:0;height:1px;width:0%;background:var(--w20);z-index:1001;transition:width .05s linear}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;inset:0 0 auto;height:56px;
+  display:flex;align-items:center;padding:0 6%;
+  z-index:100;border-bottom:1px solid transparent;
+  transition:background .4s,border-color .4s;
+}
+nav.stuck{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--line)}
+
+.nav-inner{width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-weight:900;font-size:1.1rem;transition:opacity .25s}
+.nav-logo:hover{opacity:.6}
+
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:.7rem;color:var(--w50);letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--w)}
+
+.nav-right{display:flex;gap:10px;align-items:center}
+.nav-avail{
+  display:flex;align-items:center;gap:7px;
+  border:1px solid var(--line2);border-radius:100px;
+  padding:6px 14px;
+  font-family:var(--mono);font-size:.65rem;color:var(--w50);letter-spacing:.5px;
+  transition:all .25s;
+}
+.nav-avail .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:var(--w);color:var(--bg);
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  padding:8px 18px;border-radius:6px;letter-spacing:.5px;
+  transition:opacity .25s;
+}
+.nav-cta:hover{opacity:.85}
+
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:1px;background:var(--w);transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.mob-nav{
+  position:fixed;inset:56px 0 0;background:var(--bg);border-top:1px solid var(--line);
+  z-index:99;padding:36px 6%;
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.7,0,.2,1);
+}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{display:block;padding:20px 0;font-family:var(--serif);font-size:1.6rem;font-weight:900;color:var(--w50);border-bottom:1px solid var(--line);transition:color .2s}
+.mob-nav a:hover{color:var(--w)}
+
+/* ══ HERO ══ */
+#hero{
+  min-height:100svh;padding:100px 6% 80px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+
+/* subtle noise grain */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events:none;opacity:.6;
+}
+
+.hero-status{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.65rem;color:var(--green);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:32px;
+  opacity:0;animation:up .6s .1s ease forwards;
+}
+.hero-status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+
+.hero-h1{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(3.5rem,9.5vw,9rem);
+  line-height:.9;letter-spacing:-3px;
+  margin-bottom:52px;
+  opacity:0;animation:up .9s .2s ease forwards;
+}
+.hero-h1 .outline{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.18);
+}
+
+.hero-bottom{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+  opacity:0;animation:up .8s .4s ease forwards;
+}
+.hero-desc{
+  font-size:clamp(.9rem,1.3vw,1rem);color:var(--w50);
+  line-height:2;max-width:420px;
+}
+.hero-desc strong{color:var(--w);font-weight:600}
+
+.hero-actions{display:flex;gap:12px;align-items:center;flex-shrink:0;flex-wrap:wrap}
+.btn-fill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--w);color:var(--bg);
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
+  padding:13px 24px;border-radius:6px;letter-spacing:.5px;
+  transition:opacity .25s;
+}
+.btn-fill:hover{opacity:.85}
+.btn-ghost{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line2);color:var(--w50);
+  font-family:var(--mono);font-size:.75rem;
+  padding:12px 22px;border-radius:6px;letter-spacing:.5px;
+  transition:all .25s;
+}
+.btn-ghost:hover{border-color:var(--w50);color:var(--w)}
+
+/* numbers row */
+.hero-nums{
+  display:flex;gap:40px;flex-wrap:wrap;
+  padding-top:52px;border-top:1px solid var(--line);
+  margin-top:52px;
+  opacity:0;animation:up .7s .6s ease forwards;
+}
+.hnum{}
+.hnum-big{
+  font-family:var(--serif);font-weight:900;
+  font-size:2.2rem;line-height:1;letter-spacing:-1px;
+}
+.hnum-big sup{font-size:1rem;color:var(--w50)}
+.hnum-lbl{font-family:var(--mono);font-size:.6rem;color:var(--w20);letter-spacing:3px;text-transform:uppercase;margin-top:5px}
+
+/* ══ SECTION BASE ══ */
+.section{padding:100px 6%;border-bottom:1px solid var(--line)}
+.sw{max-width:1160px;margin:0 auto}
+
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:72px;gap:16px;flex-wrap:wrap}
+.sec-label{font-family:var(--mono);font-size:.6rem;color:var(--w20);letter-spacing:4px;text-transform:uppercase;display:block;margin-bottom:10px}
+.sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:-1.2px;line-height:1}
+.sec-link{
+  font-family:var(--mono);font-size:.68rem;color:var(--w50);letter-spacing:2px;
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line2);border-radius:6px;padding:8px 16px;
+  transition:all .25s;flex-shrink:0;
+}
+.sec-link svg{transition:transform .25s}
+.sec-link:hover{border-color:var(--w50);color:var(--w)}
+.sec-link:hover svg{transform:translateX(-4px)}
+
+/* ══ ABOUT ══ */
+.about-layout{display:grid;grid-template-columns:220px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+
+/* Left tabs */
+.about-tabs{border-left:1px solid var(--line);background:var(--bg1)}
+.about-tab{
+  display:flex;align-items:center;gap:12px;
+  padding:18px 22px;border-bottom:1px solid var(--line);
+  cursor:pointer;transition:background .2s;
+  font-size:.82rem;color:var(--w20);
+  font-weight:500;
+}
+.about-tab:last-child{border-bottom:none}
+.about-tab svg{opacity:.3;flex-shrink:0;transition:opacity .2s}
+.about-tab:hover{background:var(--bg2);color:var(--w50)}
+.about-tab.on{background:var(--bg2);color:var(--w);border-right:2px solid var(--w)}
+.about-tab.on svg{opacity:.7}
+.tab-label{display:flex;flex-direction:column;gap:2px}
+.tab-en{font-family:var(--mono);font-size:.58rem;color:var(--w20);letter-spacing:2px;text-transform:uppercase}
+.about-tab.on .tab-en{color:var(--w20)}
+
+/* Right panel */
+.about-panel{padding:48px 52px}
+.apane{display:none}
+.apane.on{display:block}
+.apane-title{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.6rem,2.5vw,2.4rem);
+  letter-spacing:-1px;line-height:1.1;
+  margin-bottom:24px;
+}
+.apane-text{font-size:.95rem;color:var(--w50);line-height:2.1;margin-bottom:36px}
+.apane-tags{display:flex;flex-wrap:wrap;gap:8px}
+.atag{
+  border:1px solid var(--line2);border-radius:100px;
+  padding:6px 14px;
+  font-family:var(--mono);font-size:.68rem;color:var(--w50);letter-spacing:.5px;
+  transition:all .25s;cursor:default;
+}
+.atag:hover{border-color:var(--w50);color:var(--w)}
+
+/* profile card in first tab */
+.profile-card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;margin-bottom:32px;
+}
+.p-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--bg3);border:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.p-avatar svg{opacity:.4}
+.p-name{font-weight:700;font-size:.9rem}
+.p-handle{font-family:var(--mono);font-size:.62rem;color:var(--w20);letter-spacing:1px;margin-top:2px}
+.p-status{
+  margin-right:auto;
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:.62rem;color:var(--green);letter-spacing:1px;
+}
+.p-status .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+
+/* meta rows */
+.meta-rows{display:flex;flex-direction:column;margin-bottom:32px}
+.mrow{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid var(--line);font-size:.82rem;
+}
+.mrow:first-child{border-top:1px solid var(--line)}
+.mk{font-family:var(--mono);font-size:.62rem;color:var(--w20);letter-spacing:2px;text-transform:uppercase}
+.mv{color:var(--w80);font-weight:600}
+
+/* ══ WORK ══ */
+/* Featured grid — like video: large numbered cards */
+.projects-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+
+.proj-card{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:0;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+  transition:background .25s;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .6s,transform .6s,background .25s;
+  min-height:260px;
+}
+.proj-card:last-child{border-bottom:none}
+.proj-card.vis{opacity:1;transform:translateY(0)}
+.proj-card:hover{background:var(--bg2)}
+
+.proj-info{
+  padding:40px 44px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-left:1px solid var(--line);
+}
+.proj-top{}
+.proj-meta{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+}
+.proj-num{
+  font-family:var(--mono);font-size:.65rem;color:var(--w20);letter-spacing:3px;
+}
+.proj-cat{
+  font-family:var(--mono);font-size:.62rem;color:var(--w20);
+  letter-spacing:2px;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:100px;padding:3px 10px;
+}
+.proj-title{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.4rem,2.2vw,2rem);
+  letter-spacing:-.8px;line-height:1.2;
+  margin-bottom:14px;
+}
+.proj-desc{font-size:.85rem;color:var(--w50);line-height:1.85}
+
+.proj-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:28px}
+.proj-btn{
+  display:flex;align-items:center;gap:7px;
+  border:1px solid var(--line2);border-radius:100px;
+  padding:7px 16px;font-family:var(--mono);font-size:.65rem;
+  color:var(--w50);letter-spacing:.5px;
+  transition:all .25s;
+}
+.proj-btn.primary{background:var(--w);color:var(--bg);border-color:var(--w)}
+.proj-btn:hover{border-color:var(--w50);color:var(--w)}
+.proj-btn.primary:hover{opacity:.85}
+
+.proj-img{
+  background:var(--bg2);
+  overflow:hidden;position:relative;
+}
+.proj-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.85);transition:all .5s}
+.proj-card:hover .proj-img img{filter:grayscale(0%) brightness(1);transform:scale(1.04)}
+.proj-img-ph{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);
+}
+.proj-img-ph svg{opacity:.05}
+.proj-img-ph .ph-num{
+  font-family:var(--serif);font-weight:900;
+  font-size:6rem;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.06);
+  letter-spacing:-3px;line-height:1;
+}
+
+/* Category tabs (compact, above list) */
+.cat-tabs{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;
+}
+.ctab{
+  background:none;border:1px solid var(--line);border-radius:100px;
+  cursor:pointer;font-family:var(--mono);font-size:.65rem;color:var(--w20);
+  padding:7px 16px;letter-spacing:1px;text-transform:uppercase;
+  transition:all .25s;
+}
+.ctab:hover{color:var(--w50);border-color:var(--w20)}
+.ctab.on{background:var(--w);color:var(--bg);border-color:var(--w)}
+
+.cat-pane{display:none}
+.cat-pane.on{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+
+/* ══ STACK (package.json style) ══ */
+.stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.pkg{background:var(--bg1);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.pkg-bar{
+  background:var(--bg2);border-bottom:1px solid var(--line);
+  padding:10px 16px;display:flex;align-items:center;gap:8px;
+}
+.pkg-dots{display:flex;gap:5px}
+.pkdot{width:9px;height:9px;border-radius:50%;background:var(--bg3)}
+.pkg-name{flex:1;text-align:center;font-family:var(--mono);font-size:.62rem;color:var(--w20);letter-spacing:1px}
+.pkg-code{padding:20px 22px;font-family:var(--mono);font-size:.73rem;line-height:2}
+.ck{color:rgba(103,232,249,.8)}
+.cv{color:rgba(134,239,172,.9)}
+.cp{color:rgba(255,255,255,.2)}
+.cs{color:rgba(255,255,255,.85)}
+
+/* nums */
+.nums-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.num-cell{background:var(--bg1);padding:32px 28px;transition:background .25s}
+.num-cell:hover{background:var(--bg2)}
+.n-num{font-family:var(--serif);font-weight:900;font-size:3rem;line-height:1;letter-spacing:-1.5px;display:block;margin-bottom:6px}
+.n-num sup{font-size:1.2rem;color:var(--w20)}
+.n-lbl{font-family:var(--mono);font-size:.6rem;color:var(--w20);letter-spacing:3px;text-transform:uppercase}
+
+/* ══ CONTACT (BIG TEXT like video) ══ */
+#contact.section{border-bottom:none;padding-bottom:60px}
+
+.contact-big{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(4rem,11vw,11rem);
+  line-height:.9;letter-spacing:-4px;
+  margin-bottom:72px;
+  opacity:0;transform:translateY(32px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.contact-big.in{opacity:1;transform:translateY(0)}
+.contact-big .outline{color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.15);display:block}
+
+.contact-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+  padding-top:52px;border-top:1px solid var(--line);
+}
+.contact-left{}
+.contact-label{font-family:var(--mono);font-size:.6rem;color:var(--green);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.contact-label .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+.contact-sub{font-size:1rem;color:var(--w50);line-height:1.9;max-width:360px}
+
+/* START A PROJECT card like video */
+.contact-card{
+  background:var(--w);color:var(--bg);
+  border-radius:16px;padding:28px 32px;
+  min-width:280px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:opacity .25s;
+}
+.contact-card:hover{opacity:.92}
+.cc-label{font-family:var(--mono);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;opacity:.5}
+.cc-title{font-family:var(--serif);font-weight:900;font-size:1.6rem;letter-spacing:-.8px;line-height:1.1}
+.cc-arrow{
+  align-self:flex-end;margin-top:12px;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--bg);color:var(--w);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;
+}
+.contact-card:hover .cc-arrow{transform:rotate(-45deg)}
+
+/* platform links */
+.c-links{display:flex;flex-direction:column;gap:0;margin-top:52px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.c-link{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+  color:var(--w50);transition:all .25s;
+}
+.c-link:last-child{border-bottom:none}
+.c-link-ico{
+  width:36px;height:36px;background:var(--bg2);border:1px solid var(--line2);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;
+}
+.c-link-ico svg{opacity:.4;transition:opacity .25s}
+.c-link:hover{color:var(--w);padding-right:6px}
+.c-link:hover .c-link-ico{background:var(--w);border-color:var(--w)}
+.c-link:hover .c-link-ico svg{opacity:1;stroke:var(--bg)}
+.c-link-name{font-weight:700;font-size:.88rem}
+.c-link-sub{font-family:var(--mono);font-size:.62rem;color:var(--w20);letter-spacing:.5px;margin-top:2px}
+.c-link-arr{margin-right:auto;opacity:0;transition:opacity .25s}
+.c-link:hover .c-link-arr{opacity:1}
+
+/* ══ FOOTER ══ */
+footer{
+  padding:24px 6%;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.foot-logo{font-family:var(--serif);font-weight:900;font-size:1rem}
+.foot-right{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.foot-status{font-family:var(--mono);font-size:.6rem;color:var(--green);letter-spacing:2px;display:flex;align-items:center;gap:6px}
+.foot-status .dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+.foot-copy{font-family:var(--mono);font-size:.6rem;color:var(--w20);letter-spacing:2px}
+
+/* ══ REVEAL ══ */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rev.d1{transition-delay:.1s}
+.rev.d2{transition-delay:.2s}
+.rev.in{opacity:1;transform:translateY(0)}
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:960px){
+  .about-layout{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .about-tabs{border-left:none;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;scrollbar-width:none}
+  .about-tabs::-webkit-scrollbar{display:none}
+  .about-tab{border-bottom:none;border-left:1px solid var(--line);flex-shrink:0;padding:14px 18px}
+  .about-tab:first-child{border-left:none}
+  .about-tab.on{border-right:none;border-bottom:2px solid var(--w)}
+  .about-panel{padding:32px 28px}
+  .proj-card{grid-template-columns:1fr}
+  .proj-img{min-height:200px;order:-1}
+  .stack-grid{grid-template-columns:1fr}
+  .contact-row{flex-direction:column}
+  .contact-big{font-size:clamp(3rem,9vw,7rem);letter-spacing:-2px}
+}
+@media(max-width:680px){
+  .nav-links,.nav-avail{display:none}
+  .burger{display:flex}
+  .hero-h1{letter-spacing:-2px}
+  .proj-info{padding:24px}
+  .nums-grid{grid-template-columns:1fr}
+  .hero-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
-  <!-- HEADER ثابت -->
-  <header class="l-header">
-    <nav class="nav bd-grid">
-      <div class="nav__LOGO">
-        <!-- SVG logo here -->
-      </div>
-      <a href="/en/index.html" class="header-text"><span>En</span></a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list" id="nav-categories">
-          <li class="nav__item"><a href="#home" class="nav__link active-link">الصفحة الرئيسية</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">عني</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">مهاراتي</a></li>
-          <!-- بقية التصنيفات تُضاف ديناميكياً -->
-        </ul>
-      </div>
-      <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
-    </nav>
-  </header>
 
-  <main class="l-main">
-    <!-- HOME ثابت -->
-    <section class="home bd-grid" id="home">
-      <div class="home__data">
-        <h1 class="home__title">هلا<br>أنا <span class="home__title-color">عبدالعزيز</span><br></h1>
-        <div class="title-div"><h4 class="home__subtitle">( مطور مواقع )</h4></div>
-      </div>
-      <div class="home__social">
-        <a href="https://wa.me/message/QLJZKXGSEXICD1" class="home__social-icon"><i class='bx bxl-whatsapp'></i></a>
-        <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="home__social-icon">
-          <img src="https://bahr.sa/logo/bahr-logo.svg" alt="Bahr" width="28" height="28">
-        </a>
-        <a href="https://baaeed.com/u/azyz11223" class="home__social-icon" target="_blank">
-          <img src="https://baaeed.hsoubcdn.com/public/images/logo-icon-colored.png" alt="Hsoub" width="28" height="28">
-        </a>
-      </div>
-      <div class="home__img">
-        <!-- SVG blob + صورة البروفايل -->
-      </div>
-    </section>
+<div id="prog"></div>
 
-    <!-- ABOUT ديناميكي -->
-    <section class="about section" id="about">
-      <div class="cont-h2"><h2 class="section-title">عنّي</h2></div>
-      <div class="about__container bd-grid">
-        <div class="about__img"><img src="/assets/img/perfil.png" alt="profile"></div>
-        <div>
-          <h2 class="about__subtitle" id="about-title">أنا عبدالعزيز</h2>
-          <p class="about__text" id="about-desc">جاري التحميل…</p>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">عبدالعزيز</a>
+    <ul class="nav-links">
+      <li><a href="#about">عنّي</a></li>
+      <li><a href="#work">الأعمال</a></li>
+      <li><a href="#stack">التخصص</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-avail">
+        <span class="dot"></span>
+        متاح للعمل
+      </div>
+      <a href="https://wa.me/966511038120" class="nav-cta" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        ابدأ مشروعاً
+      </a>
+    </div>
+    <button class="burger" id="burg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mobN">
+  <a href="#about" onclick="closeMob()">عنّي</a>
+  <a href="#work" onclick="closeMob()">الأعمال</a>
+  <a href="#stack" onclick="closeMob()">التخصص</a>
+  <a href="#contact" onclick="closeMob()">تواصل</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div style="max-width:1160px;margin:0 auto;width:100%">
+    <div class="hero-status">
+      <span class="dot"></span>
+      متاح للمشاريع الحرة
+    </div>
+    <h1 class="hero-h1">
+      مطوّر
+      <span class="outline">ويب</span>
+      وتطبيقات
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        <strong>Full Stack Developer</strong> متخصص في بناء تجارب رقمية من الصفر —
+        من قاعدة البيانات إلى الواجهة النهائية.
+        كل سطر كود مقصود، كل بكسل محسوب.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-fill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          استعرض أعمالي
+        </a>
+        <a href="https://wa.me/966511038120" class="btn-ghost" target="_blank">تواصل معي</a>
+      </div>
+    </div>
+    <div class="hero-nums">
+      <div class="hnum"><div class="hnum-big" data-to="50">0<sup>+</sup></div><div class="hnum-lbl">مشروع</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="3">0<sup>+</sup></div><div class="hnum-lbl">سنوات</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="30">0<sup>+</sup></div><div class="hnum-lbl">عميل</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="8">0</div><div class="hnum-lbl">تخصص</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div><span class="sec-label">01 — about</span><h2 class="sec-title">من أنا</h2></div>
+      <a href="#contact" class="sec-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        تواصل
+      </a>
+    </div>
+
+    <div class="about-layout rev">
+      <!-- Tabs -->
+      <div class="about-tabs">
+        <div class="about-tab on" onclick="showTab(0)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <div class="tab-label"><span>المطوّر</span><span class="tab-en">developer</span></div>
+        </div>
+        <div class="about-tab" onclick="showTab(1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="tab-label"><span>المصمّم</span><span class="tab-en">designer</span></div>
+        </div>
+        <div class="about-tab" onclick="showTab(2)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="tab-label"><span>المبدع</span><span class="tab-en">creator</span></div>
         </div>
       </div>
-    </section>
 
-    <!-- SKILLS ثابت -->
-    <section class="skills section" id="skills">
-      <div class="cont-h2"><h2 class="section-title">مهاراتي</h2></div>
-      <div class="skills__list">
-        <!-- القوائم الثابتة تحافظ كما هي -->
-      </div>
-    </section>
-
-    <!-- WORK ديناميكي -->
-    <section class="work section" id="work">
-      <div class="cont-h2"><h2 class="section-title">أعمالي</h2></div>
-      <div class="tabs" id="work-tabs">
-        <!-- أزرار الفئات تُنشأ ديناميكياً -->
-      </div>
-      <div id="work-contents">
-        <!-- محتوى كل فئة يُنشأ ديناميكياً -->
-      </div>
-    </section>
-
-    <!-- CONTACT ثابت -->
-    <section class="contact section" id="contact">
-      <div class="contact__container bd-grid">
-        <form class="contact__form">
-          <input id="text-name" type="text" placeholder="إسمك الكريم" class="contact__input">
-          <textarea id="text-message" rows="4" class="contact__input"></textarea>
-          <div class="but-cnt">
-            <input id="button-inp" type="button" value="إرسال" class="contact__button button">
+      <!-- Panels -->
+      <div class="about-panel">
+        <div class="apane on" id="tab0">
+          <div class="profile-card">
+            <div class="p-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="p-name">عبدالعزيز</div><div class="p-handle">@azyz · Riyadh, SA</div></div>
+            <div class="p-status"><span class="dot"></span>available</div>
           </div>
-        </form>
+          <div class="meta-rows">
+            <div class="mrow"><span class="mk">location</span><span class="mv">الرياض، SA</span></div>
+            <div class="mrow"><span class="mk">experience</span><span class="mv">+٣ سنوات</span></div>
+            <div class="mrow"><span class="mk">stack</span><span class="mv">Full Stack</span></div>
+          </div>
+          <p class="apane-text" id="aboutBody">مطور ويب متخصص في HTML وCSS وJavaScript، ومطور تطبيقات Android، ومصمم UI/UX. لديّ خبرة في التصميم الجرافيكي وعروض PowerPoint الاحترافية. أملك ٣ سنوات في خدمة العملاء، و٧ سنوات في تطبيقات Microsoft Office وتحليل البيانات.</p>
+          <div class="apane-tags">
+            <span class="atag">HTML / CSS</span><span class="atag">JavaScript</span><span class="atag">Android Dev</span>
+            <span class="atag">Firebase</span><span class="atag">Responsive</span><span class="atag">WordPress</span>
+          </div>
+        </div>
+        <div class="apane" id="tab1">
+          <h3 class="apane-title">أُصمّم بعين<br>المبرمج</h3>
+          <p class="apane-text">التصميم عندي ليس مجرد شكل — بل تجربة مدروسة من أول تفاعل المستخدم إلى آخر تفصيلة بصرية. أعمل على Figma وPhotoshop وIllustrator لبناء هويات بصرية متكاملة وواجهات UI/UX تُبهر وتُنجز.</p>
+          <div class="apane-tags">
+            <span class="atag">Figma</span><span class="atag">Photoshop</span><span class="atag">Illustrator</span>
+            <span class="atag">UI / UX</span><span class="atag">Branding</span><span class="atag">Motion</span>
+          </div>
+        </div>
+        <div class="apane" id="tab2">
+          <h3 class="apane-title">كل مشروع<br>قصة تُروى</h3>
+          <p class="apane-text">أؤمن بأن التقنية وحدها لا تكفي — المنتج الحقيقي يجمع بين الكود النظيف والتصميم الجذاب والتجربة المحكمة. أعمل على مونتاج الفيديو، عروض باوربوينت، وتحليل البيانات ببناء حلول VBA تُوفّر ساعات عمل.</p>
+          <div class="apane-tags">
+            <span class="atag">Video Editing</span><span class="atag">PowerPoint</span><span class="atag">Excel / VBA</span>
+            <span class="atag">Data Analysis</span><span class="atag">Google Sheets</span>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
-
-  <!-- FOOTER ثابت -->
-  <footer class="footer">
-    <div class="FOOTER-LOGO">
-      <!-- نفس الشعار -->
     </div>
-    <div class="footer__social">
-      <a href="#"><i class='bx bxl-facebook'></i></a>
-      <a href="#"><i class='bx bxl-instagram'></i></a>
-      <a href="#"><i class='bx bxl-twitter'></i></a>
-    </div>
-    <p class="footer__copy">&#169; عبدالعزيز تكنولوجي، جميع الحقوق محفوظة</p>
-  </footer>
-
-  <!-- MODAL Preview -->
-  <div id="modal" class="modal">
-    <img id="modal-image" src="" alt="">
-    <h2 id="modal-title"></h2>
-    <button class="close" onclick="closeModal()">&times;</button>
-    <h2 id="modal-des"></h2>
-    <a id="modal-link" href="" target="_blank">مـــــــعــــايـــــنة</a>
   </div>
+</section>
 
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+<!-- ══ WORK ══ -->
+<section id="work" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div><span class="sec-label">02 — projects</span><h2 class="sec-title">الأعمال</h2></div>
+    </div>
+    <div class="cat-tabs rev" id="catTabs"></div>
+    <div id="catPanes"></div>
+  </div>
+</section>
 
-    const cfg = {
-      apiKey: "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
-      authDomain: "newapp-azyz25.firebaseapp.com",
-      databaseURL: "https://newapp-azyz25-default-rtdb.firebaseio.com",
-      projectId: "newapp-azyz25",
-      storageBucket: "newapp-azyz25.appspot.com",
-      messagingSenderId: "820384444059",
-      appId: "1:820384444059:web:09d81b30b8a14c6603e",
-      measurementId: "G-2Y8RBXXDNX"
-    };
-    const app = initializeApp(cfg);
-    const db  = getDatabase(app);
+<!-- ══ STACK ══ -->
+<section id="stack" class="section">
+  <div class="sw">
+    <div class="sec-head rev">
+      <div><span class="sec-label">03 — expertise</span><h2 class="sec-title">Full Stack</h2></div>
+    </div>
+    <div class="stack-grid rev">
+      <div>
+        <div class="pkg" style="margin-bottom:16px">
+          <div class="pkg-bar"><div class="pkg-dots"><div class="pkdot"></div><div class="pkdot"></div><div class="pkdot"></div></div><div class="pkg-name">skills.json</div></div>
+          <div class="pkg-code">
+            <span class="cp">{</span><br>
+            &nbsp;&nbsp;<span class="ck">"frontend"</span><span class="cp">: </span><span class="cv">"HTML · CSS · JS"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"mobile"</span><span class="cp">: </span><span class="cv">"Android · Java"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"database"</span><span class="cp">: </span><span class="cv">"Firebase · Realtime DB"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"design"</span><span class="cp">: </span><span class="cv">"Figma · Photoshop"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"platforms"</span><span class="cp">: </span><span class="cv">"Salla · WordPress"</span><span class="cp">,</span><br>
+            &nbsp;&nbsp;<span class="ck">"data"</span><span class="cp">: </span><span class="cv">"Excel · VBA · Sheets"</span><br>
+            <span class="cp">}</span>
+          </div>
+        </div>
+        <div class="pkg">
+          <div class="pkg-bar"><div class="pkg-dots"><div class="pkdot"></div><div class="pkdot"></div><div class="pkdot"></div></div><div class="pkg-name">git log --oneline</div></div>
+          <div class="pkg-code">
+            <span class="cp">a1b2c3d</span> <span class="cv">feat: new portfolio website</span><br>
+            <span class="cp">b4c5d6e</span> <span class="cs">fix: mobile responsive layout</span><br>
+            <span class="cp">c7d8e9f</span> <span class="ck">add: firebase integration</span><br>
+            <span class="cp">d1e2f3a</span> <span class="cs">refactor: dashboard UI</span><br>
+            <span class="cp">e4f5a6b</span> <span class="cv">feat: android app v2</span>
+          </div>
+        </div>
+      </div>
+      <div class="nums-grid rev d1">
+        <div class="num-cell"><span class="n-num" data-to="50">0<sup>+</sup></span><span class="n-lbl">project</span></div>
+        <div class="num-cell"><span class="n-num" data-to="3">0<sup>+</sup></span><span class="n-lbl">years</span></div>
+        <div class="num-cell"><span class="n-num" data-to="30">0<sup>+</sup></span><span class="n-lbl">client</span></div>
+        <div class="num-cell"><span class="n-num" data-to="8">0</span><span class="n-lbl">specialty</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // تحميل About
-    get(ref(db,'about')).then(snap=>{
-      const d = snap.val()||{};
-      document.getElementById('about-title').textContent = d.title || 'أنا عبدالعزيز';
-      document.getElementById('about-desc' ).textContent = d.desc  || '';
-    });
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section">
+  <div class="sw">
+    <div class="contact-big rev">
+      لنبني
+      <span class="outline">شيئاً</span>
+      رائعاً
+    </div>
+    <div class="contact-row">
+      <div class="contact-left rev">
+        <div class="contact-label"><span class="dot"></span>متاح لمشاريع جديدة</div>
+        <p class="contact-sub">سواء كان موقعاً، تطبيقاً، هوية بصرية أو أي تحدٍّ رقمي — أنا هنا وجاهز.</p>
+      </div>
+      <a href="https://wa.me/966511038120" class="contact-card rev d1" target="_blank">
+        <div class="cc-label">ابدأ الآن</div>
+        <div class="cc-title">ابدأ<br>مشروعاً</div>
+        <div style="font-size:.8rem;opacity:.5;margin-top:4px">تواصل عبر واتساب</div>
+        <div class="cc-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </div>
+      </a>
+    </div>
 
-    // تحميل الأعمال والفئات
-    get(ref(db,'works')).then(snap=>{
-      const data = snap.val()||{};
-      const navC = document.getElementById('nav-categories');
-      const tabsC= document.getElementById('work-tabs');
-      const contC= document.getElementById('work-contents');
+    <div class="c-links rev">
+      <a href="https://wa.me/966511038120" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div><div class="c-link-name">واتساب</div><div class="c-link-sub">+966 51 103 8120</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+      <a href="https://bahr.sa/profile/freelancer/01910dd0-bf98-73df-94cc-08c1fb461d76" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="c-link-name">منصة بحر</div><div class="c-link-sub">Bahr Freelance</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+      <a href="https://baaeed.com/u/azyz11223" class="c-link" target="_blank">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div><div class="c-link-name">بعيد</div><div class="c-link-sub">azyz11223@baaeed</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+      <a href="dashboard.html" class="c-link">
+        <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <div><div class="c-link-name">لوحة التحكم</div><div class="c-link-sub">Dashboard / Admin</div></div>
+        <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 
-      Object.entries(data).forEach(([key,cat], i)=>{
-        // أضف nav
-        const li = document.createElement('li');
-        li.className = 'nav__item';
-        li.innerHTML = `<a href="#${key}" class="nav__link">${cat.nameAr||key}</a>`;
-        navC.appendChild(li);
+<footer>
+  <span class="foot-logo">عبدالعزيز</span>
+  <div class="foot-right">
+    <span class="foot-status"><span class="dot"></span>available for work</span>
+    <span class="foot-copy">© 2025 · ALL RIGHTS RESERVED</span>
+  </div>
+</footer>
 
-        // زر تبويب
-        const btn = document.createElement('button');
-        btn.className = 'tab' + (i===0?' active':'');
-        btn.dataset.tab = key;
-        btn.textContent = cat.nameAr||key;
-        tabsC.appendChild(btn);
+<script>
+/* ── ABOUT TABS ── */
+function showTab(i){
+  document.querySelectorAll('.about-tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  document.querySelectorAll('.apane').forEach((p,j)=>p.classList.toggle('on',j===i));
+}
 
-        // حاوية محتوى
-        const div = document.createElement('div');
-        div.id = key;
-        div.className = 'work__container bd-grid tab-content' + (i===0?' active':'');
-        (cat instanceof Array ? cat : cat.items||[]).forEach(item=>{
-          const c = document.createElement('div');
-          c.className = 'image-container';
-          c.innerHTML = `
-            <img src="${item.imageSrc}" alt="${item.alt||item.title}">
-            <div class="overlay">
-              <button onclick="openModal(
-                \`${item.title}\`,
-                \`${item.description}\`,
-                \`${item.imageSrc}\`,
-                \`${item.previewLink}\`
-              )">مــــــعــــايـــــنة</button>
-            </div>`;
-          div.appendChild(c);
-        });
-        if (!div.hasChildNodes()) {
-          div.innerHTML = '<p class="empty-message">لا توجد أعمال مرفوعة لهذه الفئة</p>';
-        }
-        contC.appendChild(div);
-      });
+/* ── WORKS DATA ── */
+const CATS = {
+  'ويب':{
+    items:[
+      {t:'موقع بورتفوليو شخصي',d:'موقع شخصي متكامل بتصميم ديناميكي متجاوب مع جميع الأجهزة وبيانات Firebase في الوقت الفعلي.',l:'https://azyz-service.site/',img:'https://azyz-service.site/assets/img/web-development.png',tags:['HTML','CSS','JS','Firebase']},
+      {t:'موقع مدرسي تعليمي',d:'موقع لمدرسة طيبة يضم الموارد والأدوات التعليمية بتصميم حديث ومتجاوب.',l:'https://www.highschooltaiba.online/',img:'https://azyz-service.site/assets/img/web-development1.png',tags:['HTML','CSS','UX']},
+      {t:'مشروع ويب خاص',d:'موقع تجاري متكامل بميزات متقدمة ولوحة تحكم Firebase.',l:'#',img:'https://azyz-service.site/assets/img/web-development2.png',tags:['JS','Firebase','Responsive']},
+    ]},
+  'UI/UX':{
+    items:[
+      {t:'تطبيق تحويل الملفات',d:'تصميم UI/UX احترافي لتطبيق أندرويد لتحويل الملفات بين صيغ متعددة بتجربة مستخدم سلسة.',l:'#',img:'',tags:['Figma','Android','UX']},
+    ]},
+  'هوية':{
+    items:[
+      {t:'شعار متحرك',d:'شعار احترافي مع حركة إبداعية للعلامة التجارية بتقنية motion graphics.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/logo-colored.MP4',img:'https://azyz-service.site/assets/img/logo-color.jpg',tags:['After Effects','Motion','Branding']},
+      {t:'هوية بصرية ١',d:'تصميم هوية بصرية متكاملة تشمل الشعار والألوان والخطوط المميزة.',l:'#',img:'https://azyz-service.site/assets/img/final2.jpg',tags:['Photoshop','Illustrator']},
+      {t:'هوية بصرية ٢',d:'شعار عصري مع دليل الهوية الكامل لعلامة تجارية في قطاع التقنية.',l:'#',img:'https://azyz-service.site/assets/img/FINAL1.jpg',tags:['Illustrator','Brand Guide']},
+      {t:'هوية بصرية ٣',d:'مجموعة شعارات مصممة بأسلوب احترافي للقطاع التجاري.',l:'#',img:'https://azyz-service.site/assets/img/final3.jpg',tags:['Logo','Branding']},
+    ]},
+  'جرافيك':{
+    items:[
+      {t:'بوستر إعلاني ١',d:'بوستر إعلاني إبداعي بتصميم احترافي باستخدام Adobe Photoshop.',l:'#',img:'https://azyz-service.site/assets/img/1.jpeg',tags:['Photoshop','Social Media']},
+      {t:'بوستر إعلاني ٢',d:'تصميم بنر تسويقي لمنصات التواصل الاجتماعي بألوان جذابة.',l:'#',img:'https://azyz-service.site/assets/img/2.jpeg',tags:['Photoshop','Marketing']},
+      {t:'تصميم جرافيك ٣',d:'قطعة تصميمية مميزة بأسلوب إبداعي للمحتوى الرقمي.',l:'#',img:'https://azyz-service.site/assets/img/3.png',tags:['Digital Art']},
+    ]},
+  'عروض':{
+    items:[
+      {t:'عرض فيزياء',d:'عرض تقديمي علمي احترافي لمادة الفيزياء بتصميم جذاب.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/1.pptx?alt=media',img:'',tags:['PowerPoint','Science']},
+      {t:'لعبة تخمين الأيقونات',d:'ملف باوربوينت تفاعلي للعب في تجمعات العائلة.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/4.pptx?alt=media',img:'',tags:['PowerPoint','Interactive']},
+      {t:'عرض برمجة جامعي',d:'عرض تقديمي لمادة البرمجة بتصميم حديث مع أمثلة عملية.',l:'https://firebasestorage.googleapis.com/v0/b/quiz-tahfeed.appspot.com/o/2.pptx?alt=media',img:'',tags:['PowerPoint','CS']},
+    ]},
+  'مونتاج':{
+    items:[
+      {t:'مونتاج عودة لليوتيوب',d:'مونتاج إبداعي يحتفل بالعودة لليوتيوب بتأثيرات بصرية مذهلة.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage1.MP4',img:'',tags:['Premiere','Motion']},
+      {t:'مونتاج عقاري',d:'فيديو احترافي لعرض عقار بتقنيات تصوير متميزة.',l:'https://azyz-service.site/Preview/index.html?file=https://github.com/Azyz25/Portfolio/raw/refs/heads/main/assets/img/montage3.MP4',img:'',tags:['Video','Real Estate']},
+    ]},
+  'بيانات':{
+    items:[
+      {t:'إكسل واتساب تلقائي',d:'ملف Excel ذكي لإرسال رسائل واتساب تلقائية باستخدام VBA Macro.',l:'#',img:'',tags:['Excel','VBA','WhatsApp']},
+      {t:'قاعدة بيانات المحلات',d:'جمع وتنظيم أرقام المحلات من خرائط Google بملف Excel منظم.',l:'#',img:'',tags:['Excel','Google Maps','Data']},
+    ]},
+};
 
-      // تبديل التبويبات
-      tabsC.querySelectorAll('.tab').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          tabsC.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-          contC.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-          btn.classList.add('active');
-          document.getElementById(btn.dataset.tab).classList.add('active');
-        });
-      });
-    });
+const tabsEl=document.getElementById('catTabs');
+const panesEl=document.getElementById('catPanes');
 
-    function openModal(title, desc, img, link){
-      document.getElementById('modal-title').innerText = title;
-      document.getElementById('modal-des'  ).innerText = desc;
-      document.getElementById('modal-image').src       = img;
-      document.getElementById('modal-link' ).href      = link;
-      document.getElementById('modal').classList.add('active');
-    }
-    function closeModal(){
-      document.getElementById('modal').classList.remove('active');
-    }
-  </script>
+function makeProjCard(item, idx, cat){
+  const card=document.createElement('div');
+  card.className='proj-card';
+  card.style.transitionDelay=(idx*.1)+'s';
+
+  const imgHtml = item.img
+    ? `<div class="proj-img" style="min-height:240px"><img src="${item.img}" alt="${item.t}" loading="lazy"></div>`
+    : `<div class="proj-img" style="min-height:240px"><div class="proj-img-ph"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=".5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><div class="ph-num">0${idx+1}</div></div></div>`;
+
+  const tagsHtml = (item.tags||[]).map(t=>`<span style="border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:3px 10px;font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.5px">${t}</span>`).join('');
+
+  const openBtn = item.l && item.l!=='#'
+    ? `<a href="${item.l}" target="_blank" class="proj-btn primary" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>فتح المشروع</a>`
+    : '';
+
+  card.innerHTML = `
+    ${imgHtml}
+    <div class="proj-info">
+      <div class="proj-top">
+        <div class="proj-meta"><span class="proj-num">0${idx+1}</span><span class="proj-cat">${cat}</span></div>
+        <h3 class="proj-title">${item.t}</h3>
+        <p class="proj-desc">${item.d}</p>
+      </div>
+      <div class="proj-foot">
+        ${tagsHtml}
+        <div style="display:flex;gap:8px;margin-right:auto">
+          <a href="preview.html?cat=${encodeURIComponent(cat)}&title=${encodeURIComponent(item.t)}&desc=${encodeURIComponent(item.d)}&img=${encodeURIComponent(item.img||'')}&link=${encodeURIComponent(item.l||'#')}" target="_blank" class="proj-btn" onclick="event.stopPropagation()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            معاينة
+          </a>
+          ${openBtn}
+        </div>
+      </div>
+    </div>`;
+
+  card.addEventListener('click', ()=>{
+    const u='preview.html?cat='+encodeURIComponent(cat)+'&title='+encodeURIComponent(item.t)+'&desc='+encodeURIComponent(item.d)+'&img='+encodeURIComponent(item.img||'')+'&link='+encodeURIComponent(item.l||'#');
+    window.open(u,'_blank');
+  });
+  return card;
+}
+
+Object.entries(CATS).forEach(([cat,data],i)=>{
+  const btn=document.createElement('button');
+  btn.className='ctab'+(i===0?' on':'');
+  btn.textContent=cat;
+  btn.dataset.id='cp'+i;
+  tabsEl.appendChild(btn);
+
+  const pane=document.createElement('div');
+  pane.className='cat-pane'+(i===0?' on':'');
+  pane.id='cp'+i;
+
+  data.items.forEach((item,j)=>{
+    pane.appendChild(makeProjCard(item,j,cat));
+  });
+  panesEl.appendChild(pane);
+});
+
+tabsEl.addEventListener('click',e=>{
+  const btn=e.target.closest('.ctab');if(!btn)return;
+  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.cat-pane').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  const pane=document.getElementById(btn.dataset.id);
+  pane.classList.add('on');
+  pane.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('vis'));
+  setTimeout(()=>pane.querySelectorAll('.proj-card').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*90)),30);
+});
+
+setTimeout(()=>document.querySelectorAll('.cat-pane.on .proj-card').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*100)),400);
+
+/* Scroll */
+window.addEventListener('scroll',()=>{
+  const s=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  document.getElementById('prog').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('stuck',s>50);
+},{passive:true});
+
+/* Reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+/* Counters */
+function animNum(el){
+  const to=+el.dataset.to,suf=el.querySelector('sup')?.outerHTML||'',st=performance.now();
+  (function s(now){const p=Math.min((now-st)/1400,1);el.innerHTML=Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(s);else el.innerHTML=to+suf;})(st);
+}
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animNum(e.target);co.unobserve(e.target);}}),{threshold:.5});
+document.querySelectorAll('[data-to]').forEach(el=>co.observe(el));
+
+/* Burger */
+const burg=document.getElementById('burg'),mob=document.getElementById('mobN');
+burg.addEventListener('click',()=>{burg.classList.toggle('open');mob.classList.toggle('open');});
+function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
+
+/* Firebase */
+(async()=>{
+  try{
+    const {initializeApp}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js');
+    const {getDatabase,ref,get,push}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js');
+    const app=initializeApp({apiKey:'AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0',authDomain:'newapp-azyz25.firebaseapp.com',databaseURL:'https://newapp-azyz25-default-rtdb.firebaseio.com',projectId:'newapp-azyz25'});
+    const db=getDatabase(app);
+    const snap=await get(ref(db,'about'));
+    if(snap.exists()&&snap.val().desc)document.getElementById('aboutBody').textContent=snap.val().desc;
+    push(ref(db,'stats/visits'),{device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop',ts:new Date().toLocaleDateString('ar-SA')});
+  }catch(_){}
+})();
+</script>
 </body>
 </html>
