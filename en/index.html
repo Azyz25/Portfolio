@@ -159,12 +159,14 @@ nav.stuck{
   margin-right:auto;
 }
 
-.hero-code-side{
-  position:relative;
-  overflow:hidden;
-  background:var(--code-bg);
-  border-right:1px solid var(--line);
+.hero-code-side {
+  position: relative;
+  overflow: hidden;
+  background: var(--code-bg);
+  /* Change this from border-right to border-left */
+  border-left: 1px solid var(--line); 
 }
+
 .hero-code-side::before{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,var(--code-bg) 0%,transparent 15%,transparent 85%,var(--code-bg) 100%);
@@ -654,15 +656,6 @@ footer{
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-  <!-- Code Side -->
-  <div class="hero-code-side">
-    <div class="code-scroll-container">
-      <div class="code-column" id="codeCol1"></div>
-      <div class="code-column" id="codeCol2"></div>
-    </div>
-  </div>
-
-  <!-- Content Side -->
   <div class="hero-content">
     <div class="hero-status">
       <span class="dot"></span>
@@ -705,6 +698,13 @@ footer{
       <div class="hnum"><div class="hnum-big" data-to="3">0<sup>+</sup></div><div class="hnum-lbl">Years</div></div>
       <div class="hnum"><div class="hnum-big" data-to="30">0<sup>+</sup></div><div class="hnum-lbl">Clients</div></div>
       <div class="hnum"><div class="hnum-big" data-to="8">0</div><div class="hnum-lbl">Specialties</div></div>
+    </div>
+  </div>
+
+  <div class="hero-code-side" style="border-right: none; border-left: 1px solid var(--line);">
+    <div class="code-scroll-container">
+      <div class="code-column" id="codeCol1"></div>
+      <div class="code-column" id="codeCol2"></div>
     </div>
   </div>
 </section>

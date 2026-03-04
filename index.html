@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -620,10 +619,8 @@ footer{
 </style>
 <body>
 
-<!-- Progress Bar -->
 <div id="prog"></div>
 
-<!-- ══ NAV ══ -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">عبدالعزيز</a>
@@ -654,9 +651,7 @@ footer{
   <a href="#contact" onclick="closeMob()">تواصل</a>
 </div>
 
-<!-- ══ HERO ══ -->
 <section id="hero">
-  <!-- Code Side -->
   <div class="hero-code-side">
     <div class="code-scroll-container">
       <div class="code-column" id="codeCol1"></div>
@@ -664,16 +659,15 @@ footer{
     </div>
   </div>
 
-  <!-- Content Side -->
   <div class="hero-content">
     <div class="hero-status">
       <span class="dot"></span>
-      متاح للمشاريع الحرة
+      <span id="dyn_hStatus">متاح للمشاريع الحرة</span>
     </div>
 
     <h1 class="hero-h1">
-      مطوّر
-      <span class="outline">Full Stack</span>
+      <span id="dyn_hTitleMain">مطوّر</span>
+      <span class="outline" id="dyn_hTitleOutline">Full Stack</span>
     </h1>
 
     <div class="hero-sub">
@@ -688,7 +682,7 @@ footer{
       </span>
     </div>
 
-    <p class="hero-desc">
+    <p class="hero-desc" id="dyn_hDesc">
       <strong>Full Stack Developer</strong> متخصص في بناء تجارب رقمية من الصفر —
       من قاعدة البيانات إلى الواجهة النهائية.
       كل سطر كود مقصود، كل بكسل محسوب.
@@ -703,15 +697,14 @@ footer{
     </div>
 
     <div class="hero-nums">
-      <div class="hnum"><div class="hnum-big" data-to="50">0<sup>+</sup></div><div class="hnum-lbl">مشروع</div></div>
-      <div class="hnum"><div class="hnum-big" data-to="3">0<sup>+</sup></div><div class="hnum-lbl">سنوات</div></div>
-      <div class="hnum"><div class="hnum-big" data-to="30">0<sup>+</sup></div><div class="hnum-lbl">عميل</div></div>
-      <div class="hnum"><div class="hnum-big" data-to="8">0</div><div class="hnum-lbl">تخصص</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="50" id="dyn_stat1V">0<sup>+</sup></div><div class="hnum-lbl" id="dyn_stat1L">مشروع</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="3" id="dyn_stat2V">0<sup>+</sup></div><div class="hnum-lbl" id="dyn_stat2L">سنوات</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="30" id="dyn_stat3V">0<sup>+</sup></div><div class="hnum-lbl" id="dyn_stat3L">عميل</div></div>
+      <div class="hnum"><div class="hnum-big" data-to="8" id="dyn_stat4V">0</div><div class="hnum-lbl" id="dyn_stat4L">تخصص</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
 <section id="about" class="section">
   <div class="sw">
     <div class="sec-head rev">
@@ -742,7 +735,6 @@ footer{
       </div>
 
       <div class="about-panel">
-        <!-- Tab 0: Developer -->
         <div class="apane on" id="tab0">
           <div class="profile-card">
             <div class="p-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
@@ -764,20 +756,18 @@ footer{
           </div>
         </div>
 
-        <!-- Tab 1: Designer -->
         <div class="apane" id="tab1">
-          <h3 class="apane-title">أُصمّم بعين<br>المبرمج</h3>
-          <p class="apane-text">التصميم عندي ليس مجرد شكل — بل تجربة مدروسة من أول تفاعل المستخدم إلى آخر تفصيلة بصرية. أعمل على Figma وPhotoshop وIllustrator لبناء هويات بصرية متكاملة وواجهات UI/UX تُبهر وتُنجز.</p>
+          <h3 class="apane-title" id="dyn_aboutTab2H">أُصمّم بعين<br>المبرمج</h3>
+          <p class="apane-text" id="dyn_aboutTab2D">التصميم عندي ليس مجرد شكل — بل تجربة مدروسة من أول تفاعل المستخدم إلى آخر تفصيلة بصرية. أعمل على Figma وPhotoshop وIllustrator لبناء هويات بصرية متكاملة وواجهات UI/UX تُبهر وتُنجز.</p>
           <div class="apane-tags">
             <span class="atag">Figma</span><span class="atag">Photoshop</span><span class="atag">Illustrator</span>
             <span class="atag">UI / UX</span><span class="atag">Branding</span><span class="atag">Motion</span>
           </div>
         </div>
 
-        <!-- Tab 2: Creator -->
         <div class="apane" id="tab2">
-          <h3 class="apane-title">كل مشروع<br>قصة تُروى</h3>
-          <p class="apane-text">أؤمن بأن التقنية وحدها لا تكفي — المنتج الحقيقي يجمع بين الكود النظيف والتصميم الجذاب والتجربة المحكمة. أعمل على مونتاج الفيديو، عروض باوربوينت، وتحليل البيانات ببناء حلول VBA تُوفّر ساعات عمل.</p>
+          <h3 class="apane-title" id="dyn_aboutTab3H">كل مشروع<br>قصة تُروى</h3>
+          <p class="apane-text" id="dyn_aboutTab3D">أؤمن بأن التقنية وحدها لا تكفي — المنتج الحقيقي يجمع بين الكود النظيف والتصميم الجذاب والتجربة المحكمة. أعمل على مونتاج الفيديو، عروض باوربوينت، وتحليل البيانات ببناء حلول VBA تُوفّر ساعات عمل.</p>
           <div class="apane-tags">
             <span class="atag">Video Editing</span><span class="atag">PowerPoint</span><span class="atag">Excel / VBA</span>
             <span class="atag">Data Analysis</span><span class="atag">Google Sheets</span>
@@ -788,7 +778,6 @@ footer{
   </div>
 </section>
 
-<!-- ══ WORK ══ -->
 <section id="work" class="section">
   <div class="sw">
     <div class="sec-head rev">
@@ -802,7 +791,6 @@ footer{
   </div>
 </section>
 
-<!-- ══ STACK ══ -->
 <section id="stack" class="section">
   <div class="sw">
     <div class="sec-head rev">
@@ -813,7 +801,6 @@ footer{
     </div>
 
     <div class="stack-grid rev">
-      <!-- Frontend Skills -->
       <div>
         <div class="stack-panel" style="margin-bottom:20px">
           <div class="stack-panel-header">
@@ -840,7 +827,6 @@ footer{
         </div>
       </div>
 
-      <!-- Code Previews + Stats -->
       <div>
         <div class="pkg" style="margin-bottom:16px">
           <div class="pkg-bar"><div class="pkg-dots"><div class="pkdot"></div><div class="pkdot"></div><div class="pkdot"></div></div><div class="pkg-name">skills.json</div></div>
@@ -878,18 +864,17 @@ footer{
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
 <section id="contact" class="section" style="border-bottom:none">
   <div class="sw">
     <div class="contact-big rev">
-      لنبني
-      <span class="outline">شيئاً</span>
-      رائعاً
+      <span id="dyn_cTitle1">لنبني</span>
+      <span class="outline" id="dyn_cTitle2">شيئاً</span>
+      <span id="dyn_cTitle3">رائعاً</span>
     </div>
     <div class="contact-row">
       <div class="contact-left rev">
         <div class="contact-label"><span class="dot"></span>متاح لمشاريع جديدة</div>
-        <p class="contact-sub">سواء كان موقعاً، تطبيقاً، هوية بصرية أو أي تحدٍّ رقمي — أنا هنا وجاهز. متخصص في React للواجهات و Laravel للأنظمة الخلفية.</p>
+        <p class="contact-sub" id="dyn_cSubText">سواء كان موقعاً، تطبيقاً، هوية بصرية أو أي تحدٍّ رقمي — أنا هنا وجاهز. متخصص في React للواجهات و Laravel للأنظمة الخلفية.</p>
       </div>
       <a href="https://wa.me/966511038120" class="contact-card rev d1" target="_blank">
         <div class="cc-label">ابدأ الآن</div>
@@ -904,7 +889,7 @@ footer{
     <div class="c-links rev">
       <a href="https://wa.me/966511038120" class="c-link" target="_blank">
         <div class="c-link-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div><div class="c-link-name">واتساب</div><div class="c-link-sub">+966 51 103 8120</div></div>
+        <div><div class="c-link-name">واتساب</div><div class="c-link-sub" id="dyn_cWaText">+966 51 103 8120</div></div>
         <svg class="c-link-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
       </a>
       <a href="https://bfrelnce.com/u/azyz11223" class="c-link" target="_blank">
@@ -1227,7 +1212,7 @@ function animNum(el){
   const to=+el.dataset.to,suf=el.querySelector('sup')?.outerHTML||'',st=performance.now();
   (function s(now){const p=Math.min((now-st)/1400,1);el.innerHTML=Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(s);else el.innerHTML=to+suf;})(st);
 }
-const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animNum(e.target);co.unobserve(e.target);}}),{threshold:.5});
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animated');animNum(e.target);co.unobserve(e.target);}}),{threshold:.5});
 document.querySelectorAll('[data-to]').forEach(el=>co.observe(el));
 
 /* ── BURGER ── */
@@ -1248,9 +1233,68 @@ function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
     const {getDatabase,ref,get,push}=await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js');
     const app=initializeApp(cfg);
     const db=getDatabase(app);
-    const snap=await get(ref(db,'about'));
-    if(snap.exists()&&snap.val().desc)document.getElementById('aboutBody').textContent=snap.val().desc;
-    push(ref(db,'stats/visits'),{device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop',ts:new Date().toLocaleDateString('ar-SA')});
+
+    const snap = await get(ref(db, 'content'));
+    if (snap.exists()) {
+      const d = snap.val();
+      
+      // Hero
+      if(d.hero) {
+         if(d.hero.status) document.getElementById('dyn_hStatus').textContent = d.hero.status;
+         if(d.hero.titleMain) document.getElementById('dyn_hTitleMain').textContent = d.hero.titleMain;
+         if(d.hero.titleOutline) document.getElementById('dyn_hTitleOutline').textContent = d.hero.titleOutline;
+         if(d.hero.desc) document.getElementById('dyn_hDesc').innerHTML = d.hero.desc;
+      }
+
+      // Stats
+      const setStat = (idV, idL, obj) => {
+         if(!obj) return;
+         const elV = document.getElementById(idV);
+         const elL = document.getElementById(idL);
+         if(elV) {
+            elV.dataset.to = obj.val;
+            if(elV.classList.contains('animated')) animNum(elV); // Re-trigger animation with new value
+         }
+         if(elL) elL.textContent = obj.lbl;
+      };
+      if(d.stats) {
+         setStat('dyn_stat1V', 'dyn_stat1L', d.stats.projects);
+         setStat('dyn_stat2V', 'dyn_stat2L', d.stats.years);
+         setStat('dyn_stat3V', 'dyn_stat3L', d.stats.clients);
+         setStat('dyn_stat4V', 'dyn_stat4L', d.stats.specialties);
+      }
+
+      // About
+      if(d.about) {
+         if(d.about.tab1 && d.about.tab1.title) document.getElementById('aboutBody').innerHTML = d.about.tab1.title;
+         if(d.about.tab2) {
+            if(d.about.tab2.heading) document.getElementById('dyn_aboutTab2H').innerHTML = d.about.tab2.heading;
+            if(d.about.tab2.desc) document.getElementById('dyn_aboutTab2D').innerHTML = d.about.tab2.desc;
+         }
+         if(d.about.tab3) {
+            if(d.about.tab3.heading) document.getElementById('dyn_aboutTab3H').innerHTML = d.about.tab3.heading;
+            if(d.about.tab3.desc) document.getElementById('dyn_aboutTab3D').innerHTML = d.about.tab3.desc;
+         }
+      }
+
+      // Contact
+      if(d.contact) {
+         if(d.contact.titleMain) document.getElementById('dyn_cTitle1').textContent = d.contact.titleMain;
+         if(d.contact.titleOutline) document.getElementById('dyn_cTitle2').textContent = d.contact.titleOutline;
+         if(d.contact.titleEnd) document.getElementById('dyn_cTitle3').textContent = d.contact.titleEnd;
+         if(d.contact.subText) document.getElementById('dyn_cSubText').textContent = d.contact.subText;
+         if(d.contact.whatsapp) {
+            let num = d.contact.whatsapp;
+            const txtEl = document.getElementById('dyn_cWaText');
+            if(txtEl) txtEl.textContent = num;
+            
+            let link = 'https://wa.me/' + num.replace(/[^0-9]/g, '');
+            document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => a.href = link);
+         }
+      }
+    }
+
+    push(ref(db,'analytics/visits'),{device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop',ts:new Date().toLocaleDateString('ar-SA')});
   }catch(_){}
 })();
 </script>
