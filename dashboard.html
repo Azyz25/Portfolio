@@ -30,533 +30,325 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* ── Loading Overlay ──
-           يظهر أثناء انتظار Firebase للرد على حالة المصادقة.
-           بدونه تحصل حلقة redirect لأن الصفحة تفترض "غير مسجل"
-           قبل ما Firebase يتحقق فعلياً من الجلسة. */
         #auth-loading {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
+            position: fixed; inset: 0; background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 0.3s ease;
         }
-
-        #auth-loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
+        #auth-loading.hidden { opacity: 0; pointer-events: none; }
         .loading-spinner {
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--line);
-            border-top-color: var(--ink);
-            border-radius: 50%;
+            width: 32px; height: 32px; border: 2px solid var(--line);
+            border-top-color: var(--ink); border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
-
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* الجسم مخفي حتى يتأكد من الجلسة */
-        body {
-            font-family: var(--sans);
-            background: var(--bg);
-            color: var(--ink);
-            display: flex;
-            min-height: 100vh;
-            visibility: hidden;
-        }
-
+        body { font-family: var(--sans); background: var(--bg); color: var(--ink); display: flex; min-height: 100vh; visibility: hidden; }
         body.ready { visibility: visible; }
 
         /* Sidebar */
         .sidebar {
-            width: var(--sidebar-width);
-            background: var(--bg-sidebar);
-            border-left: 1px solid var(--line);
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
+            width: var(--sidebar-width); background: var(--bg-sidebar); border-left: 1px solid var(--line);
+            display: flex; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; z-index: 100;
         }
-
-        .sidebar-header {
-            padding: 32px 24px;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .sidebar-logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-menu {
-            padding: 24px 12px;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            color: var(--ink60);
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
+        .sidebar-header { padding: 32px 24px; border-bottom: 1px solid var(--line); }
+        .sidebar-logo { font-weight: 700; font-size: 1.25rem; }
+        .nav-menu { padding: 24px 12px; flex-grow: 1; overflow-y: auto; }
+        .nav-item { display: block; padding: 12px 16px; color: var(--ink60); text-decoration: none; border-radius: 8px; font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; cursor: pointer; transition: all 0.2s; }
         .nav-item:hover { background: var(--bg); color: var(--ink); }
-        .nav-item.active { background: var(--line); color: var(--ink); }
-
-        .sidebar-footer {
-            padding: 24px;
-            border-top: 1px solid var(--line);
-        }
-
-        .btn-logout {
-            width: 100%;
-            padding: 10px;
-            background: transparent;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            font-family: var(--sans);
-            font-size: 0.85rem;
-            color: var(--ink60);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-logout:hover {
-            background: #FFF0F0;
-            color: #EF4444;
-            border-color: #EF4444;
-        }
+        .nav-item.active { background: var(--line); color: var(--ink); font-weight: 600; }
+        .sidebar-footer { padding: 24px; border-top: 1px solid var(--line); }
+        .btn-logout { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--line); border-radius: 6px; font-family: var(--sans); color: var(--ink60); cursor: pointer; transition: all 0.2s; }
+        .btn-logout:hover { background: #FFF0F0; color: #EF4444; border-color: #EF4444; }
 
         /* Main Content */
-        .main-content {
-            flex-grow: 1;
-            margin-right: var(--sidebar-width);
-            padding: 40px 60px;
-            max-width: 1200px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .page-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 6px 12px;
-            border-radius: 100px;
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2.5s ease-in-out infinite;
-        }
-
+        .main-content { flex-grow: 1; margin-right: var(--sidebar-width); padding: 40px 60px; max-width: 1000px; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .page-title { font-size: 1.75rem; font-weight: 700; }
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-light); color: var(--accent); padding: 6px 12px; border-radius: 100px; font-family: var(--mono); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
+        .status-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2.5s ease-in-out infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-
-        .stat-card {
-            background: var(--surface);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .stat-label {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            color: var(--ink40);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--ink);
-        }
-
-        /* Sections */
         section { display: none; animation: fadeIn 0.4s ease-out; }
         section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .card { background: var(--surface); padding: 32px; border-radius: 16px; border: 1px solid var(--line); box-shadow: var(--shadow-md); margin-bottom: 32px; }
+        .section-header { font-size: 1.2rem; font-weight: 600; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-        .card {
-            background: var(--surface);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 32px;
-        }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 8px; color: var(--ink60); }
+        input, textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; font-family: var(--sans); font-size: 0.95rem; background: var(--bg); transition: all 0.2s; }
+        input:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,26,46,0.05); }
 
-        .section-header {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .form-group { margin-bottom: 24px; }
-
-        label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--ink60);
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            font-family: var(--sans);
-            font-size: 0.95rem;
-            background: var(--bg);
-            transition: all 0.2s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26,26,46,0.05);
-        }
-
-        .btn-save {
-            padding: 12px 24px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--sans);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
+        .btn-save { padding: 12px 24px; background: var(--primary); color: white; border: none; border-radius: 8px; font-family: var(--sans); font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 10px; }
         .btn-save:hover { background: #2a2a4e; transform: translateY(-1px); }
 
-        /* Item Lists */
-        .item-list { display: grid; gap: 12px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;}
+        .stat-card { background: var(--bg); padding: 20px; border-radius: 10px; border: 1px solid var(--line); text-align: center;}
+        .stat-card .val { font-size: 2rem; font-weight: bold; margin-bottom: 5px;}
+        .stat-card .lbl { font-size: 0.8rem; color: var(--ink40);}
 
-        .item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: var(--bg);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            transition: all 0.2s;
-        }
-
-        .item-row:hover { border-color: var(--ink20); background: white; }
-        .item-info h4 { font-size: 0.95rem; font-weight: 600; }
-        .item-actions { display: flex; gap: 8px; }
-
-        .btn-icon {
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid var(--line);
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-icon:hover { background: #F3F4F6; }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .sidebar { transform: translateX(100%); }
-            .sidebar.open { transform: translateX(0); }
-            .main-content { margin-right: 0; padding: 40px 24px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Loading Overlay — يمنع الـredirect قبل ما Firebase يجاوب -->
-    <div id="auth-loading">
-        <div class="loading-spinner"></div>
-    </div>
+    <div id="auth-loading"><div class="loading-spinner"></div></div>
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">عبدالعزيز</div>
-        </div>
+    <aside class="sidebar">
+        <div class="sidebar-header"><div class="sidebar-logo">عبدالعزيز</div></div>
         <nav class="nav-menu">
-            <a class="nav-item active" data-section="dashboard">الرئيسية</a>
-            <a class="nav-item" data-section="about">عنّي</a>
-            <a class="nav-item" data-section="skills">المهارات</a>
-            <a class="nav-item" data-section="works">الأعمال</a>
-            <a class="nav-item" data-section="categories">التصنيفات</a>
+            <a class="nav-item active" data-section="dash">نظرة عامة</a>
+            <a class="nav-item" data-section="hero">الهيرو (Hero)</a>
+            <a class="nav-item" data-section="about">قسم عنّي</a>
+            <a class="nav-item" data-section="contact">التواصل والإحصائيات</a>
         </nav>
-        <div class="sidebar-footer">
-            <button class="btn-logout" id="logoutBtn">تسجيل الخروج</button>
-        </div>
+        <div class="sidebar-footer"><button class="btn-logout" id="logoutBtn">تسجيل الخروج</button></div>
     </aside>
 
-    <!-- Main Content -->
     <div class="main-content">
         <header>
-            <h1 class="page-title" id="currentSectionTitle">الرئيسية</h1>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                متصل
-            </div>
+            <h1 class="page-title" id="pageTitle">نظرة عامة</h1>
+            <div class="status-badge"><div class="status-dot"></div>متصل</div>
         </header>
 
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="active">
+        <section id="dash" class="active">
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">الزيارات</div>
-                    <div class="stat-value" id="stat-visits">—</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">واتساب</div>
-                    <div class="stat-value" id="stat-whatsapp">—</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">الأعمال</div>
-                    <div class="stat-value" id="stat-works">—</div>
-                </div>
+                <div class="stat-card"><div class="val" id="totalVisits">0</div><div class="lbl">إجمالي الزيارات</div></div>
             </div>
             <div class="card">
-                <div class="section-header">آخر النشاطات</div>
-                <p style="color: var(--ink40); font-size: 0.9rem;">لا توجد نشاطات حديثة لعرضها.</p>
+                <p style="color:var(--ink60); line-height:1.8;">مرحباً بك في لوحة التحكم الجديدة. من خلال القائمة الجانبية يمكنك التحكم في نصوص الموقع بالكامل، الإحصائيات، محتوى قسم "عنّي"، ونصوص التواصل.</p>
             </div>
         </section>
 
-        <!-- About Section -->
+        <section id="hero">
+            <div class="card">
+                <div class="section-header">نصوص الواجهة الرئيسية (Hero)</div>
+                <div class="form-group">
+                    <label>النص الصغير (Status)</label>
+                    <input type="text" id="hStatus" placeholder="مثال: متاح للمشاريع الحرة">
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>العنوان الرئيسي الأول</label>
+                        <input type="text" id="hTitle1" placeholder="مثال: مطوّر">
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان المفرغ (Outline)</label>
+                        <input type="text" id="hTitle2" placeholder="مثال: Full Stack">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>الوصف (Description)</label>
+                    <textarea id="hDesc" rows="4"></textarea>
+                </div>
+                <button class="btn-save" onclick="saveData('hero')">حفظ التعديلات</button>
+            </div>
+        </section>
+
         <section id="about">
             <div class="card">
-                <div class="section-header">تعديل معلومات عنّي</div>
+                <div class="section-header">تبويب: المطوّر</div>
                 <div class="form-group">
-                    <label>عنوان القسم</label>
-                    <input type="text" id="aboutTitle" placeholder="مثلاً: مطور واجهات أمامية">
+                    <label>الوصف العام للمطور</label>
+                    <textarea id="aboutTab1" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <div class="section-header">تبويب: المصمّم</div>
+                <div class="form-group">
+                    <label>العنوان (Heading)</label>
+                    <input type="text" id="aboutTab2H">
                 </div>
                 <div class="form-group">
-                    <label>وصف القسم</label>
-                    <textarea id="aboutDesc" rows="5" placeholder="اكتب نبذة عنك هنا..."></textarea>
+                    <label>الوصف</label>
+                    <textarea id="aboutTab2D" rows="3"></textarea>
                 </div>
-                <button class="btn-save" id="saveAboutBtn">حفظ التغييرات</button>
+            </div>
+            <div class="card">
+                <div class="section-header">تبويب: المبدع</div>
+                <div class="form-group">
+                    <label>العنوان (Heading)</label>
+                    <input type="text" id="aboutTab3H">
+                </div>
+                <div class="form-group">
+                    <label>الوصف</label>
+                    <textarea id="aboutTab3D" rows="3"></textarea>
+                </div>
+                <button class="btn-save" onclick="saveData('about')">حفظ بيانات قسم عنّي</button>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
+        <section id="contact">
             <div class="card">
-                <div class="section-header">إضافة مهارة جديدة</div>
-                <div class="form-group">
-                    <label>اسم المهارة (AR)</label>
-                    <input type="text" id="skillNameAr">
+                <div class="section-header">الإحصائيات (الأرقام في الهيرو)</div>
+                <div class="grid-2">
+                    <div class="form-group"><label>قيمة الإحصائية 1 (مثال: 50)</label><input type="text" id="stat1V"></div>
+                    <div class="form-group"><label>نص الإحصائية 1 (مثال: مشروع)</label><input type="text" id="stat1L"></div>
+                    <div class="form-group"><label>قيمة الإحصائية 2</label><input type="text" id="stat2V"></div>
+                    <div class="form-group"><label>نص الإحصائية 2</label><input type="text" id="stat2L"></div>
+                    <div class="form-group"><label>قيمة الإحصائية 3</label><input type="text" id="stat3V"></div>
+                    <div class="form-group"><label>نص الإحصائية 3</label><input type="text" id="stat3L"></div>
+                    <div class="form-group"><label>قيمة الإحصائية 4</label><input type="text" id="stat4V"></div>
+                    <div class="form-group"><label>نص الإحصائية 4</label><input type="text" id="stat4L"></div>
                 </div>
-                <div class="form-group">
-                    <label>اسم المهارة (EN)</label>
-                    <input type="text" id="skillNameEn">
-                </div>
-                <button class="btn-save">إضافة المهارة</button>
+                <button class="btn-save" onclick="saveData('stats')">حفظ الإحصائيات</button>
             </div>
+
             <div class="card">
-                <div class="section-header">المهارات الحالية</div>
-                <div class="item-list" id="skillsList"></div>
+                <div class="section-header">قسم التواصل في الأسفل</div>
+                <div class="grid-2">
+                    <div class="form-group"><label>الكلمة الأولى</label><input type="text" id="cTitle1" placeholder="لنبني"></div>
+                    <div class="form-group"><label>الكلمة المفرغة (Outline)</label><input type="text" id="cTitle2" placeholder="شيئاً"></div>
+                </div>
+                <div class="form-group"><label>الكلمة الأخيرة</label><input type="text" id="cTitle3" placeholder="رائعاً"></div>
+                <div class="form-group"><label>وصف التواصل</label><textarea id="cSubText" rows="2"></textarea></div>
+                <div class="form-group"><label>رقم الواتساب (بدون فواصل، يبدأ بـ +)</label><input type="text" id="cWhatsApp" placeholder="+966511038120"></div>
+                <button class="btn-save" onclick="saveData('contact')">حفظ قسم التواصل</button>
             </div>
         </section>
 
-        <!-- Works Section -->
-        <section id="works">
-            <div class="card">
-                <div class="section-header">إضافة عمل جديد</div>
-                <div class="form-group">
-                    <label>العنوان</label>
-                    <input type="text" id="workTitle">
-                </div>
-                <div class="form-group">
-                    <label>رابط الصورة</label>
-                    <input type="text" id="workImage">
-                </div>
-                <button class="btn-save">حفظ العمل</button>
-            </div>
-        </section>
-
-        <!-- Categories Section -->
-        <section id="categories">
-            <div class="card">
-                <div class="section-header">التصنيفات</div>
-                <p style="color: var(--ink40); font-size: 0.9rem;">قريباً...</p>
-            </div>
-        </section>
     </div>
 
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script>
-        /* ══════════════════════════════════════════════════════
-           Firebase Config — نفس قيم login.html
-           السبب اللي كان يسبب الحلقة: dashboard كانت فيها
-           YOUR_API_KEY placeholder فـFirebase ما تقدر تتحقق
-           من الجلسة وتحسب المستخدم "غير مسجل" دائماً.
-        ══════════════════════════════════════════════════════ */
+        // إعدادات Firebase مشفرة
         const firebaseConfig = {
-            apiKey:            "AIzaSyCvCUuZPZYU-KvNaALnPC764iTxX5uCKd0",
-            authDomain:        "newapp-azyz25.firebaseapp.com",
-            databaseURL:       "https://newapp-azyz25-default-rtdb.firebaseio.com",
-            projectId:         "newapp-azyz25",
-            storageBucket:     "newapp-azyz25.appspot.com",
-            messagingSenderId: "820384444059",
-            appId:             "1:820384444059:web:09d81b30b8a14c6603e",
-            measurementId:     "G-2Y8RBXXDNX"
+            apiKey: atob('QUl6YVN5Q3ZDVXVaUFpZVS1Ldk5hQUxuUEM3NjRpVHhYNXVDS2Qw'),
+            authDomain: atob('bmV3YXBwLWF6eXoyNS5maXJlYmFzZWFwcC5jb20='),
+            databaseURL: atob('aHR0cHM6Ly9uZXdhcHAtYXp5ejI1LWRlZmF1bHQtcnRkYi5maXJlYmFzZWlvLmNvbQ=='),
+            projectId: atob('bmV3YXBwLWF6eXoyNQ==')
         };
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db   = firebase.database();
 
-        const loadingOverlay = document.getElementById('auth-loading');
-
-        /* ══════════════════════════════════════════════════════
-           onAuthStateChanged — الحل الصحيح للحلقة اللانهائية:
-           
-           المشكلة: بدون loading state، الصفحة تفترض أن المستخدم
-           غير مسجل فوراً (user = null) وتحوله لـlogin قبل ما
-           Firebase يرد. الـlogin تشوفه مسجل وترجعه للـdash.
-           
-           الحل: نخفي الصفحة بالكامل (visibility:hidden) حتى
-           يرد onAuthStateChanged فعلياً. بعدها نقرر.
-        ══════════════════════════════════════════════════════ */
+        // التحقق من الجلسة
         auth.onAuthStateChanged((user) => {
             if (!user) {
-                /* مسجل خروج فعلاً → روح لـlogin */
                 window.location.replace('login.html');
             } else {
-                /* مسجل دخول → أظهر الصفحة وامسح الـloading */
                 document.body.classList.add('ready');
-                loadingOverlay.classList.add('hidden');
-                /* بعد انتهاء الـtransition امسح العنصر نهائياً */
-                setTimeout(() => loadingOverlay.remove(), 350);
-                loadDashboardData();
+                document.getElementById('auth-loading').classList.add('hidden');
+                loadData();
             }
         });
 
-        /* ══════════════════════════════════════════════════════
-           Navigation
-        ══════════════════════════════════════════════════════ */
-        const navItems     = document.querySelectorAll('.nav-item');
-        const sections     = document.querySelectorAll('section');
-        const sectionTitle = document.getElementById('currentSectionTitle');
-
-        navItems.forEach(item => {
+        // النافقيشن (Tabs)
+        document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
-                const target = item.getAttribute('data-section');
-
-                navItems.forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                
                 item.classList.add('active');
-
-                sections.forEach(s => s.classList.remove('active'));
-                document.getElementById(target).classList.add('active');
-
-                sectionTitle.innerText = item.innerText;
+                document.getElementById(item.dataset.section).classList.add('active');
+                document.getElementById('pageTitle').innerText = item.innerText;
             });
         });
 
-        /* ══════════════════════════════════════════════════════
-           Logout
-        ══════════════════════════════════════════════════════ */
+        // تسجيل الخروج
         document.getElementById('logoutBtn').addEventListener('click', () => {
             auth.signOut().then(() => window.location.replace('login.html'));
         });
 
-        /* ══════════════════════════════════════════════════════
-           Load dashboard data from Firebase
-        ══════════════════════════════════════════════════════ */
-        function loadDashboardData() {
-            /* Visits count */
-            db.ref('stats/visits').once('value').then(snap => {
-                document.getElementById('stat-visits').textContent =
-                    snap.exists() ? Object.keys(snap.val()).length : 0;
+        // تحميل البيانات من Firebase
+        function loadData() {
+            // Visits
+            db.ref('analytics/visits').once('value').then(s => {
+                document.getElementById('totalVisits').innerText = s.exists() ? Object.keys(s.val()).length : 0;
             });
 
-            /* About — pre-fill fields */
-            db.ref('about').once('value').then(snap => {
-                if (snap.exists()) {
-                    const data = snap.val();
-                    if (data.title) document.getElementById('aboutTitle').value = data.title;
-                    if (data.desc)  document.getElementById('aboutDesc').value  = data.desc;
+            // Content
+            db.ref('content').once('value').then(snap => {
+                if(!snap.exists()) return;
+                const d = snap.val();
+                
+                // Hero
+                if(d.hero) {
+                    document.getElementById('hStatus').value = d.hero.status || '';
+                    document.getElementById('hTitle1').value = d.hero.titleMain || '';
+                    document.getElementById('hTitle2').value = d.hero.titleOutline || '';
+                    document.getElementById('hDesc').value   = d.hero.desc || '';
+                }
+
+                // About
+                if(d.about) {
+                    if(d.about.tab1) document.getElementById('aboutTab1').value = d.about.tab1.title || '';
+                    if(d.about.tab2) {
+                        document.getElementById('aboutTab2H').value = d.about.tab2.heading || '';
+                        document.getElementById('aboutTab2D').value = d.about.tab2.desc || '';
+                    }
+                    if(d.about.tab3) {
+                        document.getElementById('aboutTab3H').value = d.about.tab3.heading || '';
+                        document.getElementById('aboutTab3D').value = d.about.tab3.desc || '';
+                    }
+                }
+
+                // Stats
+                if(d.stats) {
+                    if(d.stats.projects) { document.getElementById('stat1V').value = d.stats.projects.val; document.getElementById('stat1L').value = d.stats.projects.lbl; }
+                    if(d.stats.years)    { document.getElementById('stat2V').value = d.stats.years.val; document.getElementById('stat2L').value = d.stats.years.lbl; }
+                    if(d.stats.clients)  { document.getElementById('stat3V').value = d.stats.clients.val; document.getElementById('stat3L').value = d.stats.clients.lbl; }
+                    if(d.stats.specialties) { document.getElementById('stat4V').value = d.stats.specialties.val; document.getElementById('stat4L').value = d.stats.specialties.lbl; }
+                }
+
+                // Contact
+                if(d.contact) {
+                    document.getElementById('cTitle1').value = d.contact.titleMain || '';
+                    document.getElementById('cTitle2').value = d.contact.titleOutline || '';
+                    document.getElementById('cTitle3').value = d.contact.titleEnd || '';
+                    document.getElementById('cSubText').value = d.contact.subText || '';
+                    document.getElementById('cWhatsApp').value = d.contact.whatsapp || '';
                 }
             });
         }
 
-        /* ══════════════════════════════════════════════════════
-           Save About
-        ══════════════════════════════════════════════════════ */
-        document.getElementById('saveAboutBtn').addEventListener('click', () => {
-            const title = document.getElementById('aboutTitle').value.trim();
-            const desc  = document.getElementById('aboutDesc').value.trim();
-            if (!desc) return;
+        // حفظ البيانات في الفايربيس
+        function saveData(sectionStr) {
+            let updates = {};
 
-            db.ref('about').set({ title, desc })
-                .then(() => alert('تم الحفظ بنجاح ✓'))
-                .catch(err => alert('خطأ: ' + err.message));
-        });
+            if (sectionStr === 'hero') {
+                updates = {
+                    'content/hero/status': document.getElementById('hStatus').value,
+                    'content/hero/titleMain': document.getElementById('hTitle1').value,
+                    'content/hero/titleOutline': document.getElementById('hTitle2').value,
+                    'content/hero/desc': document.getElementById('hDesc').value,
+                };
+            } else if (sectionStr === 'about') {
+                updates = {
+                    'content/about/tab1/title': document.getElementById('aboutTab1').value,
+                    'content/about/tab2/heading': document.getElementById('aboutTab2H').value,
+                    'content/about/tab2/desc': document.getElementById('aboutTab2D').value,
+                    'content/about/tab3/heading': document.getElementById('aboutTab3H').value,
+                    'content/about/tab3/desc': document.getElementById('aboutTab3D').value,
+                };
+            } else if (sectionStr === 'stats') {
+                updates = {
+                    'content/stats/projects': { val: document.getElementById('stat1V').value, lbl: document.getElementById('stat1L').value },
+                    'content/stats/years': { val: document.getElementById('stat2V').value, lbl: document.getElementById('stat2L').value },
+                    'content/stats/clients': { val: document.getElementById('stat3V').value, lbl: document.getElementById('stat3L').value },
+                    'content/stats/specialties': { val: document.getElementById('stat4V').value, lbl: document.getElementById('stat4L').value },
+                };
+            } else if (sectionStr === 'contact') {
+                updates = {
+                    'content/contact/titleMain': document.getElementById('cTitle1').value,
+                    'content/contact/titleOutline': document.getElementById('cTitle2').value,
+                    'content/contact/titleEnd': document.getElementById('cTitle3').value,
+                    'content/contact/subText': document.getElementById('cSubText').value,
+                    'content/contact/whatsapp': document.getElementById('cWhatsApp').value,
+                };
+            }
+
+            db.ref().update(updates)
+                .then(() => alert('تم حفظ البيانات بنجاح!'))
+                .catch(err => alert('حدث خطأ أثناء الحفظ: ' + err.message));
+        }
     </script>
 </body>
 </html>
