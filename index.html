@@ -1220,7 +1220,7 @@ const burg=document.getElementById('burg'),mob=document.getElementById('mobN');
 burg.addEventListener('click',()=>{burg.classList.toggle('open');mob.classList.toggle('open');});
 function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
 
-/* ── FIREBASE (encrypted config) ── */
+/* ── FIREBASE (encrypted config & Click Tracking) ── */
 (async()=>{
   try{
     const cfg={
@@ -1253,7 +1253,7 @@ function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
          const elL = document.getElementById(idL);
          if(elV) {
             elV.dataset.to = obj.val;
-            if(elV.classList.contains('animated')) animNum(elV); // Re-trigger animation with new value
+            if(elV.classList.contains('animated')) animNum(elV); 
          }
          if(elL) elL.textContent = obj.lbl;
       };
@@ -1294,9 +1294,36 @@ function closeMob(){burg.classList.remove('open');mob.classList.remove('open');}
       }
     }
 
-    push(ref(db,'analytics/visits'),{device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop',ts:new Date().toLocaleDateString('ar-SA')});
+    // 1. تسجيل زيارة جديدة
+    push(ref(db,'analytics/visits'), {device:/Mobi/.test(navigator.userAgent)?'mobile':'desktop', ts:new Date().toLocaleDateString('ar-SA')});
+
+    // 2. تتبع نقرات الواتساب
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', () => {
+            push(ref(db, 'analytics/whatsapp'), { timestamp: Date.now() });
+        });
+    });
+
+    // 3. تتبع نقرات تصنيفات الأعمال (ويب، هوية، جرافيك...)
+    document.getElementById('catTabs').addEventListener('click', (e) => {
+        const btn = e.target.closest('.ctab');
+        if(btn) {
+            push(ref(db, 'analytics/categoriesClicks'), { timestamp: Date.now(), category: btn.textContent });
+        }
+    });
+
+    // 4. تتبع نقرات استعراض الأعمال (فتح عمل معين)
+    document.getElementById('catPanes').addEventListener('click', (e) => {
+        const card = e.target.closest('.proj-card');
+        const openBtn = e.target.closest('.proj-btn');
+        if(card || openBtn) {
+            push(ref(db, 'analytics/worksClicks'), { timestamp: Date.now() });
+        }
+    });
+
   }catch(_){}
 })();
+
 </script>
 
 		<script>
